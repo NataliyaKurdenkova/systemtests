@@ -1,6 +1,7 @@
 package ru.webtest.springbootweb_test.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ public class UsersController {
 
     @Autowired
     private UsersRepository usersRepository;
+
 
     @GetMapping("/users")
     public String getUsersPage(Model model){

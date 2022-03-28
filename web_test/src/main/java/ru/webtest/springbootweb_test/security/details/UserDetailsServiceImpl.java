@@ -12,6 +12,8 @@ import ru.webtest.springbootweb_test.repositories.UsersRepository;
 
 @Component(value = "customUserDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
+
+
     @Autowired
     private UsersRepository usersRepository;
 

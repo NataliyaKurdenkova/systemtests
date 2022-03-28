@@ -10,14 +10,15 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="account")
+@Table(name = "account")
 public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long iduser;
     private String login;
-    private String password;
+    private String hashPassword;
     private String name;
-    private Long idrole;
-
+    private Long idrole=3l;
+    @Transient
+    private String password;
 }

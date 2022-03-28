@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LichController {
-    @GetMapping("/lich")
+    @GetMapping("/lich_page")
     public String getLichPage(){
         return "lich_page";
     }
