@@ -11,18 +11,22 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="tests")
+@Table(name = "tests")
 public class Test {
-        @Id
-        @GeneratedValue(strategy= GenerationType.IDENTITY)
-        private Long idtest;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idtest;
+    //название теста
+    private String name;
+    //проходной балл
+    private int passball;
+    //общее количество вопросов в базе
+    private int totalque;
+    //количество вопросов. которые будут выбраны для прохождения теста
+    private int needque;
+    //время на тест
+    private int time;
 
-        private String name;
-        private int passball;
-        private int totalque;
-        private int needque;
-        private int time;
-
-    }
+}
 
 
