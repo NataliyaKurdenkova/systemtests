@@ -9,25 +9,7 @@
 </head>
 <body>
 <div>
-    <h1>Личный кабинет</h1>
-    <table>
-            <tr>
-                <th>№</th>
-                <th>ФИО</th>
-                <th>Роль</th>
-            </tr>
-            <#list users as user>
-                <tr>
-                    <td>${user.iduser}</td>
-                    <td>${user.name}</td>
-                    <td>${user.idrole}</td>
-                </tr>
-            </#list>
-        </table>
-
-<a href="/lich_page_pass"> Ранее пройденные тесты </a>
-
-    <h2>Назначенные тесты</h2>
+    <h1>Ранее сданные тесты</h1>
 <table>
     <tr>
         <th>№</th>
@@ -45,7 +27,6 @@
             <td>${test.totalque}</td>
             <td>${test.needque}</td>
             <td>${test.time}</td>
-            <td><input type="button" value="Пройти"></td>
         </tr>
     </#list>
 </table>
