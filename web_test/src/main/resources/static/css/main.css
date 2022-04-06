@@ -1,13 +1,167 @@
 body {
   font-family: "Montserrat", sans-serif;
   display: grid;
-  grid-gap: 10px;
-  margin: 0; }
+  margin: 0;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto; }
+
+.footer {
+  background-color: #cdeaee; }
+
+.private-title {
+  display: grid;
+  grid-template-columns: 0.65fr 2fr 2fr 0.65fr; }
+  .private-title-p {
+    display: grid;
+    grid-area: 1/2/2/4;
+    font-size: 30px;
+    text-align: center; }
+  .private-title-form {
+    display: grid;
+    grid-area: 1/4/2/5;
+    place-items: center; }
+    .private-title-form-button {
+      display: inline-block;
+      width: 80%;
+      height: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      text-decoration: none;
+      color: #FFF;
+      background: #0095d9;
+      border-radius: 5px;
+      border: 0 solid #354251; }
+      .private-title-form-button:hover {
+        background: #FFF;
+        color: #0095d9;
+        border: 1px solid #0095d9;
+        transition: all 0.2s ease; }
+.private-table {
+  display: grid;
+  grid-template-columns: 0.5fr 3fr 1fr 1fr 0.8fr;
+  background-color: #5dc8d6; }
+  .private-table-title {
+    place-items: stretch; }
+  .private-table-content {
+    background-color: #ebf4f3; }
+    .private-table-content:nth-child(2n) {
+      background-color: #cdeaee; }
+    .private-table-content-button {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      font-size: 19px;
+      text-decoration: none;
+      color: #FFF;
+      background: #0095d9;
+      border-radius: 5px;
+      border: 0 solid #354251;
+      padding: 1px 3px; }
+      .private-table-content-button:hover {
+        background: #FFF;
+        color: #0095d9;
+        border: 1px solid #0095d9;
+        transition: all 0.2s ease; }
+  .private-table-action {
+    display: grid;
+    place-items: center; }
+    .private-table-action form {
+      width: 90%;
+      height: 90%; }
+
+.table-styles {
+  font-size: 20px;
+  place-items: center; }
+
+.content-styles {
+  text-align: center; }
 
 .main-container {
   display: grid;
   grid-template-rows: 100vh;
   grid-template-columns: 40% 60%; }
+
+.header-container {
+  display: grid;
+  grid-template-rows: auto auto; }
+.header-rows {
+  display: grid; }
+  .header-rows-1 {
+    grid-template-rows: auto;
+    grid-template-columns: auto auto auto auto;
+    background-color: #cdeaee;
+    margin-bottom: 8px; }
+  .header-rows-2 {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 2fr 100px;
+    background-color: #ebf4f3;
+    place-items: center; }
+.header-columns {
+  display: grid; }
+  .header-columns-menu {
+    display: grid;
+    place-self: stretch; }
+    .header-columns-menu-input {
+      cursor: pointer;
+      font-size: 25px;
+      text-decoration: none;
+      color: black;
+      background-color: #ebf4f3;
+      border: none;
+      width: 100%; }
+      .header-columns-menu-input:hover {
+        background: #cdeaee;
+        color: #ffffff;
+        border: none;
+        transition: all 0.2s ease; }
+    .header-columns-menu .active {
+      background: #5dc8d6; }
+  .header-columns-exit {
+    display: grid;
+    place-self: stretch; }
+    .header-columns-exit-input {
+      cursor: pointer;
+      font-size: 25px;
+      text-decoration: none;
+      color: black;
+      background-color: #ebf4f3;
+      border: none;
+      width: 100%; }
+      .header-columns-exit-input:hover {
+        background: #cdeaee;
+        color: #ffffff;
+        border: none;
+        transition: all 0.2s ease; }
+    .header-columns-exit .active {
+      background: #5dc8d6; }
+  .header-columns-output {
+    display: grid;
+    place-self: stretch; }
+    .header-columns-output-p {
+      color: #0095d9;
+      font-size: 25px;
+      margin: 0;
+      text-align: end;
+      padding-right: 15px; }
+.header-logo {
+  grid-area: 1/1/2/2; }
+  .header-logo-img {
+    position: absolute;
+    left: 3vw;
+    top: 2vh;
+    width: 7%; }
+.header-title {
+  display: grid;
+  place-items: center;
+  grid-area: 1/2/2/5; }
+  .header-title-image {
+    width: 65vw; }
+  .header-title .right-img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 7%; }
 
 .main-column {
   display: grid;
@@ -104,7 +258,9 @@ body {
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  list-style-type: none; }
+  list-style-type: none;
+  margin: 5px 0;
+  padding: 0; }
 
 .wrapper .icon {
   position: relative;
