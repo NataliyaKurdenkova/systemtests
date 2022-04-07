@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import ru.webtest.springbootweb_test.entitys.User;
+import ru.webtest.springbootweb_test.repositories.entitys.User;
 import ru.webtest.springbootweb_test.repositories.UsersRepository;
 
 @Component(value = "customUserDetailsService")

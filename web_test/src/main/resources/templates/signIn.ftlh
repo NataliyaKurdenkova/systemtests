@@ -11,13 +11,15 @@
 <div>
     <h1>Авторизация</h1>
     <br>
-    <form action="/signIn" method="post">
+
+    <form action="/signIn" method="post" modelAttribute="personAttribute">
         <input name="login" placeholder="email">
         <br>
          <input name="password" type="password" placeholder="Пароль">
         <br>
-        <input type="submit" value="Войти">
+        <input type="submit" value="Войти" >
     </form>
+
 </div>
 
 </body>

@@ -14,7 +14,6 @@
             <th>№</th>
             <th>ФИО</th>
             <th>Почта/Логин</th>
-            <th>Пароль</th>
             <th>Роль</th>
         </tr>
         <#list users as user>
@@ -22,7 +21,6 @@
                 <td>${user.iduser}</td>
                 <td>${user.name}</td>
                 <td>${user.login}</td>
-                <td>${user.password}</td>
                 <td>${user.idrole}</td>
             </tr>
         </#list>

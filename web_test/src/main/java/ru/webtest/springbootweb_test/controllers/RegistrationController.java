@@ -5,7 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.webtest.springbootweb_test.entitys.User;
+import ru.webtest.springbootweb_test.repositories.entitys.User;
 import ru.webtest.springbootweb_test.repositories.UsersRepository;
 
 @Controller
@@ -23,10 +23,13 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String registrationUser(User user){
-        //получаем пароль из введенной формы и хешируем его
+       //проверка. что поля не пустые и логин/почта содержит символы "@" и "."
+        if((user.getLogin()!="")&(user.getPassword()!="")&(user.getName()!=""&(user.getLogin().contains("@"))&(user.getLogin().contains(".")))){
+            //получаем пароль из введенной формы и хешируем его
         user.setHashPassword(passwordEncoder.encode(user.getPassword()));
         usersRepository.save(user);
-        return "main";
+        return "main";}
+        else return "registration";
     }
 }
 

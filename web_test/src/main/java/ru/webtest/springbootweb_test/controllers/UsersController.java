@@ -1,12 +1,10 @@
 package ru.webtest.springbootweb_test.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.webtest.springbootweb_test.entitys.User;
+import ru.webtest.springbootweb_test.repositories.entitys.User;
 import ru.webtest.springbootweb_test.repositories.UsersRepository;
 
 import java.util.List;

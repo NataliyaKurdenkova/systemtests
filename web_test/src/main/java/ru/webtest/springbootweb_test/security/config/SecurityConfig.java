@@ -27,10 +27,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/users").authenticated() //эта страница доступна только авторизированным пользователям
                 .antMatchers("/lich_page").authenticated()//эта страница доступна только авторизированным пользователям
                 .antMatchers("/newtest").authenticated()//эта страница доступна только авторизированным пользователям
-                .antMatchers("/tests_page").authenticated()//эта страница доступна только авторизированным пользователям
-                .antMatchers("/users_page").authenticated() //эта страница доступна только авторизированным пользователям
+                .antMatchers("/tests").authenticated()//эта страница доступна только авторизированным пользователям
                 .antMatchers("/main").permitAll()//эта страница доступна всем
                 .antMatchers("/registration").permitAll() //эта страница доступна всем
+                .antMatchers("/passing_test").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/signIn") //форма для авторизации

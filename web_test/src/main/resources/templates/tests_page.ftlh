@@ -26,7 +26,7 @@
             <td>${test.totalque}</td>
             <td>${test.needque}</td>
             <td>${test.time}</td>
-            <td><input type="button" value="Пройти"></td>
+            <td><form action="/pass_test/${test.idtest}" method="post"><input type="submit" value="Пройти"></form></td>
         </tr>
     </#list>
 </table>

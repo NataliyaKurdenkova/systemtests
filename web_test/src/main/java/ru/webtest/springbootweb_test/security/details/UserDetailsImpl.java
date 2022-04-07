@@ -3,7 +3,7 @@ package ru.webtest.springbootweb_test.security.details;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ru.webtest.springbootweb_test.entitys.User;
+import ru.webtest.springbootweb_test.repositories.entitys.User;
 
 import java.util.Collection;
 import java.util.Collections;

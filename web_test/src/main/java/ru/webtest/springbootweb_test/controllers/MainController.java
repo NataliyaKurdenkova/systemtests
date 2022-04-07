@@ -11,13 +11,25 @@ public class MainController {
         return "main";
     }
 
+    //кнопка регистрация
     @PostMapping("/reg")
     public String postReg() {
         return "registration";
     }
 
+//кнопка вход
     @PostMapping("/entrance")
     public String reSignUp() {
         return "signIn";
+    }
+
+
+
+
+    //забыли пароль
+    @PostMapping("/recovery_pass")
+    public String getSignIn() {
+
+        return "recovery_password";
     }
 }

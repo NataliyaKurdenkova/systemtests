@@ -1,0 +1,393 @@
+
+body
+  font-family: 'Montserrat', sans-serif
+  display: grid
+  margin: 0
+  min-height: 100vh
+  grid-template-rows: auto 1fr auto
+
+.footer
+  background-color: #cdeaee
+
+.private
+  &-title
+    display: grid
+    grid-template-columns: 0.65fr 2fr 2fr 0.65fr
+    &-p
+      display: grid
+      grid-area: 1 / 2 / 2 / 4
+      font-size: 30px
+      text-align: center
+    &-form
+      display: grid
+      grid-area: 1 / 4 / 2 / 5
+      place-items: center
+      &-button
+        display: inline-block
+        width: 80%
+        height: 50%
+        cursor: pointer
+        font-size: 20px
+        text-decoration: none
+        color: #FFF
+        background: #0095d9
+        border-radius: 5px
+        border: 0 solid #354251
+        &:hover
+          background: #FFF
+          color: #0095d9
+          border: 1px solid #0095d9
+          transition: all 0.2s ease
+
+  &-table
+    display: grid
+    grid-template-columns: 0.5fr 3fr 1fr 1fr 0.8fr
+    background-color: #5dc8d6
+    &-title
+      place-items: stretch
+
+    &-content
+      background-color: #ebf4f3
+      &:nth-child(2n)
+        background-color: #cdeaee
+      &-button
+        display: inline-block
+        width: 100%
+        height: 100%
+        cursor: pointer
+        font-size: 19px
+        text-decoration: none
+        color: #FFF
+        background: #0095d9
+        border-radius: 5px
+        border: 0 solid #354251
+        padding: 1px 3px
+        &:hover
+          background: #FFF
+          color: #0095d9
+          border: 1px solid #0095d9
+          transition: all 0.2s ease
+    &-action
+      display: grid
+      place-items: center
+      form
+        width: 90%
+        height: 90%
+
+.table-styles
+  font-size: 20px
+  place-items: center
+.content-styles
+  text-align: center
+
+
+.main-container
+  display: grid
+  grid-template-rows: 100vh
+  grid-template-columns: 40% 60%
+
+.header
+  &-container
+    display: grid
+    grid-template-rows: auto auto
+
+  &-rows
+    display: grid
+
+    &-1
+      grid-template-rows: auto
+      grid-template-columns: auto auto auto auto
+      background-color: #cdeaee
+      margin-bottom: 8px
+
+    &-2
+      grid-template-rows: auto
+      grid-template-columns: 1fr 1fr 2fr 100px
+      background-color: #ebf4f3
+      place-items: center
+
+  &-columns
+    display: grid
+
+    &-menu
+      display: grid
+      place-self: stretch
+
+      &-input
+        cursor: pointer
+        font-size: 25px
+        text-decoration: none
+        color: black
+        background-color: #ebf4f3
+        border: none
+        width: 100%
+
+        &:hover
+          background: #cdeaee
+          color: #ffffff
+          border: none
+          transition: all 0.2s ease
+
+      .active
+        background: #5dc8d6
+
+    &-exit
+      display: grid
+      place-self: stretch
+
+      &-input
+        cursor: pointer
+        font-size: 25px
+        text-decoration: none
+        color: black
+        background-color: #ebf4f3
+        border: none
+        width: 100%
+
+        &:hover
+          background: #cdeaee
+          color: #ffffff
+          border: none
+          transition: all 0.2s ease
+
+      .active
+        background: #5dc8d6
+
+    &-output
+      display: grid
+      place-self: stretch
+
+      &-p
+        color: #0095d9
+        font-size: 25px
+        margin: 0
+        text-align: end
+        padding-right: 15px
+
+  &-logo
+    grid-area: 1 / 1 / 2 / 2
+
+    &-img
+      position: absolute
+      left: 3vw
+      top: 2vh
+      width: 7%
+
+  &-title
+    display: grid
+    place-items: center
+    grid-area: 1 / 2 / 2 / 5
+
+    &-image
+      width: 65vw
+
+    .right-img
+      position: absolute
+      right: 0
+      top: 0
+      width: 7%
+
+.main-column
+  display: grid
+  place-items: center
+
+  .right-img
+    position: absolute
+    right: 0
+    top: 0
+    width: 10%
+
+  .logo-img
+    position: absolute
+    left: 3vw
+    top: 2vh
+    width: 8%
+
+  .main-img
+    height: 100vh
+    margin-left: -10px
+
+.row
+  &-2
+    grid-template-rows: repeat(2, 1fr)
+
+.title
+  margin-top: 5%
+
+  &-img
+    width: 45vw
+
+  &-rows
+    display: grid
+    justify-content: end
+    place-items: end
+    grid-template-rows: auto auto auto auto auto
+    grid-template-columns: 1fr
+
+  &-column
+    display: grid
+    place-items: end
+    justify-content: end
+    margin-right: 10%
+
+    &-description
+      p
+        color: #354251
+        width: 55%
+        text-align: end
+        font-size: 14px
+        margin-bottom: 70px
+
+    &-entrance
+      place-items: end
+      margin-bottom: 40px
+
+    &-social
+      grid-template-rows: 1fr
+
+.reg-container
+  display: grid
+  grid-template-rows: 1fr
+  grid-gap: 5px
+  grid-template-columns: auto auto auto
+
+  p
+    line-height: 2px
+
+.entrance-button
+  width: 300px
+  height: 70px
+  background: #2894e0
+  position: relative
+  text-align: center
+  cursor: pointer
+  transition: all 0.1s ease-in-out
+  font-family: "Montserrat", sans-serif
+  font-size: 32px
+  font-weight: 600
+  color: #FFF
+  border: none
+
+  &:hover
+    opacity: 0.8
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2)
+
+  &:active
+    opacity: 1
+    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1)
+    color: #354251
+
+.iksweb
+  display: inline-block
+  cursor: pointer
+  font-size: 14px
+  text-decoration: none
+  padding: 10px 20px
+  color: #354251
+  background: #fff
+  border-radius: 0
+  border: 0 solid #354251
+
+  &:hover
+    background: #2894e0
+    color: #ffffff
+    border: 0 solid #354251
+    transition: all 0.2s ease
+
+.wrapper
+  display: grid
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+  list-style-type: none
+  margin: 5px 0
+  padding: 0
+
+.wrapper .icon
+  position: relative
+  background: #ffffff
+  border-radius: 50%
+  border: 1px solid #000
+  padding: 7px
+  margin: 5px
+  width: 20px
+  height: 20px
+  font-size: 20px
+  display: grid
+  justify-content: center
+  place-items: center
+  flex-direction: column
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1)
+  cursor: pointer
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+
+
+.wrapper .tooltip
+  position: absolute
+  top: 0
+  font-size: 14px
+  background: #ffffff
+  color: #ffffff
+  padding: 5px 8px
+  border-radius: 5px
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1)
+  opacity: 0
+  pointer-events: none
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+
+
+.wrapper .tooltip::before
+  position: absolute
+  content: ""
+  height: 8px
+  width: 8px
+  background: #ffffff
+  bottom: -3px
+  left: 50%
+  transform: translate(-50%) rotate(45deg)
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+
+
+.wrapper .icon:hover .tooltip
+  top: -45px
+  opacity: 1
+  visibility: visible
+  pointer-events: auto
+
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1)
+
+
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip::before
+  background: #1877F2
+  color: #ffffff
+
+
+.wrapper .twitter:hover,
+.wrapper .twitter:hover .tooltip,
+.wrapper .twitter:hover .tooltip::before
+  background: #1DA1F2
+  color: #ffffff
+
+
+.wrapper .instagram:hover,
+.wrapper .instagram:hover .tooltip,
+.wrapper .instagram:hover .tooltip::before
+  background: #E4405F
+  color: #ffffff
+
+
+.wrapper .github:hover,
+.wrapper .github:hover .tooltip,
+.wrapper .github:hover .tooltip::before
+  background: #333333
+  color: #ffffff
+
+
+.wrapper .youtube:hover,
+.wrapper .youtube:hover .tooltip,
+.wrapper .youtube:hover .tooltip::before
+  background: #CD201F
+  color: #ffffff
