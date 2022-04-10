@@ -1,32 +1,28 @@
 package ru.webtest.springbootweb_test.controllers;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.webtest.springbootweb_test.entitys.User;
-import ru.webtest.springbootweb_test.repositories.UsersRepository;
+import ru.webtest.springbootweb_test.entitys.Test;
+import ru.webtest.springbootweb_test.repositories.TestsRepository;
 
 @Controller
-public class RegistrationController {
+public class RedactorController {
 
     @Autowired
-    private UsersRepository usersRepository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private TestsRepository testsRepository;
 
-    @GetMapping("/registration")
-    public String getRegistrationPage() {
-        return "registration";
+    @GetMapping("/newtest")
+    public String getNewTestPage(Model model){
+        Test test = new Test();
+        model.addAttribute("test", test);
+        return "newtest";
     }
 
-    @PostMapping("/registration")
-    public String registrationUser(User user){
-        //получаем пароль из введенной формы и хешируем его
-        user.setHashPassword(passwordEncoder.encode(user.getPassword()));
-        usersRepository.save(user);
-        return "main";
+    @PostMapping("/newtest")
+    public String create (Test test){
+        testsRepository.save(test);
+    return testsRepository.toString();
     }
 }
-
