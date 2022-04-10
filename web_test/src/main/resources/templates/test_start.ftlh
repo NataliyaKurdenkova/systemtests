@@ -1,32 +1,32 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Personal Cabinet</title>
+    <title>Начало тестирования</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
     </style>
-    <link rel="stylesheet" href="../static/css/normalize.css">
-    <!--    <link rel="stylesheet" href="css/normalize.css">-->
-    <link rel="stylesheet" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
-    <link rel="stylesheet" href="../static/css/main.min.css">
-    <!--    <link rel="stylesheet" href="css/main.min.css">-->
+    <!-- <link rel="stylesheet" href="../static/css/normalize.css">-->
+       <link rel="stylesheet" href="css/normalize.css">
+    <!--<link rel="stylesheet" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
+        <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="../static/css/main.min.css">-->
+        <link rel="stylesheet" href="css/main.min.css">
 </head>
-
 <body>
 <header>
     <div class="header-container">
         <div class="header-rows header-rows-1">
             <div class="header-logo">
-                <img class="header-logo-img" src="../static/img/logo.svg" alt="logo">
+                <img class="header-logo-img" src="img/logo.svg" alt="logo">
             </div>
             <div class="header-title">
-                <img class="header-title-image" src="../static/img/Title.png" alt="title-img">
-                <img class="right-img" src="../static/img/right-img.svg" alt="img">
+                <img class="header-title-image" src="img/Title.png" alt="title-img">
+                <img class="right-img" src="img/right-img.svg" alt="img">
             </div>
         </div>
         <div class="header-rows header-rows-2">
@@ -41,7 +41,7 @@
                 </form>
             </div>
             <div class="header-columns-output">
-                <p class="header-columns-output-p" id="FIO-output">Иванов Иван Иванович</p>
+                <p class="header-columns-output-p" id="FIO-output"> ${name}</p>
             </div>
             <div class="header-columns-exit">
                 <form action="/" method="post">
@@ -52,25 +52,19 @@
     </div>
 </header>
 <section class="private-container">
-    <div class="private-title">
-        <p class="private-title-p">Вам назначены следующие тесты:</p>
-    </div>
-    <div class="private-table table-styles">
-        <div class="private-table-n table-styles"><p>№</p></div>
-        <div class="private-table-title table-styles"><p>ФИО</p></div>
-        <div class="private-table-estimation table-styles"><p>Почта/Логин</p></div>
-        <div class="private-table-time table-styles"><p>Пароль</p></div>
-        <div class="private-table-action table-styles">Роль</div>
-    </div>
-    <!--    <#list father as item>-->
-    <div class="private-table private-table-content">
-        <div class="private-table-n content-styles"><p>${user.iduser}</p></div>
-        <div class="private-table-title "><p>${user.name}</p></div>
-        <div class="private-table-estimation content-styles"><p>${user.login}</p></div>
-        <div class="private-table-time content-styles"><p>${user.password}</p></div>
-        <div class="private-table-time content-styles"><p>${user.idrole}</p></div>
-    </div>
-    <!--    </#list>-->
+
+
+    <div><h1>Название теста</h1></div>
+    <div><h2>Данный тест содержит N вопросов. Проходной балл - K. Врямя на прохождение теста ограниченно и составляет Т минут.</h2></div>
+
+        <div class="private-table-action">
+            <form action="">
+                <input class="private-table-content-button" type="submit" value="Начать">
+            </form>
+        </div>
+
+
+
 </section>
 <footer class="footer">
     <div class="title-column title-column-social">
@@ -100,22 +94,3 @@
 </footer>
 </body>
 </html>
-
-    <table>
-        <tr>
-            <th>№</th>
-            <th>ФИО</th>
-            <th>Почта/Логин</th>
-            <th>Пароль</th>
-            <th>Роль</th>
-        </tr>
-<!--        <#list users as user>-->
-            <tr>
-                <td>${user.iduser}</td>
-                <td>${user.name}</td>
-                <td>${user.login}</td>
-                <td>${user.password}</td>
-                <td>${user.idrole}</td>
-            </tr>
-<!--        </#list>-->
-    </table>

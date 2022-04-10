@@ -11,3 +11,25 @@ _
 Tweb_test/src/main/resources/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css,4\0\401f31e13dbeb4b96162dbaedabf563ef3fd770b
 `
 0web_test/src/main/resources/static/img/title.svg,0\6\06603ecb4feb245c05fb5f7989d29b1cb1210943
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+m
+=web_test/src/main/resources/templates/lich_page_redactor.html,e\c\ec5f3e036970e78e43caf1edba5b3f9e6e22ed44
+m
+=web_test/src/main/resources/templates/lich_page_redactor.ftlh,4\2\42cbc83d8ca08e22e0ffe72060d292e3e46645ce
+d
+4web_test/src/main/resources/templates/lich_page.ftlh,7\b\7b3bea8b26afb5156738d5612ea79dd0bb76e73c
+b
+2web_test/src/main/resources/templates/newtest.ftlh,d\e\de4eb73f1de87a62a14cc73026398d84a720d7da
+e
+5web_test/src/main/resources/templates/tests_page.ftlh,2\1\21a93b97c01d1c945b6ca9730e89ceeab375a454
+_
+/web_test/src/main/resources/templates/main.html,8\f\8f47246c504a733710fc7070c57fefa28c425d53
+_
+/web_test/src/main/resources/templates/main.ftlh,2\2\22018f6c71d198d5cb6d7b9607df80f9ac541a9d
+d
+4web_test/src/main/resources/templates/lich_page.html,d\8\d8deb510cc14d6b46976c2c442a535323c290fde
+e
+5web_test/src/main/resources/templates/users_page.html,7\2\72dc8782d4b1b0588178372d9e82fb5a0280f40c
+e
+5web_test/src/main/resources/templates/tests_page.html,4\b\4bd9f68052f7056ec9f18aceef7377ebff388484
