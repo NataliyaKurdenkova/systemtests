@@ -33,3 +33,5 @@ e
 5web_test/src/main/resources/templates/users_page.html,7\2\72dc8782d4b1b0588178372d9e82fb5a0280f40c
 e
 5web_test/src/main/resources/templates/tests_page.html,4\b\4bd9f68052f7056ec9f18aceef7377ebff388484
+g
+7web_test/src/main/resources/templates/passing_test.ftlh,6\d\6d318ff550a8d114d10910110f0cdecf1c047ccb

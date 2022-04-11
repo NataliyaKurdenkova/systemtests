@@ -10,12 +10,9 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
     </style>
-    <!-- <link rel="stylesheet" href="../static/css/normalize.css">-->
-       <link rel="stylesheet" href="css/normalize.css">
-    <!--<link rel="stylesheet" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
-        <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--<link rel="stylesheet" href="../static/css/main.min.css">-->
-        <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
 </head>
 <body>
 <header>
@@ -29,19 +26,9 @@
                 <img class="right-img" src="img/right-img.svg" alt="img">
             </div>
         </div>
-        <div class="header-rows header-rows-2">
-            <div class="header-columns-menu">
-                <form action="/" method="post">
-                    <input class="header-columns-menu-input active" type="submit" value="Назначенные тесты">
-                </form>
-            </div>
-            <div class="header-columns-menu">
-                <form action="/" method="post">
-                    <input class="header-columns-menu-input" type="submit" value="Пройденные тесты">
-                </form>
-            </div>
+        <div class="header-rows header-rows-4">
             <div class="header-columns-output">
-                <p class="header-columns-output-p" id="FIO-output"> ${name}</p>
+                <p class="header-columns-output-p" id="FIO-output">${name}</p>
             </div>
             <div class="header-columns-exit">
                 <form action="/" method="post">
@@ -51,20 +38,17 @@
         </div>
     </div>
 </header>
-<section class="private-container">
-
-
-    <div><h1>Название теста</h1></div>
-    <div><h2>MSG (Вы прошли тест или не прошли тест) Набрали - N баллов. Врямя  прохождения теста - Т .</h2></div>
-
-        <div class="private-table-action">
-            <form action="">
-                <input class="private-table-content-button" type="submit" value="Начать">
-            </form>
-        </div>
-
-
-
+<section class="test-container">
+    <div class="test-question-container">
+        <!-- <p class="test-question-id">${idtest}</p>-->
+        <p class="test-question-title-start">${test.name}</p>
+    </div>
+    <div class="test-answers-title-start"><p>MSG (Вы прошли тест или не прошли тест) Набрали - N баллов. Врямя  прохождения теста - Т .</p></div>
+    <div class="test-action-block test-action-block-start">
+        <form class="test-action-block-start-form" action="/start" method="post">
+            <input type="submit" value="Пересдать">
+        </form>
+    </div>
 </section>
 <footer class="footer">
     <div class="title-column title-column-social">
