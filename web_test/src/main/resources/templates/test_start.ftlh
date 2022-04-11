@@ -1,13 +1,12 @@
-<#import "/spring.ftl" as spring/>
-
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Personal Cabinet</title>
+    <title>Начало тестирования</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
     </style>
@@ -15,7 +14,6 @@
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.min.css">
 </head>
-
 <body>
 <header>
     <div class="header-container">
@@ -28,19 +26,9 @@
                 <img class="right-img" src="img/right-img.svg" alt="img">
             </div>
         </div>
-        <div class="header-rows header-rows-2">
-            <div class="header-columns-menu">
-                <form action="/" method="post">
-                    <input class="header-columns-menu-input active" type="submit" value="Назначенные тесты">
-                </form>
-            </div>
-            <div class="header-columns-menu">
-                <form action="/" method="post">
-                    <input class="header-columns-menu-input" type="submit" value="Пройденные тесты">
-                </form>
-            </div>
+        <div class="header-rows header-rows-4">
             <div class="header-columns-output">
-                <p class="header-columns-output-p" id="FIO-output">Иванов Иван Иванович</p>
+                <p class="header-columns-output-p" id="FIO-output">${name}</p>
             </div>
             <div class="header-columns-exit">
                 <form action="/" method="post">
@@ -50,30 +38,18 @@
         </div>
     </div>
 </header>
-<section class="private-container">
-    <div class="private-title">
-        <p class="private-title-p">Вам назначены следующие тесты:</p>
+<section class="test-container">
+    <div class="test-question-container">
+        <!-- <p class="test-question-id">${idtest}</p>-->
+        <p class="test-question-title-start">${test.name}</p>
     </div>
-    <div class="private-table table-styles">
-        <div class="private-table-n table-styles"><p>№</p></div>
-        <div class="private-table-title table-styles"><p>Название теста</p></div>
-        <div class="private-table-estimation table-styles"><p>Проходной балл</p></div>
-        <div class="private-table-time table-styles"><p>Время(мин)</p></div>
-        <div class="private-table-action table-styles"></div>
+    <div class="test-answers-title-start"><p>Данный тест содержит N вопросов. Проходной балл - K.
+        Врямя на прохождение теста ограниченно и составляет Т минут.</p></div>
+    <div class="test-action-block test-action-block-start">
+        <form class="test-action-block-start-form" action="/start" method="post">
+            <input type="submit" value="Начать">
+        </form>
     </div>
-    <#list father as item>
-        <div class="private-table private-table-content">
-            <div class="private-table-n content-styles"><p>${item.n}</p></div>
-            <div class="private-table-title "><p>${item.title}</p></div>
-            <div class="private-table-estimation content-styles"><p>${item.estimation}</p></div>
-            <div class="private-table-time content-styles"><p>${item.time}</p></div>
-            <div class="private-table-action">
-                <form action="">
-                    <input class="private-table-content-button" type="submit" value="Начать">
-                </form>
-            </div>
-        </div>
-    </#list>
 </section>
 <footer class="footer">
     <div class="title-column title-column-social">

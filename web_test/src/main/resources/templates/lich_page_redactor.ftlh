@@ -31,7 +31,7 @@
         <div class="header-rows header-rows-2">
             <div class="header-columns-menu">
                 <form action="/" method="post">
-                    <input class="header-columns-menu-input active" type="submit" value="Назначенные тесты">
+                    <input class="header-columns-menu-input active" type="submit" value="Тесты">
                 </form>
             </div>
             <div class="header-columns-menu">
@@ -52,7 +52,10 @@
 </header>
 <section class="private-container">
     <div class="private-title">
-        <p class="private-title-p">Вам назначены следующие тесты:</p>
+        <p class="private-title-p">Список тестов:</p>
+        <form class="private-title-form" action="">
+            <input class="private-title-form-button" type="submit" value="Добавить">
+        </form>
     </div>
     <div class="private-table table-styles">
         <div class="private-table-n table-styles"><p>№</p></div>
@@ -69,7 +72,7 @@
             <div class="private-table-time content-styles"><p>${item.time}</p></div>
             <div class="private-table-action">
                 <form action="">
-                    <input class="private-table-content-button" type="submit" value="Начать">
+                    <input class="private-table-content-button" type="submit" value="Редактировать">
                 </form>
             </div>
         </div>

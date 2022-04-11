@@ -1,5 +1,3 @@
-<#import "/spring.ftl" as spring/>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,6 +9,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
     </style>
+
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.min.css">
@@ -28,19 +27,12 @@
                 <img class="right-img" src="img/right-img.svg" alt="img">
             </div>
         </div>
-        <div class="header-rows header-rows-2">
-            <div class="header-columns-menu">
-                <form action="/" method="post">
-                    <input class="header-columns-menu-input active" type="submit" value="Назначенные тесты">
-                </form>
-            </div>
-            <div class="header-columns-menu">
-                <form action="/" method="post">
-                    <input class="header-columns-menu-input" type="submit" value="Пройденные тесты">
-                </form>
+        <div class="header-rows header-rows-3">
+            <div class="header-columns-time">
+                <p>${time}</p>
             </div>
             <div class="header-columns-output">
-                <p class="header-columns-output-p" id="FIO-output">Иванов Иван Иванович</p>
+                <p class="header-columns-output-p" id="FIO-output">${name}</p>
             </div>
             <div class="header-columns-exit">
                 <form action="/" method="post">
@@ -50,30 +42,32 @@
         </div>
     </div>
 </header>
-<section class="private-container">
-    <div class="private-title">
-        <p class="private-title-p">Вам назначены следующие тесты:</p>
+<section class="test-container">
+    <div class="test-question-container">
+        <!-- <p class="test-question-id">${idtest}</p>-->
+        <p class="test-question-title">Вопрос:</p>
+        <p class="test-question">${question}</p>
     </div>
-    <div class="private-table table-styles">
-        <div class="private-table-n table-styles"><p>№</p></div>
-        <div class="private-table-title table-styles"><p>Название теста</p></div>
-        <div class="private-table-estimation table-styles"><p>Проходной балл</p></div>
-        <div class="private-table-time table-styles"><p>Время(мин)</p></div>
-        <div class="private-table-action table-styles"></div>
-    </div>
-    <#list father as item>
-        <div class="private-table private-table-content">
-            <div class="private-table-n content-styles"><p>${item.n}</p></div>
-            <div class="private-table-title "><p>${item.title}</p></div>
-            <div class="private-table-estimation content-styles"><p>${item.estimation}</p></div>
-            <div class="private-table-time content-styles"><p>${item.time}</p></div>
-            <div class="private-table-action">
-                <form action="">
-                    <input class="private-table-content-button" type="submit" value="Начать">
-                </form>
-            </div>
+    <div class="test-answers-title">Варианты ответов:</div>
+    <div class="test-answers-block">
+        <!--    <#list answers as answer>-->
+        <div class="test-answer">
+            <input id="${answer.id} 1" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
+            <label for="${answer.id} 1" class="test-answer-label"><span>${answer.name}</span></label>
         </div>
-    </#list>
+        <!--</#list>-->
+    </div>
+    <div class="test-action-block">
+        <form action="/back" method="post">
+            <input type="submit" value="Назад">
+        </form>
+        <form action="/skip" method="post">
+            <input type="submit" value="Пропустить">
+        </form>
+        <form action="/pass_test/${idtest}/answer" method="post">
+            <input type="submit" value="Ответить">
+        </form>
+    </div>
 </section>
 <footer class="footer">
     <div class="title-column title-column-social">
