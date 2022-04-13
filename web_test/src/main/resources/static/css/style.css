@@ -1,0 +1,39 @@
+
+.iksweb {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 10px 20px;
+    color: #354251;
+    background: #fff;
+    border-radius: 0px;
+    border: 0px solid #354251;
+}
+
+.iksweb:hover {
+    background: #2894e0;
+    color: #ffffff;
+    border: 0px solid #354251;
+    transition: all 0.2s ease;
+}
+
+.in {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 5px 20px;
+    color: #354251;
+    background: #0c91f0;
+    border-radius: 0px;
+    border: 1px solid #6ab2e6;
+}
+
+.in:hover {
+    background: #2894e0;
+    color: #ffffff;
+    border: 3px solid #426782;
+    transition: all 0.2s ease;
+}
+
