@@ -7,73 +7,103 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import ru.webtest.springbootweb_test.repositories.AnswerRepository;
 import ru.webtest.springbootweb_test.repositories.entitys.Answer;
 import ru.webtest.springbootweb_test.repositories.entitys.Question;
 import ru.webtest.springbootweb_test.repositories.entitys.Test;
-import ru.webtest.springbootweb_test.repositories.AnswersRepository;
-import ru.webtest.springbootweb_test.repositories.QuestionsRepository;
+import ru.webtest.springbootweb_test.repositories.AnswerRepository;
+import ru.webtest.springbootweb_test.repositories.QuestionRepository;
 import ru.webtest.springbootweb_test.repositories.TestsRepository;
 import ru.webtest.springbootweb_test.service.TestService;
+import ru.webtest.springbootweb_test.service.UsersService;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
 public class TestsController {
-
+    int i=0;
     @Autowired
     private TestsRepository testsRepository;
     @Autowired
-    private AnswersRepository answersRepository;
+    private AnswerRepository answerRepository;
     @Autowired
-    private QuestionsRepository questionsRepository;
+    private QuestionRepository questionRepository;
     @Autowired
     private TestService testService;
-
+    @Autowired
+    private UsersService usersService;
 
     @Autowired
     public void setTestService(TestService testService) {
         this.testService = testService;
     }
 
-    //List<Answer> answers=answersRepository.findAll();;
-    //List<Question> questions=questionsRepository.findAll();;
-    // private int indexq=0;
-
 
     @GetMapping("/tests")
     public String getTestsPage(Model model) {
-        List<Test> tests = testsRepository.findAll();
-
+        List<Test> tests = testService.getAllTests();
         model.addAttribute("tests", tests);
         return "tests_page";
 
     }
 
-    @PostMapping("/pass_test/{idtest}")
+    @GetMapping("/pass_test/{idtest}")
     public String getQuestionsPage(@PathVariable("idtest") int idtest, Model model) {
+        String login = usersService.getCurrentUsername();
+        model.addAttribute("name", login);
+        Question[] question = testService.getQuestionByParent_Test(idtest);
+        System.out.println(question[i].getQuestion());
+        System.out.println("ответы для вопроса №" + question[i].getIdque());
+        int nomer=question[i].getIdque().intValue();
+        System.out.println("nomer voprosa"+nomer);
+        Answer[] answ = testService.getAnswerByParent_Question(nomer);
 
-        Question[] question = testService.getQuestionByParent_Test((long) idtest);
-        System.out.println(question[0].getQuestion());
-        System.out.println(question[1].getQuestion());
-        System.out.println("ответы для вопроса №" +question[0].getIdque());
-        Answer[] answers = testService.getAnswerByParent_Question((long)1);
-       /* List<String> answ= new ArrayList<>();
-        for (int i=0;i<=(answers.length-1);i++) {
-            answ.add(answers[i].getName());
-        }
-*/
         model.addAttribute("idtest", idtest);
-        model.addAttribute("question", question[0].getQuestion());
-        model.addAttribute("answers", answers);
+        model.addAttribute("question", question[i].getQuestion());
+        model.addAttribute("answers", answ);
+        return "passing_test";
+    }
+
+    @PostMapping("/pass_test/{idtest}")
+    public String QuestionsPage(@PathVariable("idtest") int idtest, Model model) {
+
+        String login = usersService.getCurrentUsername();
+        model.addAttribute("name", login);
+        Question[] question = testService.getQuestionByParent_Test(idtest);
+        System.out.println(question[i].getQuestion());
+        System.out.println("ответы для вопроса №" + question[i].getIdque());
+        int nomer=question[i].getIdque().intValue();
+        System.out.println("nomer voprosa"+nomer);
+        Answer[] answ = testService.getAnswerByParent_Question(nomer);
+
+        model.addAttribute("idtest", idtest);
+        model.addAttribute("question", question[i].getQuestion());
+        model.addAttribute("answers", answ);
         return "passing_test";
 
     }
 
     @PostMapping("/answer")
-    public String getNextQuesrtion(@PathVariable("idtest") int idtest) {
+    public String getNextQuestionAndAnswer(@PathVariable("idtest") int idtest) {
 
         return "redirect:passing_test";
     }
 
+
+    @PostMapping("/skip/{idtest}")
+    public String NextQuestion(@PathVariable("idtest") int idtest, Model model) {
+        i++;
+        System.out.println(i);
+        return "redirect:/pass_test/{idtest}";
+    }
+
+    @PostMapping("/back/{idtest}")
+    public String postQuestion(@PathVariable("idtest") int idtest, Model model) {
+        i--;
+        System.out.println(i);
+        return "redirect:/pass_test/{idtest}";
+    }
 }

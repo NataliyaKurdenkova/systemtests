@@ -25,12 +25,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/users").authenticated() //эта страница доступна только авторизированным пользователям
-                .antMatchers("/lich_page").authenticated()//эта страница доступна только авторизированным пользователям
+                .antMatchers("/admin/**").access("hasRole('ADMIN')") //эта страница доступна только admin
+                .antMatchers("/lich_page/**").authenticated()//эта страница доступна только авторизированным пользователям
                 .antMatchers("/newtest").authenticated()//эта страница доступна только авторизированным пользователям
-                .antMatchers("/tests").authenticated()//эта страница доступна только авторизированным пользователям
+                .antMatchers("/tests/**").authenticated()//эта страница доступна только авторизированным пользователям
                 .antMatchers("/main").permitAll()//эта страница доступна всем
                 .antMatchers("/registration").permitAll() //эта страница доступна всем
-                .antMatchers("/passing_test").authenticated()
+                .antMatchers("/passing_test/**").authenticated()//эта страница доступна только авторизированным пользователям
                 .and()
                 .formLogin()
                 .loginPage("/signIn") //форма для авторизации

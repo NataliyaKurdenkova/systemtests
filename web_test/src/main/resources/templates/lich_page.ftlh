@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -44,7 +43,7 @@
                 <p class="header-columns-output-p" id="FIO-output"> ${name}</p>
             </div>
             <div class="header-columns-exit">
-                <form action="/" method="post">
+                <form action="/exit" method="post">
                     <input class="header-columns-exit-input" type="submit" value="Выход">
                 </form>
             </div>
@@ -80,7 +79,7 @@
         <div class="private-table-estimation content-styles"><p>${test.passball}</p></div>
         <div class="private-table-time content-styles"><p>${test.time}</p></div>
         <div class="private-table-action">
-            <form action="">
+            <form action="/pass_test/${test.idtest}" method="post">
                 <input class="private-table-content-button" type="submit" value="Начать">
             </form>
         </div>

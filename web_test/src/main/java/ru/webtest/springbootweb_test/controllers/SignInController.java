@@ -20,9 +20,9 @@ public class SignInController {
     }
 
     @PostMapping("/signIn")
-    public String postSignIn(@PathVariable("login") int login,Model model) {
+    public String postSignIn(Model model) {
         System.out.println("Переход на страницу Lichpage");
-        model.addAttribute("name",login);
+        //model.addAttribute("name",login);
         return "lich_page";
     }
 

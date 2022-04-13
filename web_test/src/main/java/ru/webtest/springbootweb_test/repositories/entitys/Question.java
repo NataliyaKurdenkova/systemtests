@@ -21,7 +21,7 @@ public class Question {
 
     //к какому тесту принадлежит
     @Column(name = "parent")
-    private long parent;
+    private int parent;
 
 
     //количество ответов по номеру вопроса

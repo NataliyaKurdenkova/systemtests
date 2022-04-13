@@ -19,7 +19,7 @@
 <body>
 <section class="main-container">
     <div class="main-column main-column-left">
-        <img class="logo-img" src="img/logo.svg" alt="logo">
+        <img class="header-logo-img" src="img/logo.svg" alt="logo">
         <img class="main-img" src="img/main-Img.png" alt="logo">
     </div>
     <div class="main-column main-column-right">

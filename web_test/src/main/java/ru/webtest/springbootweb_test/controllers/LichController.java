@@ -2,12 +2,15 @@ package ru.webtest.springbootweb_test.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.webtest.springbootweb_test.repositories.TestsRepository;
 import ru.webtest.springbootweb_test.repositories.UsersRepository;
 import ru.webtest.springbootweb_test.repositories.entitys.Test;
+import ru.webtest.springbootweb_test.repositories.entitys.User;
 import ru.webtest.springbootweb_test.service.TestService;
 import ru.webtest.springbootweb_test.service.UsersService;
 
@@ -29,10 +32,11 @@ public class LichController {
 
     @GetMapping("/lich_page")
     public String getLichPage( Model model)  {
-        String login = "Иванов Иван Иванович";
-
-        List<Test> tests = testsRepository.findAll();
+        //получаем имя текущего пользователя
+        String login = usersService.getCurrentUsername();
         model.addAttribute("name", login);
+        List<Test> tests = testsRepository.findAll();
+
         model.addAttribute("tests", tests);
         return "lich_page";
     }

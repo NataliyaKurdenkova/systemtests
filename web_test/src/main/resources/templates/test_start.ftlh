@@ -1,38 +1,35 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Test</title>
+    <title>Начало тестирования</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
     </style>
-    <!-- <link rel="stylesheet" href="../static/css/normalize.css">-->
-    <link rel="stylesheet" href="../static/css/normalize.css">
-    <!--<link rel="stylesheet" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
-    <link rel="stylesheet" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--<link rel="stylesheet" href="../static/css/main.min.css">-->
-    <link rel="stylesheet" href="../static/css/main.min.css">
-</head>
+    <link rel="stylesheet" href="css/normalize.css">
 
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/main.min.css">
+
+</head>
 <body>
 <header>
     <div class="header-container">
         <div class="header-rows header-rows-1">
             <div class="header-logo">
-                <img class="header-logo-img" src="../static/img/logo.svg" alt="logo">
+                <img class="header-logo-img" src="img/logo.svg" alt="logo">
             </div>
             <div class="header-title">
-                <img class="header-title-image" src="../static/img/Title.png" alt="title-img">
-                <img class="right-img" src="../static/img/right-img.svg" alt="img">
+                <img class="header-title-image" src="img/Title.png" alt="title-img">
+                <img class="right-img" src="img/right-img.svg" alt="img">
             </div>
         </div>
-        <div class="header-rows header-rows-3">
-            <div class="header-columns-time">
-                <p>time</p>
-            </div>
+        <div class="header-rows header-rows-4">
             <div class="header-columns-output">
                 <p class="header-columns-output-p" id="FIO-output">${name}</p>
             </div>
@@ -47,28 +44,13 @@
 <section class="test-container">
     <div class="test-question-container">
 
-        <p class="test-question-title">Вопрос:</p>
-        <p class="test-question">${question}</p>
+        <p class="test-question-title-start">${test.name}</p>
     </div>
-    <div class="test-answers-title">Варианты ответов:</div>
-    <div class="test-answers-block">
-      <#list answers as answer>
-        <div class="test-answer">
-
-           <input  class="test-answer-checkbox" type="radio" name="answer" value="${answer.name}">
-            <label  class="test-answer-label"><span>${answer.name}</span></label>
-        </div>
-        </#list>
-    </div>
-    <div class="test-action-block">
-        <form action="/back/${idtest}" method="post">
-            <input type="submit" value="Назад">
-        </form>
-        <form action="/skip/${idtest}" method="post">
-            <input type="submit" value="Пропустить">
-        </form>
-        <form action="/pass_test/${idtest}/answer" method="post">
-            <input type="submit" value="Ответить">
+    <div class="test-answers-title-start"><p>Данный тест содержит N вопросов. Проходной балл - K.
+            Врямя на прохождение теста ограниченно и составляет Т минут.</p></div>
+    <div class="test-action-block test-action-block-start">
+        <form class="test-action-block-start-form" action="/start" method="post">
+            <input type="submit" value="Начать">
         </form>
     </div>
 </section>

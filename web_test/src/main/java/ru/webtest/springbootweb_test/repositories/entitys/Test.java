@@ -3,8 +3,8 @@ package ru.webtest.springbootweb_test.repositories.entitys;
 
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.webtest.springbootweb_test.repositories.AnswersRepository;
-import ru.webtest.springbootweb_test.repositories.QuestionsRepository;
+import ru.webtest.springbootweb_test.repositories.AnswerRepository;
+import ru.webtest.springbootweb_test.repositories.QuestionRepository;
 import ru.webtest.springbootweb_test.repositories.TestsRepository;
 
 import javax.persistence.*;
