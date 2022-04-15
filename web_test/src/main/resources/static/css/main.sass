@@ -7,6 +7,45 @@ body
 
 .footer
   background-color: #cdeaee
+.grid
+  display: grid
+  place-items: center
+
+.authorize
+  width: 100vw
+  height: 100vh
+  background: rgb(235,244,243)
+  background: radial-gradient(circle, rgba(235,244,243,1) 10%, rgba(93,200,214,1) 100%)
+  &-container
+    width: 45vw
+  &-form
+    width: 100%
+    margin-bottom: 10px
+    &-logo
+      justify-content: center
+      margin-bottom: 25px
+      .logo-img
+        width: 20%
+      .logo-title
+        width: 75%
+    &-input
+      width: 70%
+      margin: 1% 1%
+      .input-login, .input-password
+        width: 100%
+        height: 35px
+        text-align: center
+        border-radius: 15px
+        border: 2px solid #1da1f2
+    &-recovery, &-registration
+      .iksweb
+        background: none
+      margin-bottom: 10px
+    &-wrapper
+      .wrapper
+        grid-template-columns: 1fr 1fr 1fr 1fr
+
+
 
 .private
   &-title
@@ -538,5 +577,11 @@ body
 .wrapper .youtube:hover,
 .wrapper .youtube:hover .tooltip,
 .wrapper .youtube:hover .tooltip::before
-  background: #CD201F
+  background: #333333
+  color: #ffffff
+
+.wrapper .google:hover,
+.wrapper .google:hover .tooltip,
+.wrapper .google:hover .tooltip::before
+  background: #000
   color: #ffffff

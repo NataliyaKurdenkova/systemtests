@@ -8,6 +8,43 @@ body {
 .footer {
   background-color: #cdeaee; }
 
+.grid {
+  display: grid;
+  place-items: center; }
+
+.authorize {
+  width: 100vw;
+  height: 100vh;
+  background: #ebf4f3;
+  background: radial-gradient(circle, #ebf4f3 10%, #5dc8d6 100%); }
+  .authorize-container {
+    width: 45vw; }
+  .authorize-form {
+    width: 100%;
+    margin-bottom: 10px; }
+    .authorize-form-logo {
+      justify-content: center;
+      margin-bottom: 25px; }
+      .authorize-form-logo .logo-img {
+        width: 20%; }
+      .authorize-form-logo .logo-title {
+        width: 75%; }
+    .authorize-form-input {
+      width: 70%;
+      margin: 1% 1%; }
+      .authorize-form-input .input-login, .authorize-form-input .input-password {
+        width: 100%;
+        height: 35px;
+        text-align: center;
+        border-radius: 15px;
+        border: 2px solid #1da1f2; }
+    .authorize-form-recovery, .authorize-form-registration {
+      margin-bottom: 10px; }
+      .authorize-form-recovery .iksweb, .authorize-form-registration .iksweb {
+        background: none; }
+    .authorize-form-wrapper .wrapper {
+      grid-template-columns: 1fr 1fr 1fr 1fr; }
+
 .private-title {
   display: grid;
   grid-template-columns: 0.65fr 2fr 2fr 0.65fr; }
@@ -453,7 +490,13 @@ body {
 .wrapper .youtube:hover,
 .wrapper .youtube:hover .tooltip,
 .wrapper .youtube:hover .tooltip::before {
-  background: #CD201F;
+  background: #333333;
+  color: #ffffff; }
+
+.wrapper .google:hover,
+.wrapper .google:hover .tooltip,
+.wrapper .google:hover .tooltip::before {
+  background: #000;
   color: #ffffff; }
 
 /*# sourceMappingURL=main.css.map */
