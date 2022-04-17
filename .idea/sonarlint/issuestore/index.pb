@@ -11,8 +11,6 @@ _
 Tweb_test/src/main/resources/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css,4\0\401f31e13dbeb4b96162dbaedabf563ef3fd770b
 `
 0web_test/src/main/resources/static/img/title.svg,0\6\06603ecb4feb245c05fb5f7989d29b1cb1210943
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 m
 =web_test/src/main/resources/templates/lich_page_redactor.html,e\c\ec5f3e036970e78e43caf1edba5b3f9e6e22ed44
 m
@@ -43,3 +41,9 @@ e
 5web_test/src/main/resources/templates/users_page.html,7\2\72dc8782d4b1b0588178372d9e82fb5a0280f40c
 d
 4web_test/src/main/resources/templates/lich_page.html,d\8\d8deb510cc14d6b46976c2c442a535323c290fde
+_
+/web_test/src/main/resources/templates/main.html,8\f\8f47246c504a733710fc7070c57fefa28c425d53
+c
+3web_test/src/main/resources/templates/test_end.ftlh,8\d\8d29d71810301ca9bbd7e1e9746ce9f76d58e924
+a
+1web_test/src/main/resources/templates/signIn.ftlh,f\0\f04bf784c3f18fb6694d6794963c14d911a798ca

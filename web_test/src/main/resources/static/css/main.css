@@ -22,6 +22,12 @@ body {
   .authorize-form {
     width: 100%;
     margin-bottom: 10px; }
+    .authorize-form-span {
+      margin-bottom: 10px; }
+      .authorize-form-span span {
+        font-style: italic;
+        font-weight: 500;
+        font-size: 25px; }
     .authorize-form-logo {
       justify-content: center;
       margin-bottom: 25px; }
@@ -32,12 +38,24 @@ body {
     .authorize-form-input {
       width: 70%;
       margin: 1% 1%; }
-      .authorize-form-input .input-login, .authorize-form-input .input-password {
+      .authorize-form-input .input-login, .authorize-form-input .input-password, .authorize-form-input .input-name, .authorize-form-input .input-surname, .authorize-form-input .input-middle-name {
         width: 100%;
         height: 35px;
         text-align: center;
         border-radius: 15px;
         border: 2px solid #1da1f2; }
+        .authorize-form-input .input-login:invalid, .authorize-form-input .input-password:invalid, .authorize-form-input .input-name:invalid, .authorize-form-input .input-surname:invalid, .authorize-form-input .input-middle-name:invalid {
+          border: 2px solid red; }
+      .authorize-form-input .password-control {
+        position: relative;
+        bottom: 30px;
+        left: 200px;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat; }
+      .authorize-form-input .password-control.view {
+        background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat; }
     .authorize-form-recovery, .authorize-form-registration {
       margin-bottom: 10px; }
       .authorize-form-recovery .iksweb, .authorize-form-registration .iksweb {
