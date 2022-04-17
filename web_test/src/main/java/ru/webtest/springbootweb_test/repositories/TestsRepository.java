@@ -6,4 +6,15 @@ import ru.webtest.springbootweb_test.entitys.Test;
 
 @Repository
 public interface TestsRepository extends JpaRepository<Test,Long> {
+
+    default Test findById(String idtest) {
+        return null;
+    }
+
+    default Test findTestByUserId(Long iduser) {
+        return null;
+
+    }
+
+
 }

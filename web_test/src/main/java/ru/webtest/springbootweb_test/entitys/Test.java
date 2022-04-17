@@ -21,6 +21,13 @@ public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idtest;
+
+    @ManyToMany
+    @JoinTable(name = "account_x_tests",
+    joinColumns = @JoinColumn(name = "idtest"),
+    inverseJoinColumns = @JoinColumn(name = "iduser"))
+    private List<User> users;
+
     //название теста
     private String name;
     //проходной балл

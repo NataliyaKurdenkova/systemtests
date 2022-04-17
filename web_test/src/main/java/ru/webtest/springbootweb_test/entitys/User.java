@@ -5,6 +5,8 @@ import net.bytebuddy.implementation.bind.annotation.Default;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -18,12 +20,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //id пользователя
     private Long iduser;
+
     //логин -email
     private String login;
     // хэш пароля- он сохраняется в базу и используется для входа
     private String hashPassword;
     //ФИО пользователя
     private String name;
+
+    @ManyToMany
+    @JoinTable (name = "account_x_tests",
+            joinColumns = @JoinColumn (name = "iduser"),
+    inverseJoinColumns = @JoinColumn(name = "idtest"))
+    private List<Test> tests;
 
 
     //@Column(name= "idrole")

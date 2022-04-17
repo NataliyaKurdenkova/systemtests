@@ -10,6 +10,7 @@ import ru.webtest.springbootweb_test.repositories.TestsRepository;
 import ru.webtest.springbootweb_test.entitys.Answer;
 import ru.webtest.springbootweb_test.entitys.Question;
 import ru.webtest.springbootweb_test.entitys.Test;
+import ru.webtest.springbootweb_test.repositories.UsersRepository;
 
 import java.util.List;
 
@@ -18,6 +19,10 @@ public class TestService {
     private TestsRepository testsRepository;
     private QuestionRepository questionRepository;
     private AnswerRepository answerRepository;
+    private UsersRepository usersRepository;
+    private Long iduser;
+
+
 
     @Autowired
     public void setTestsRepository(TestsRepository testsRepository) {
@@ -36,6 +41,7 @@ public class TestService {
         this.answerRepository = answersRepository;
 
     }
+
 
 
     //поиск вопроса по номеру теста
@@ -59,17 +65,30 @@ public class TestService {
 
     //список всех тестов
     public List<Test> getAllTests() {
+
         return (List<Test>) (testsRepository.findAll());
     }
 
-//    public Test getTestById(Long id) {
-//        return testsRepository.findById(id).orElse(null);
-//    }
-//
+    public Test getTestById(Long id) {
+        return testsRepository.findById(id).orElse(null);
+    }
+
+
+    //список тестов по айди юзера
+
+    public List<Test> getTestsByUserId () {
+        return (List<Test>) (testsRepository.findTestByUserId(iduser));
+    }
+
+    public Test getByUserId (Long iduser) {
+        return  testsRepository.findTestByUserId(iduser);
+
+    }
+
 //    public List<Question> getAllQuestions() {
 //        return (List<Question>) (questionsRepository.findAll());
 //    }
-
+//
 //
 //    public List<Answer> getAllAnswers() {
 //        return (List<Answer>) (answersRepository.findAll());
