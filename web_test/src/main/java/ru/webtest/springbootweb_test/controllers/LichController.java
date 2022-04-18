@@ -30,6 +30,7 @@ public class LichController {
     public String getLichPage( Model model)  {
         //получаем имя текущего пользователя
         String login = usersService.getCurrentUsername();
+
         model.addAttribute("name", login);
         List<Test> tests = testsRepository.findAll();
 
