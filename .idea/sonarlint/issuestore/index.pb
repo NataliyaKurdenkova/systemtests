@@ -17,8 +17,6 @@ m
 =web_test/src/main/resources/templates/lich_page_redactor.ftlh,4\2\42cbc83d8ca08e22e0ffe72060d292e3e46645ce
 d
 4web_test/src/main/resources/templates/lich_page.ftlh,7\b\7b3bea8b26afb5156738d5612ea79dd0bb76e73c
-b
-2web_test/src/main/resources/templates/newtest.ftlh,d\e\de4eb73f1de87a62a14cc73026398d84a720d7da
 e
 5web_test/src/main/resources/templates/tests_page.ftlh,2\1\21a93b97c01d1c945b6ca9730e89ceeab375a454
 _
@@ -29,8 +27,6 @@ g
 7web_test/src/main/resources/templates/passing_test.ftlh,6\d\6d318ff550a8d114d10910110f0cdecf1c047ccb
 e
 5web_test/src/main/resources/templates/test_start.ftlh,c\8\c80e51eec16f729b53510fe5a6a9c48441eae3fd
-g
-7web_test/src/main/resources/templates/passing_test.html,4\0\40ef83c4adb52e57d42f8d990f8a53e9a3b85ccd
 e
 5web_test/src/main/resources/templates/test_start.html,a\b\ab8952f7807ee8fc97c14a01ad23ee03f8a4b584
 c
@@ -39,8 +35,6 @@ e
 5web_test/src/main/resources/templates/users_page.ftlh,6\6\6643f2d4bbdc011cb3e29553845f4878947ad873
 e
 5web_test/src/main/resources/templates/users_page.html,7\2\72dc8782d4b1b0588178372d9e82fb5a0280f40c
-d
-4web_test/src/main/resources/templates/lich_page.html,d\8\d8deb510cc14d6b46976c2c442a535323c290fde
 _
 /web_test/src/main/resources/templates/main.html,8\f\8f47246c504a733710fc7070c57fefa28c425d53
 c
