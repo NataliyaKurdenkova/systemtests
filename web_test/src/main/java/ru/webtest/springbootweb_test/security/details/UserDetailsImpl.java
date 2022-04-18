@@ -5,6 +5,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.webtest.springbootweb_test.entitys.User;
 
+
 import java.util.Collection;
 import java.util.Collections;
 
@@ -18,8 +19,9 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        //пока все пользователи юзеры
-        return Collections.singletonList(new SimpleGrantedAuthority("USER"));
+        if(user.getIdrole() == 1l) return Collections.singletonList(new SimpleGrantedAuthority("ADMIN"));
+        else if(user.getIdrole() == 2l) return Collections.singletonList(new SimpleGrantedAuthority("EDITOR"));
+        else return Collections.singletonList(new SimpleGrantedAuthority("USER"));
     }
 
     @Override
@@ -51,4 +53,6 @@ public class UserDetailsImpl implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }

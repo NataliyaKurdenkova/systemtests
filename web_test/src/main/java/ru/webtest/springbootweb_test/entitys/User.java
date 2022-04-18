@@ -19,6 +19,8 @@ public class User {
     private String hashPassword;
     private String name;
     private Long idrole=3l;
+    @Enumerated(EnumType.STRING)
+    private Role role;
     @Transient
     private String password;
 }

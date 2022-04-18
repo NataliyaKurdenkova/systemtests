@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import ru.webtest.springbootweb_test.entitys.Role;
 import ru.webtest.springbootweb_test.security.details.UserDetailsServiceImpl;
 
 
@@ -24,6 +25,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http.csrf().disable();
         http.authorizeRequests()
+                .antMatchers("/admin").hasAnyAuthority(Role.ADMIN.name())
+                .antMatchers("/editor").hasAnyAuthority(Role.ADMIN.name())
+                .antMatchers("/editor").hasAnyAuthority(Role.EDITOR.name())
                 .antMatchers("/users").authenticated() //эта страница доступна только авторизированным пользователям
                 .antMatchers("/lich_page").authenticated()//эта страница доступна только авторизированным пользователям
                 .antMatchers("/newtest").authenticated()//эта страница доступна только авторизированным пользователям
