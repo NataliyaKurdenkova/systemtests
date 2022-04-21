@@ -3,7 +3,7 @@ package ru.webtest.springbootweb_test.entitys;
 import lombok.*;
 
 import javax.persistence.*;
-
+@Data
 @Getter
 @Setter
 @Builder
