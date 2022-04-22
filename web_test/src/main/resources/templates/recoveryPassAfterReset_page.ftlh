@@ -9,21 +9,11 @@
 </head>
 <body>
 <div>
-    <h1>Авторизация</h1>
+    <h1>Восстановление пароля</h1>
     <br>
+    <h2>Инструкция по восстановлению пароля направлена на Ваш e-mail</h2>
     <form action="/signIn" method="post">
-        <input name="login" placeholder="email">
-        <br>
-         <input name="password" type="password" placeholder="Пароль">
-        <br>
-        <input type="submit" value="Войти">
-        </form>
-
-    </form>
-
-    <form action="/recovery" method="post">
-    <br>
-    <input type="submit" value="Забыли пароль?">
+        <input type="submit" value="Перейти на страницу авторизации">
     </form>
 </div>
 

@@ -9,7 +9,7 @@
 </head>
 <body>
 <div>
-    <h1>Регитсрация</h1>
+    <h1>Регистрация</h1>
 <form action="/registration" method="post">
     <input name="login" placeholder="email">
     <br>
