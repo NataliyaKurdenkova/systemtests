@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   font-family: "Montserrat", sans-serif;
   display: grid;
@@ -82,10 +83,9 @@ body {
       .authorize-form-input .password-control.view {
         background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat; }
     .authorize-form-recovery, .authorize-form-registration {
+      background: none;
       margin-bottom: 10px; }
-      .authorize-form-recovery .iksweb, .authorize-form-registration .iksweb {
-        background: none; }
-    .authorize-form-wrapper .wrapper {
+    .authorize-form-wrapper {
       grid-template-columns: 1fr 1fr 1fr 1fr; }
 
 .private-title {
@@ -265,32 +265,41 @@ body {
 .treeCSS ul {
   margin: 0 0 0 0.5em; }
 
+/* вести линию вниз где-то с полбуквы родителя */
 .treeCSS > li:not(:only-child),
 .treeCSS li li {
   position: relative;
   padding: 0.2em 0 0 1.2em; }
 
+/* отступ до текста; для раскрывающегося списка в ряде случаев (в Хроме есть баг) padding-top (.2em) лучше указывать в px */
 .treeCSS li:not(:last-child) {
   border-left: 1px solid #ccc; }
 
+/* толщина, цвет и стиль (вместо сплошной пунктирная или точечная) вертикальной линии */
 .treeCSS li li:before,
 .treeCSS > li:not(:only-child):before {
+  /* горизонтальная линия */
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 1.1em;
+  /* не более отступа до текста (1.2em) */
   height: 0.7em;
+  /* начинается приблизительно с половины высоты буквы (.5em + .2em) */
   border-bottom: 1px solid #ccc; }
 
 .treeCSS li:last-child:before {
+  /* вертикальная линия последнего пункта в каждом списке */
   width: calc(1.1em - 1px);
+  /* для перфекционистов */
   border-left: 1px solid #ccc; }
 
 .treeCSS .drop {
   position: absolute;
   left: -0.5em;
   top: 0.4em;
+  /* .2em (font-size: 80%;) + .2em (padding из .treeCSS li li) */
   width: 0.9em;
   height: 0.9em;
   line-height: 0.9em;
@@ -309,6 +318,8 @@ body {
   display: block; }
 
 .newtest-container {
+  grid-template-rows: 80px auto 55px;
+  gap: 5px;
   justify-items: center;
   align-items: start; }
 .newtest-question {
@@ -342,15 +353,18 @@ body {
     grid-template-rows: repeat(2, 40px);
     grid-template-columns: auto;
     width: 100%; }
-.newtest-action-block {
-  display: grid;
+.newtest-action-container {
   grid-template-rows: auto;
-  grid-template-columns: 2fr 1fr 2fr;
-  place-items: center;
-  margin-bottom: 15px; }
+  grid-template-columns: 1fr 1fr;
+  width: 100%; }
+.newtest-action-block {
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
+  gap: 2%;
+  width: 100%; }
   .newtest-action-block form {
     display: grid;
-    width: 150px;
+    width: 70%;
     height: 50px;
     background-color: #1da1f2;
     border-radius: 10px; }
@@ -358,7 +372,8 @@ body {
       background-color: #1da1f2;
       border-radius: 10px;
       font-size: 18px;
-      font-weight: 600; }
+      font-weight: 600;
+      color: #FFF; }
       .newtest-action-block form input:hover {
         background-color: #5dc8d6; }
     .newtest-action-block form:first-child {
@@ -403,16 +418,22 @@ body {
   width: 100%;
   column-gap: 1vw; }
 .newtest-answers-block {
+  margin: 5px 10px;
   width: 100%;
-  height: 100%;
+  height: 55vh;
   grid-template-columns: auto;
-  grid-auto-rows: 90px;
-  grid-auto-columns: 120px;
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr;
   margin-bottom: 10px;
   justify-items: start;
   align-items: start;
   overflow-x: auto;
   overflow-y: auto; }
+.newtest-answers-form {
+  grid-template-columns: auto;
+  grid-auto-rows: 1fr;
+  height: 100%;
+  width: 100%; }
 .newtest-answers-title {
   height: 35px;
   font-size: 24px;

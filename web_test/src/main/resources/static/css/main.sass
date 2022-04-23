@@ -12,6 +12,7 @@ body
   --scrollbarWidth: 16px
   --scrollbarBorder: 0 solid var(--scrollbarBgColor)
   --scrollbarBorderRadius: calc(var(--scrollbarWidth) / 4)
+
 .scroll-container
   scrollbar-width: var(--scrollbarWidth)
   scrollbar-color: var(--scrollbarThumbColor) var(--scrollbarBgColor)
@@ -32,6 +33,7 @@ body
 
 .footer
   background-color: #cdeaee
+
 .grid
   display: grid
   place-items: center
@@ -39,16 +41,20 @@ body
 .authorize
   width: 100vw
   height: 100vh
-  background: rgb(235,244,243)
-  background: radial-gradient(circle, rgba(235,244,243,1) 10%, rgba(93,200,214,1) 100%)
+  background: rgb(235, 244, 243)
+  background: radial-gradient(circle, rgba(235, 244, 243, 1) 10%, rgba(93, 200, 214, 1) 100%)
+
   &-container
     width: 45vw
+
   &-form
     width: 100%
     margin-bottom: 10px
+
     &-span
 
       margin-bottom: 10px
+
       span
         font-style: italic
         font-weight: 500
@@ -57,21 +63,27 @@ body
     &-logo
       justify-content: center
       margin-bottom: 25px
+
       .logo-img
         width: 20%
+
       .logo-title
         width: 75%
+
     &-input
       width: 70%
       margin: 1% 1%
+
       .input-login, .input-password, .input-name, .input-surname, .input-middle-name
         width: 100%
         height: 35px
         text-align: center
         border-radius: 15px
         border: 2px solid #1da1f2
+
         &:invalid
           border: 2px solid red
+
       .password-control
         position: relative
         bottom: 30px
@@ -80,18 +92,19 @@ body
         width: 20px
         height: 20px
         background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat
+
       .password-control.view
         background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat
 
 
     &-recovery, &-registration
       .iksweb
-        background: none
+      background: none
       margin-bottom: 10px
+
     &-wrapper
       .wrapper
-        grid-template-columns: 1fr 1fr 1fr 1fr
-
+      grid-template-columns: 1fr 1fr 1fr 1fr
 
 
 .private
@@ -198,8 +211,10 @@ body
       font-size: 24px
       font-weight: 600
       margin: 10px 0
+
       &-start
         justify-self: center
+
         p
           text-align: center
 
@@ -237,8 +252,10 @@ body
         &:last-child
           display: grid
           justify-self: start
+
       &-start
         grid-template-columns: 1fr
+
         &-form
           justify-self: center !important
 
@@ -290,8 +307,10 @@ body
       justify-self: center
       font-size: 24px
       font-weight: 600
+
       &-start
         justify-content: center
+
         p
           text-align: center
 
@@ -304,34 +323,43 @@ body
   list-style: none
 
 .treeCSS ul
-  margin: 0 0 0 .5em /* вести линию вниз где-то с полбуквы родителя */
+  margin: 0 0 0 .5em
+/* вести линию вниз где-то с полбуквы родителя */
 
 .treeCSS > li:not(:only-child),
 .treeCSS li li
   position: relative
-  padding: .2em 0 0 1.2em /* отступ до текста; для раскрывающегося списка в ряде случаев (в Хроме есть баг) padding-top (.2em) лучше указывать в px */
+  padding: .2em 0 0 1.2em
+/* отступ до текста; для раскрывающегося списка в ряде случаев (в Хроме есть баг) padding-top (.2em) лучше указывать в px */
 
 .treeCSS li:not(:last-child)
-  border-left: 1px solid #ccc /* толщина, цвет и стиль (вместо сплошной пунктирная или точечная) вертикальной линии */
+  border-left: 1px solid #ccc
+/* толщина, цвет и стиль (вместо сплошной пунктирная или точечная) вертикальной линии */
 
 .treeCSS li li:before,
-.treeCSS > li:not(:only-child):before  /* горизонтальная линия */
+.treeCSS > li:not(:only-child):before
+  /* горизонтальная линия */
   content: ""
   position: absolute
   top: 0
   left: 0
-  width: 1.1em /* не более отступа до текста (1.2em) */
-  height: .7em /* начинается приблизительно с половины высоты буквы (.5em + .2em) */
+  width: 1.1em
+  /* не более отступа до текста (1.2em) */
+  height: .7em
+  /* начинается приблизительно с половины высоты буквы (.5em + .2em) */
   border-bottom: 1px solid #ccc
 
-.treeCSS li:last-child:before  /* вертикальная линия последнего пункта в каждом списке */
-  width: calc(1.1em - 1px) /* для перфекционистов */
+.treeCSS li:last-child:before
+  /* вертикальная линия последнего пункта в каждом списке */
+  width: calc(1.1em - 1px)
+  /* для перфекционистов */
   border-left: 1px solid #ccc
 
 .treeCSS .drop
   position: absolute
   left: -.5em
-  top: .4em /* .2em (font-size: 80%;) + .2em (padding из .treeCSS li li) */
+  top: .4em
+  /* .2em (font-size: 80%;) + .2em (padding из .treeCSS li li) */
   width: .9em
   height: .9em
   line-height: .9em
@@ -351,8 +379,11 @@ body
 
 .newtest
   &-container
+    grid-template-rows: 80px auto 55px
+    gap: 5px
     justify-items: center
     align-items: start
+
   &-question
     grid-template-rows: auto
     grid-template-columns: 1fr 4fr
@@ -361,11 +392,13 @@ body
     background-color: #6bc6d8
     line-height: 30px
     margin: 5px 0
+
     &-input
       width: 95%
       height: 70%
       border-radius: 7px
       border: 2px solid #1da1f2
+
     p
       font-size: 26px
       font-weight: 600
@@ -378,6 +411,7 @@ body
       font-weight: 600
       margin: 10px 0
       background-color: #88d0e7
+
       p
         text-align: center
         margin: 0 5px
@@ -388,16 +422,20 @@ body
       width: 100%
 
   &-action
-    &-block
-      display: grid
+    &-container
       grid-template-rows: auto
-      grid-template-columns: 2fr 1fr 2fr
-      place-items: center
-      margin-bottom: 15px
+      grid-template-columns: 1fr 1fr
+      width: 100%
+    &-block
+      grid-template-rows: auto
+      grid-template-columns: 1fr 1fr
+      gap: 2%
+      width: 100%
 
       form
         display: grid
-        width: 150px
+
+        width: 70%
         height: 50px
         background-color: #1da1f2
         border-radius: 10px
@@ -407,6 +445,7 @@ body
           border-radius: 10px
           font-size: 18px
           font-weight: 600
+          color: #FFF
 
           &:hover
             background-color: #5dc8d6
@@ -418,8 +457,10 @@ body
         &:last-child
           display: grid
           justify-self: start
+
       &-start
         grid-template-columns: 1fr
+
         &-form
           justify-self: center !important
 
@@ -463,26 +504,36 @@ body
       grid-template-columns: 1fr 2.5fr
       width: 100%
       column-gap: 1vw
+
     &-block
+      margin: 5px 10px
       width: 100%
-      height: 100%
+      height: 55vh
       grid-template-columns: auto
-      grid-auto-rows: 90px
-      grid-auto-columns: 120px
+      grid-auto-rows: 1fr
+      grid-auto-columns: 1fr
       margin-bottom: 10px
       justify-items: start
       align-items: start
       overflow-x: auto
       overflow-y: auto
+
+    &-form
+      grid-template-columns: auto
+      grid-auto-rows: 1fr
+      height: 100%
+      width: 100%
+
     &-title
       height: 35px
       font-size: 24px
       font-weight: 600
+
       &-start
         justify-content: center
+
         p
           text-align: center
-
 
 
 .main-container
@@ -515,6 +566,7 @@ body
       grid-template-columns: 1fr 3fr 100px
       background-color: #ebf4f3
       place-items: center
+
     &-4
       grid-template-rows: auto
       grid-template-columns: 4fr 100px

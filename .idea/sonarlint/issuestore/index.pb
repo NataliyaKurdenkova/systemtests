@@ -41,3 +41,17 @@ c
 3web_test/src/main/resources/templates/test_end.ftlh,8\d\8d29d71810301ca9bbd7e1e9746ce9f76d58e924
 a
 1web_test/src/main/resources/templates/signIn.ftlh,f\0\f04bf784c3f18fb6694d6794963c14d911a798ca
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+a
+1web_test/src/main/resources/templates/signIn.html,8\8\88ffa82f35d53c31d5283181e876e6dcd6aee389
+l
+<web_test/src/main/resources/templates/recovery_password.html,0\1\0123c014b9c3c52c8d7a947c324219db21a3d451
+l
+<web_test/src/main/resources/templates/recovery_password.ftlh,6\6\66ffe580032f8146a07d7ec2269a4d92a802048d
+d
+4web_test/src/main/resources/templates/lich_page.html,d\8\d8deb510cc14d6b46976c2c442a535323c290fde
+g
+7web_test/src/main/resources/templates/registration.ftlh,6\6\66e358d34a45575bdb94b8fe355d919191930485
+g
+7web_test/src/main/resources/templates/registration.html,4\9\49a43a263f9618332b9a66611410bb512e3519f7
