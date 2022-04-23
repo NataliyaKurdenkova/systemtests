@@ -95,6 +95,12 @@
                        буквы в различных регистрах, цифры и спец. символы (!@#$%^&*?+-_ )."
                        placeholder="Введите пароль">
                 <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+                <input class="input-password" id="input-password" type="password" name="passwordConfirm"
+                       pattern="^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?+-_ ]).*$"
+                       title="Пароль должен содержать от 8 знаков латинского алфавита и иметь
+                       буквы в различных регистрах, цифры и спец. символы (!@#$%^&*?+-_ )."
+                       placeholder="Повторите пароль">
+                <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
 
 
                 <!--<input class="input-password" name="password" type="password" placeholder="Пароль">-->

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.webtest.springbootweb_test.repositories.TestsRepository;
 import ru.webtest.springbootweb_test.repositories.UsersRepository;
 import ru.webtest.springbootweb_test.entitys.Test;
+import ru.webtest.springbootweb_test.security.details.UserDetailsServiceImpl;
 import ru.webtest.springbootweb_test.service.TestService;
 import ru.webtest.springbootweb_test.service.UsersService;
 
@@ -16,7 +17,7 @@ import java.util.List;
 @Controller
 public class LichController {
     @Autowired
-    private UsersService usersService;
+    private UserDetailsServiceImpl usersService;
     @Autowired
     private TestService testService;
 

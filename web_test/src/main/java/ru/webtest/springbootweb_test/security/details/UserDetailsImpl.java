@@ -3,10 +3,12 @@ package ru.webtest.springbootweb_test.security.details;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import ru.webtest.springbootweb_test.entitys.Role;
 import ru.webtest.springbootweb_test.entitys.User;
 
-import java.util.Collection;
-import java.util.Collections;
+
+import java.util.*;
+
 
 public class UserDetailsImpl implements UserDetails {
 
@@ -16,10 +18,10 @@ public class UserDetailsImpl implements UserDetails {
         this.user = user;
     }
 
-    @Override
+  @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        //пока все пользователи юзеры
-        return Collections.singletonList(new SimpleGrantedAuthority("USER"));
+
+        return Collections.singletonList(new SimpleGrantedAuthority(user.getRoles().toString()));
     }
 
     @Override
@@ -51,4 +53,7 @@ public class UserDetailsImpl implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }
+
+

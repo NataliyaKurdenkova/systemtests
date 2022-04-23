@@ -13,6 +13,7 @@ import ru.webtest.springbootweb_test.entitys.Question;
 import ru.webtest.springbootweb_test.entitys.Test;
 import ru.webtest.springbootweb_test.repositories.QuestionRepository;
 import ru.webtest.springbootweb_test.repositories.TestsRepository;
+import ru.webtest.springbootweb_test.security.details.UserDetailsServiceImpl;
 import ru.webtest.springbootweb_test.service.TestService;
 import ru.webtest.springbootweb_test.service.UsersService;
 
@@ -31,7 +32,7 @@ public class TestsController {
     @Autowired
     private TestService testService;
     @Autowired
-    private UsersService usersService;
+    private UserDetailsServiceImpl usersService;
 
     @Autowired
     public void setTestService(TestService testService) {
@@ -109,4 +110,12 @@ public class TestsController {
         i--;
        return "redirect:/pass_test/{idtest}";
     }
+
+    @PostMapping("/pass_test/{idtest}/answer")
+    public String answerQuestion(@PathVariable("idtest") int idtest, Model model) {
+        if(i>=kolvoque-1)i=i;
+        else  i++;
+        return "redirect:/pass_test/{idtest}";
+    }
+
 }

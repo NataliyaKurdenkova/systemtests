@@ -62,7 +62,7 @@
             <input class="entrance-button" type="submit" value="Вход">
         </form>
         <div class="authorize-form-recovery">
-            <form action="/recovery_pass" method="post">
+            <form action="/recovery" method="post">
                 <input class="iksweb" type="submit" value="Забыли пароль?">
             </form>
         </div>

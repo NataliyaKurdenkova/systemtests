@@ -28,8 +28,7 @@ public class MainController {
 
     //забыли пароль
     @PostMapping("/recovery_pass")
-    public String getSignIn() {
-
-        return "recovery_password";
+    public String recoveryPass(){
+        return "recoveryPassReset_page";
     }
 }
