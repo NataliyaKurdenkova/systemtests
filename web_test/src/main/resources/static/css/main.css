@@ -318,7 +318,7 @@ body {
   display: block; }
 
 .newtest-container {
-  grid-template-rows: 80px auto 55px;
+  grid-template-rows: 80px auto 45px;
   gap: 5px;
   justify-items: center;
   align-items: start; }
@@ -365,7 +365,7 @@ body {
   .newtest-action-block form {
     display: grid;
     width: 70%;
-    height: 50px;
+    height: 40px;
     background-color: #1da1f2;
     border-radius: 10px; }
     .newtest-action-block form input {
@@ -387,10 +387,61 @@ body {
     .newtest-action-block-start-form {
       justify-self: center !important; }
 .newtest-answer {
+  grid-template-rows: 1fr;
+  grid-template-columns: 35px auto;
   cursor: pointer;
-  width: 70%;
+  width: 100%;
   height: 70%;
   border-radius: 30px; }
+  .newtest-answer textarea {
+    width: 100%;
+    border-radius: 8px;
+    border-color: #0095d9; }
+    .newtest-answer textarea:focus-visible {
+      border: 1px solid #88d0e7;
+      outline: none; }
+  .newtest-answer-title {
+    grid-template-rows: 25px auto;
+    grid-template-columns: auto;
+    width: 100%;
+    height: 100%; }
+    .newtest-answer-title label {
+      font-size: 22px;
+      margin-bottom: 8px; }
+    .newtest-answer-title textarea {
+      width: 80%;
+      height: 37px;
+      border-radius: 8px;
+      border-color: #0095d9; }
+      .newtest-answer-title textarea:focus-visible {
+        border: 1px solid #88d0e7;
+        outline: none; }
+  .newtest-answer-type {
+    grid-template-rows: 25px;
+    grid-template-columns: 1fr 2fr;
+    width: 60%;
+    height: 100%;
+    line-height: 25px; }
+    .newtest-answer-type label {
+      font-size: 22px;
+      height: 100%; }
+    .newtest-answer-type select {
+      height: 100%;
+      width: 100%;
+      border-radius: 8px;
+      border-color: #0095d9; }
+      .newtest-answer-type select:focus-visible {
+        border: 1px solid #88d0e7;
+        outline: none; }
+  .newtest-answer-add {
+    width: 80%;
+    place-items: end; }
+  .newtest-answer-container {
+    grid-template-columns: auto;
+    grid-auto-rows: auto;
+    width: 80%;
+    height: 100%;
+    row-gap: 1vw; }
   .newtest-answer-label {
     display: inline-grid;
     width: 100%;
@@ -406,17 +457,14 @@ body {
       background-color: #cdeaee; }
     + .newtest-answer-label-label {
       background-color: #cdeaee; }
-  .newtest-answer input[type="checkbox"], .newtest-answer input[type="radio"] {
-    position: absolute;
-    z-index: -1;
-    opacity: 0; }
-    .newtest-answer input[type="checkbox"]:checked ~ .test-answer-label, .newtest-answer input[type="radio"]:checked ~ .test-answer-label {
-      background-color: #0095d9; }
+  .newtest-answer input[type="checkbox"]:checked ~ .newtest-answer-label, .newtest-answer input[type="radio"]:checked ~ .newtest-answer-label {
+    background-color: #0095d9; }
 .newtest-answers-container {
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 2.5fr;
+  grid-template-columns: 1fr 3.5fr;
   width: 100%;
-  column-gap: 1vw; }
+  height: 100%;
+  column-gap: 0.75vw; }
 .newtest-answers-block {
   margin: 5px 10px;
   width: 100%;
@@ -431,9 +479,19 @@ body {
   overflow-y: auto; }
 .newtest-answers-form {
   grid-template-columns: auto;
-  grid-auto-rows: 1fr;
+  grid-template-rows: 75px 25px auto 50px;
+  row-gap: 10px;
   height: 100%;
   width: 100%; }
+  .newtest-answers-form button {
+    background-color: #1da1f2;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFF;
+    height: 40px; }
+    .newtest-answers-form button:hover {
+      background-color: #5dc8d6; }
 .newtest-answers-title {
   height: 35px;
   font-size: 24px;

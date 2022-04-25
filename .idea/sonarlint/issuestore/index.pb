@@ -1,6 +1,4 @@
 
-c
-3web_test/src/main/resources/static/css/main.min.css,c\b\cb77a9958a4168d37857af6496cfcafadcd01dc3
 d
 4web_test/src/main/resources/static/img/right-img.svg,6\c\6cfedaeeb5d5670ceb93215036978aead1a56af1
 _
@@ -55,3 +53,5 @@ g
 7web_test/src/main/resources/templates/registration.ftlh,6\6\66e358d34a45575bdb94b8fe355d919191930485
 g
 7web_test/src/main/resources/templates/registration.html,4\9\49a43a263f9618332b9a66611410bb512e3519f7
+g
+7web_test/src/main/resources/templates/passing_test.html,4\0\40ef83c4adb52e57d42f8d990f8a53e9a3b85ccd

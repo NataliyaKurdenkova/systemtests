@@ -88,36 +88,40 @@
         </div>
         <div class="newtest-answers-block grid scroll-container">
             <form action="" class="newtest-answers-form grid">
-                <lable><span>Содержание вопроса:</span></lable>
-                <textarea name="" id="" cols="70" rows="2"></textarea>
-                <div>
-                    <lable><span>Тип вопроса:</span></lable>
-                    <select onchange="answer_type.type=val.value" id="val">
+                <div class="newtest-answer-title grid">
+                    <label for="answer">Содержание вопроса:</label>
+                    <textarea name="" id="answer"></textarea>
+                </div>
+                <div class="newtest-answer-type grid">
+                    <label for="val"><span>Тип вопроса:</span></label>
+                    <select onchange="answerType()" id="val">
                         <option value=radio>один вариант</option>
                         <option value=checkbox>Несколько вариантов</option>
                     </select>
                 </div>
-                <div class="newtest-answers-container grid" id="answers-container">
+                <div class="newtest-answer-container grid" id="answers-container">
                     <!--    <#list answers as answer>-->
-                    <div class="test-answer">
-                        <input type="radio" class="answer_type" name="answer_test">
-                        <input type="text" id="answer_1" name="answer_test" placeholder="Введите вариант ответа">
+                    <div class="newtest-answer grid">
+                        <input type="radio" class="answer_type" name="newtest_answer">
+                        <textarea name="" id=""></textarea>
                     </div>
                     <!--</#list>-->
-                    <div class="test-answer">
-                        <input type="radio" class="answer_type" name="answer_test">
-                        <input type="text" id="answer_2" name="answer_test" placeholder="Введите вариант ответа">
+                    <div class="newtest-answer grid">
+                        <input type="radio" class="answer_type" name="newtest_answer">
+                        <textarea name="" id=""></textarea>
                     </div>
-                    <div class="test-answer">
-                        <input type="radio" class="answer_type" name="answer_test">
-                        <input type="text" id="answer_3" name="answer_test" placeholder="Введите вариант ответа">
+                    <div class="newtest-answer grid">
+                        <input type="radio" class="answer_type" name="newtest_answer">
+                        <textarea name="" id=""></textarea>
                     </div>
-                    <div class="test-answer">
-                        <input type="radio" class="answer_type" name="answer_test">
-                        <input type="text" id="answer_4" name="answer_test" placeholder="Введите вариант ответа">
+                    <div class="newtest-answer grid">
+                        <input type="radio" class="answer_type" name="newtest_answer">
+                        <textarea name="" id=""></textarea>
                     </div>
                 </div>
-                <button onclick="addAnswer()">Добавить ответ</button>
+                <div class="newtest-answer-add grid">
+                    <button onclick="addAnswer()">Добавить ответ</button>
+                </div>
             </form>
         </div>
     </div>
@@ -154,6 +158,12 @@
             }
         }
     })();
+    function answerType() {
+        <!-- SQL запрос на изменение типа поля Input и перезагрузка страницы -->
+    };
+    function addAnswer() {
+        <!-- SQL запрос на добавление строчки в таблицу и перезагрузка страницы -->
+    };
 </script>
 </body>
 </html>

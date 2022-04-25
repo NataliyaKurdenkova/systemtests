@@ -379,7 +379,7 @@ body
 
 .newtest
   &-container
-    grid-template-rows: 80px auto 55px
+    grid-template-rows: 80px auto 45px
     gap: 5px
     justify-items: center
     align-items: start
@@ -434,9 +434,8 @@ body
 
       form
         display: grid
-
         width: 70%
-        height: 50px
+        height: 40px
         background-color: #1da1f2
         border-radius: 10px
 
@@ -465,10 +464,64 @@ body
           justify-self: center !important
 
   &-answer
+    grid-template-rows: 1fr
+    grid-template-columns: 35px auto
     cursor: pointer
-    width: 70%
+    width: 100%
     height: 70%
     border-radius: 30px
+    textarea
+      width: 100%
+      border-radius: 8px
+      border-color: #0095d9
+      &:focus-visible
+        border: 1px solid #88d0e7
+        outline: none
+
+    &-title
+      grid-template-rows: 25px auto
+      grid-template-columns: auto
+      width: 100%
+      height: 100%
+      label
+        font-size: 22px
+        margin-bottom: 8px
+      textarea
+        width: 80%
+        height: 37px
+        border-radius: 8px
+        border-color: #0095d9
+        &:focus-visible
+          border: 1px solid #88d0e7
+          outline: none
+
+    &-type
+      grid-template-rows: 25px
+      grid-template-columns: 1fr 2fr
+      width: 60%
+      height: 100%
+      line-height: 25px
+      label
+        font-size: 22px
+        height: 100%
+      select
+        height: 100%
+        width: 100%
+        border-radius: 8px
+        border-color: #0095d9
+        &:focus-visible
+          border: 1px solid #88d0e7
+          outline: none
+
+    &-add
+      width: 80%
+      place-items: end
+    &-container
+      grid-template-columns: auto
+      grid-auto-rows: auto
+      width: 80%
+      height: 100%
+      row-gap: 1vw
 
     &-label
       display: inline-grid
@@ -490,20 +543,18 @@ body
         background-color: #cdeaee
 
     input[type="checkbox"], input[type="radio"]
-      position: absolute
-      z-index: -1
-      opacity: 0
 
       &:checked
-        ~ .test-answer-label
+        ~ .newtest-answer-label
           background-color: #0095d9
 
   &-answers
     &-container
       grid-template-rows: 1fr
-      grid-template-columns: 1fr 2.5fr
+      grid-template-columns: 1fr 3.5fr
       width: 100%
-      column-gap: 1vw
+      height: 100%
+      column-gap: 0.75vw
 
     &-block
       margin: 5px 10px
@@ -520,9 +571,19 @@ body
 
     &-form
       grid-template-columns: auto
-      grid-auto-rows: 1fr
+      grid-template-rows: 75px 25px auto 50px
+      row-gap: 10px
       height: 100%
       width: 100%
+      button
+        background-color: #1da1f2
+        border-radius: 10px
+        font-size: 18px
+        font-weight: 600
+        color: #FFF
+        height: 40px
+        &:hover
+          background-color: #5dc8d6
 
     &-title
       height: 35px
