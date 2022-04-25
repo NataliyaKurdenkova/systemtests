@@ -43,7 +43,7 @@
                 <p class="header-columns-output-p" id="FIO-output"> ${name}</p>
             </div>
             <div class="header-columns-exit">
-                <form action="/exit" method="post">
+                <form action="/logout" method="post">
                     <input class="header-columns-exit-input" type="submit" value="Выход">
                 </form>
             </div>

@@ -44,9 +44,9 @@ public class RegistrationController {
             }
 
            //сохраняем пользователя
-            usersService.saveUser(user);
+           boolean save=usersService.saveUser(user);
 
-            if (!usersService.saveUser(user)){
+            if (!save){
                 System.out.println("Пользователь не добавлен");
                 return "registration";
             }

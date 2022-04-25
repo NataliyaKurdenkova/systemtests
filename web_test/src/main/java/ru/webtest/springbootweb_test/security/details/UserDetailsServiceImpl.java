@@ -1,6 +1,7 @@
 package ru.webtest.springbootweb_test.security.details;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,6 +18,7 @@ import ru.webtest.springbootweb_test.repositories.UsersRepository;
 import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 
@@ -50,28 +52,21 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 
-    public boolean saveUser(User usernew) {
+    public boolean saveUser(User user) {
         //проверка если такой пользователь в базе уже
-
-        if ((usersRepository.findByLogin(usernew.getLogin()) != null)) {
+          if ((usersRepository.findByLogin(user.getLogin()) != null)) {
             return false;
         }
-
-        User user = new User();
-        user.setLogin(usernew.getLogin());
-        user.setName(usernew.getName());
-
-       user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
-        //получаем пароль из введенной формы и хешируем его
-        user.setHashPassword(passwordEncoder.encode(user.getPassword()));
-
-        usersRepository.save(user);
-
-        long id = user.getIduser();
-        System.out.println(id);
-
-
-        return true;
+              User usernew = new User();
+              usernew.setLogin(user.getLogin());
+              usernew.setName(user.getName());
+              //получаем пароль из введенной формы и хешируем его
+              usernew.setHashPassword(passwordEncoder.encode(user.getPassword()));
+              //роль по умолчанию User
+              Role role = roleRepository.findByName("ROLE_USER");
+              usernew.setRoles(Collections.singleton(role));
+              usersRepository.save(usernew);
+              return true;
     }
 
     //метод получает текущего пользователя, который авторизировался и подтягивает его на страницу на страницу пользователя его ФИО

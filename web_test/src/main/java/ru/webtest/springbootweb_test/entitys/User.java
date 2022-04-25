@@ -1,12 +1,9 @@
 package ru.webtest.springbootweb_test.entitys;
 
 import lombok.*;
-import net.bytebuddy.implementation.bind.annotation.Default;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Set;
 
 @Getter
 @Setter
