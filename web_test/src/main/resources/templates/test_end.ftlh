@@ -41,9 +41,9 @@
 <section class="test-container">
     <div class="test-question-container">
         <!-- <p class="test-question-id">${idtest}</p>-->
-        <p class="test-question-title-start">${test.name}</p>
+        <p class="test-question-title-start ffs">${test.name}</p>
     </div>
-    <div class="test-answers-title-start"><p>MSG (Вы прошли тест или не прошли тест) Набрали - N баллов. Врямя  прохождения теста - Т .</p></div>
+    <div class="test-answers-title-start ffs"><p>MSG (Вы прошли тест или не прошли тест) Набрали - N баллов. Врямя  прохождения теста - Т .</p></div>
     <div class="test-action-block test-action-block-start">
         <form class="test-action-block-start-form" action="/start" method="post">
             <input type="submit" value="Пересдать">

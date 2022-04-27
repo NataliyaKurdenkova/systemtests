@@ -14,6 +14,9 @@ body {
   --scrollbarBorder: 0 solid var(--scrollbarBgColor);
   --scrollbarBorderRadius: calc(var(--scrollbarWidth) / 4); }
 
+.ffs {
+  font-size: calc( 0.0061425061 * 100vw + 9.7100737101px ); }
+
 .scroll-container {
   scrollbar-width: var(--scrollbarWidth);
   scrollbar-color: var(--scrollbarThumbColor) var(--scrollbarBgColor); }
@@ -193,12 +196,16 @@ body {
     width: 150px;
     height: 50px;
     background-color: #1da1f2;
-    border-radius: 10px; }
+    border-radius: 10px;
+    outline: none; }
     .test-action-block form input {
       background-color: #1da1f2;
       border-radius: 10px;
       font-size: 18px;
-      font-weight: 600; }
+      font-weight: 600;
+      outline: none;
+      color: #fff;
+      border-style: none; }
       .test-action-block form input:hover {
         background-color: #5dc8d6; }
     .test-action-block form:first-child {
@@ -213,8 +220,8 @@ body {
       justify-self: center !important; }
 .test-answer {
   cursor: pointer;
-  width: 70%;
-  height: 70%;
+  width: 85%;
+  height: 90%;
   border-radius: 30px; }
   .test-answer-label {
     display: inline-grid;
@@ -223,8 +230,7 @@ body {
     cursor: pointer;
     background-color: #5dc8d6;
     border-radius: 30px;
-    text-align: center;
-    vertical-align: middle; }
+    place-items: center; }
     .test-answer-label:hover {
       background-color: #cdeaee; }
     + .test-answer-label-checkbox {
@@ -239,8 +245,8 @@ body {
       background-color: #0095d9; }
 .test-answers-block {
   display: grid;
-  grid-template-rows: minmax(min-content, 100px) minmax(min-content, 100px);
-  grid-template-columns: auto auto;
+  grid-template-rows: minmax(100px, max-content) minmax(100px, max-content);
+  grid-template-columns: 1fr 1fr;
   grid-auto-rows: 90px;
   grid-auto-columns: 120px;
   margin-bottom: 10px;
@@ -253,69 +259,6 @@ body {
     justify-content: center; }
     .test-answers-title-start p {
       text-align: center; }
-
-.treeCSS,
-.treeCSS ul,
-.treeCSS li {
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-  list-style: none; }
-
-.treeCSS ul {
-  margin: 0 0 0 0.5em; }
-
-/* вести линию вниз где-то с полбуквы родителя */
-.treeCSS > li:not(:only-child),
-.treeCSS li li {
-  position: relative;
-  padding: 0.2em 0 0 1.2em; }
-
-/* отступ до текста; для раскрывающегося списка в ряде случаев (в Хроме есть баг) padding-top (.2em) лучше указывать в px */
-.treeCSS li:not(:last-child) {
-  border-left: 1px solid #ccc; }
-
-/* толщина, цвет и стиль (вместо сплошной пунктирная или точечная) вертикальной линии */
-.treeCSS li li:before,
-.treeCSS > li:not(:only-child):before {
-  /* горизонтальная линия */
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1.1em;
-  /* не более отступа до текста (1.2em) */
-  height: 0.7em;
-  /* начинается приблизительно с половины высоты буквы (.5em + .2em) */
-  border-bottom: 1px solid #ccc; }
-
-.treeCSS li:last-child:before {
-  /* вертикальная линия последнего пункта в каждом списке */
-  width: calc(1.1em - 1px);
-  /* для перфекционистов */
-  border-left: 1px solid #ccc; }
-
-.treeCSS .drop {
-  position: absolute;
-  left: -0.5em;
-  top: 0.4em;
-  /* .2em (font-size: 80%;) + .2em (padding из .treeCSS li li) */
-  width: 0.9em;
-  height: 0.9em;
-  line-height: 0.9em;
-  text-align: center;
-  background: #fff;
-  font-size: 80%;
-  cursor: pointer; }
-
-.treeCSS li:last-child > .drop {
-  margin-left: 1px; }
-
-.treeCSS .drop + ul {
-  display: none; }
-
-.treeCSS .dropM + ul {
-  display: block; }
 
 .newtest-container {
   grid-template-rows: 80px auto 45px;
@@ -373,7 +316,9 @@ body {
       border-radius: 10px;
       font-size: 18px;
       font-weight: 600;
-      color: #FFF; }
+      color: #FFF;
+      outline: none;
+      border-style: none; }
       .newtest-action-block form input:hover {
         background-color: #5dc8d6; }
     .newtest-action-block form:first-child {
@@ -489,7 +434,9 @@ body {
     font-size: 18px;
     font-weight: 600;
     color: #FFF;
-    height: 40px; }
+    height: 40px;
+    outline: none;
+    border-style: none; }
     .newtest-answers-form button:hover {
       background-color: #5dc8d6; }
 .newtest-answers-title {
@@ -500,6 +447,69 @@ body {
     justify-content: center; }
     .newtest-answers-title-start p {
       text-align: center; }
+
+.treeCSS,
+.treeCSS ul,
+.treeCSS li {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  list-style: none; }
+
+.treeCSS ul {
+  margin: 0 0 0 0.5em; }
+
+/* вести линию вниз где-то с полбуквы родителя */
+.treeCSS > li:not(:only-child),
+.treeCSS li li {
+  position: relative;
+  padding: 0.2em 0 0 1.2em; }
+
+/* отступ до текста; для раскрывающегося списка в ряде случаев (в Хроме есть баг) padding-top (.2em) лучше указывать в px */
+.treeCSS li:not(:last-child) {
+  border-left: 1px solid #ccc; }
+
+/* толщина, цвет и стиль (вместо сплошной пунктирная или точечная) вертикальной линии */
+.treeCSS li li:before,
+.treeCSS > li:not(:only-child):before {
+  /* горизонтальная линия */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.1em;
+  /* не более отступа до текста (1.2em) */
+  height: 0.7em;
+  /* начинается приблизительно с половины высоты буквы (.5em + .2em) */
+  border-bottom: 1px solid #ccc; }
+
+.treeCSS li:last-child:before {
+  /* вертикальная линия последнего пункта в каждом списке */
+  width: calc(1.1em - 1px);
+  /* для перфекционистов */
+  border-left: 1px solid #ccc; }
+
+.treeCSS .drop {
+  position: absolute;
+  left: -0.5em;
+  top: 0.4em;
+  /* .2em (font-size: 80%;) + .2em (padding из .treeCSS li li) */
+  width: 0.9em;
+  height: 0.9em;
+  line-height: 0.9em;
+  text-align: center;
+  background: #fff;
+  font-size: 80%;
+  cursor: pointer; }
+
+.treeCSS li:last-child > .drop {
+  margin-left: 1px; }
+
+.treeCSS .drop + ul {
+  display: none; }
+
+.treeCSS .dropM + ul {
+  display: block; }
 
 .main-container {
   display: grid;

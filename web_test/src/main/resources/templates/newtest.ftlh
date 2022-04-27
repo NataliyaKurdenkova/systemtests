@@ -103,20 +103,20 @@
                     <!--    <#list answers as answer>-->
                     <div class="newtest-answer grid">
                         <input type="radio" class="answer_type" name="newtest_answer">
-                        <textarea name="" id=""></textarea>
+                        <textarea class="ffs" name="" id="123"></textarea>
                     </div>
                     <!--</#list>-->
                     <div class="newtest-answer grid">
                         <input type="radio" class="answer_type" name="newtest_answer">
-                        <textarea name="" id=""></textarea>
+                        <textarea class="ffs" name="" id="234"></textarea>
                     </div>
                     <div class="newtest-answer grid">
                         <input type="radio" class="answer_type" name="newtest_answer">
-                        <textarea name="" id=""></textarea>
+                        <textarea class="ffs" name="" id="345"></textarea>
                     </div>
                     <div class="newtest-answer grid">
                         <input type="radio" class="answer_type" name="newtest_answer">
-                        <textarea name="" id=""></textarea>
+                        <textarea class="ffs" name="" id="456"></textarea>
                     </div>
                 </div>
                 <div class="newtest-answer-add grid">

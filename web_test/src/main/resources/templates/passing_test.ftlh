@@ -46,14 +46,14 @@
     <div class="test-question-container">
         <!-- <p class="test-question-id">${idtest}</p>-->
         <p class="test-question-title">Вопрос:</p>
-        <p class="test-question">${question}</p>
+        <p class="test-question ffs">${question}</p>
     </div>
     <div class="test-answers-title">Варианты ответов:</div>
     <div class="test-answers-block">
         <!--    <#list answers as answer>-->
         <div class="test-answer">
-            <input id="${answer.id} 1" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
-            <label for="${answer.id} 1" class="test-answer-label"><span>${answer.name}</span></label>
+            <input id="${answer.id}" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
+            <label for="${answer.id}" class="test-answer-label ffs">${answer.name}</label>
         </div>
         <!--</#list>-->
     </div>
