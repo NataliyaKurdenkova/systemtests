@@ -89,7 +89,7 @@ body {
       background: none;
       margin-bottom: 10px; }
     .authorize-form-wrapper {
-      grid-template-columns: 1fr 1fr 1fr 1fr; }
+      grid-template-columns: auto; }
 
 .private-title {
   display: grid;
@@ -706,7 +706,7 @@ body {
 
 .wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   list-style-type: none;
   margin: 5px 0;
   padding: 0; }

@@ -31,8 +31,6 @@ a
 1web_test/src/main/resources/templates/signIn.ftlh,f\0\f04bf784c3f18fb6694d6794963c14d911a798ca
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-a
-1web_test/src/main/resources/templates/signIn.html,8\8\88ffa82f35d53c31d5283181e876e6dcd6aee389
 l
 <web_test/src/main/resources/templates/recovery_password.html,0\1\0123c014b9c3c52c8d7a947c324219db21a3d451
 l
@@ -41,8 +39,6 @@ d
 4web_test/src/main/resources/templates/lich_page.html,d\8\d8deb510cc14d6b46976c2c442a535323c290fde
 g
 7web_test/src/main/resources/templates/registration.ftlh,6\6\66e358d34a45575bdb94b8fe355d919191930485
-g
-7web_test/src/main/resources/templates/registration.html,4\9\49a43a263f9618332b9a66611410bb512e3519f7
 c
 3web_test/src/main/resources/static/css/main.min.css,c\b\cb77a9958a4168d37857af6496cfcafadcd01dc3
 c
@@ -61,5 +57,3 @@ b
 2web_test/src/main/resources/templates/newtest.html,c\5\c5ebc9e2d4f0834fb1932ee8455e7511d7b2b5bb
 b
 2web_test/src/main/resources/templates/newtest.ftlh,d\e\de4eb73f1de87a62a14cc73026398d84a720d7da
-`
-0web_test/src/main/resources/static/css/main.sass,9\4\949e2b182c62afbd9be97c692c93104c5502dfae
