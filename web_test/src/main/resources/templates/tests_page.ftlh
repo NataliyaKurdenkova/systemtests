@@ -35,5 +35,10 @@
     </table>
 
 </div>
+<div class="header-columns-exit">
+    <form action="/logout" method="post">
+        <input class="header-columns-exit-input" type="submit" value="Выход">
+    </form>
+</div>
 </body>
 </html>

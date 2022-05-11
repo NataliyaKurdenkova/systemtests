@@ -13,6 +13,7 @@ import ru.webtest.springbootweb_test.entitys.Question;
 import ru.webtest.springbootweb_test.entitys.Test;
 import ru.webtest.springbootweb_test.repositories.QuestionRepository;
 import ru.webtest.springbootweb_test.repositories.TestsRepository;
+import ru.webtest.springbootweb_test.security.details.UserDetailsServiceImpl;
 import ru.webtest.springbootweb_test.service.TestService;
 import ru.webtest.springbootweb_test.service.UsersService;
 
@@ -20,7 +21,8 @@ import java.util.List;
 
 @Controller
 public class TestsController {
-    int i=0;
+    public int i = 0;
+    public int kolvoque=0;
     @Autowired
     private TestsRepository testsRepository;
     @Autowired
@@ -30,7 +32,7 @@ public class TestsController {
     @Autowired
     private TestService testService;
     @Autowired
-    private UsersService usersService;
+    private UserDetailsServiceImpl usersService;
 
     @Autowired
     public void setTestService(TestService testService) {
@@ -51,10 +53,12 @@ public class TestsController {
         String login = usersService.getCurrentUsername();
         model.addAttribute("name", login);
         Question[] question = testService.getQuestionByParent_Test(idtest);
+        int nomer = question[i].getIdque().intValue();
+        System.out.println("nomer voprosa" + nomer);
+
         System.out.println(question[i].getQuestion());
         System.out.println("ответы для вопроса №" + question[i].getIdque());
-        int nomer=question[i].getIdque().intValue();
-        System.out.println("nomer voprosa"+nomer);
+
         Answer[] answ = testService.getAnswerByParent_Question(nomer);
 
         model.addAttribute("idtest", idtest);
@@ -65,14 +69,17 @@ public class TestsController {
 
     @PostMapping("/pass_test/{idtest}")
     public String QuestionsPage(@PathVariable("idtest") int idtest, Model model) {
-
+        i=0;
         String login = usersService.getCurrentUsername();
         model.addAttribute("name", login);
         Question[] question = testService.getQuestionByParent_Test(idtest);
+        kolvoque=question.length;
+        System.out.println(i);
         System.out.println(question[i].getQuestion());
         System.out.println("ответы для вопроса №" + question[i].getIdque());
-        int nomer=question[i].getIdque().intValue();
-        System.out.println("nomer voprosa"+nomer);
+        int nomer = question[i].getIdque().intValue();
+
+        System.out.println("nomer voprosa" + nomer);
         Answer[] answ = testService.getAnswerByParent_Question(nomer);
 
         model.addAttribute("idtest", idtest);
@@ -91,15 +98,23 @@ public class TestsController {
 
     @PostMapping("/skip/{idtest}")
     public String NextQuestion(@PathVariable("idtest") int idtest, Model model) {
-        i++;
-        System.out.println(i);
+        if(i>=kolvoque-1)i=i;
+        else  i++;
         return "redirect:/pass_test/{idtest}";
     }
 
     @PostMapping("/back/{idtest}")
     public String postQuestion(@PathVariable("idtest") int idtest, Model model) {
-        i--;
-        System.out.println(i);
+        if(i==0)i=0;
+        else
+            i--;
+        return "redirect:/pass_test/{idtest}";
+    }
+
+    @PostMapping("/pass_test/{idtest}/answer")
+    public String answerQuestion(@PathVariable("idtest") int idtest, Model model) {
+        if(i>=kolvoque-1)i=i;
+        else  i++;
         return "redirect:/pass_test/{idtest}";
     }
 }

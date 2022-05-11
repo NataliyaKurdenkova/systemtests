@@ -12,7 +12,7 @@ import java.util.List;
 @Controller
 public class UsersController {
 
-    @Autowired
+     @Autowired
     private UsersRepository usersRepository;
 
 
@@ -22,5 +22,6 @@ public class UsersController {
         model.addAttribute("users",users);
         return "users_page";
     }
+
 
 }

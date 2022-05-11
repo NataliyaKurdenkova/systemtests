@@ -10,11 +10,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
     </style>
     <!-- <link rel="stylesheet" href="../static/css/normalize.css">-->
-       <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/normalize.css">
     <!--<link rel="stylesheet" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
-        <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--<link rel="stylesheet" href="../static/css/main.min.css">-->
-        <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
 </head>
 <body>
 <header>
@@ -43,7 +43,7 @@
                 <p class="header-columns-output-p" id="FIO-output"> ${name}</p>
             </div>
             <div class="header-columns-exit">
-                <form action="/exit" method="post">
+                <form action="/logout" method="post">
                     <input class="header-columns-exit-input" type="submit" value="Выход">
                 </form>
             </div>
@@ -72,19 +72,19 @@
         <div class="private-table-time table-styles"><p>Время(мин)</p></div>
         <div class="private-table-action table-styles"></div>
     </div>
-      <#list tests as test>
-    <div class="private-table private-table-content">
-        <div class="private-table-n content-styles"><p>${test.idtest}</p></div>
-        <div class="private-table-title "><p>${test.name}</p></div>
-        <div class="private-table-estimation content-styles"><p>${test.passball}</p></div>
-        <div class="private-table-time content-styles"><p>${test.time}</p></div>
-        <div class="private-table-action">
-            <form action="/pass_test/${test.idtest}" method="post">
-                <input class="private-table-content-button" type="submit" value="Начать">
-            </form>
+    <#list tests as test>
+        <div class="private-table private-table-content">
+            <div class="private-table-n content-styles"><p>${test.idtest}</p></div>
+            <div class="private-table-title "><p>${test.name}</p></div>
+            <div class="private-table-estimation content-styles"><p>${test.passball}</p></div>
+            <div class="private-table-time content-styles"><p>${test.time}</p></div>
+            <div class="private-table-action">
+                <form action="/pass_test/${test.idtest}" method="post">
+                    <input class="private-table-content-button" type="submit" value="Начать">
+                </form>
+            </div>
         </div>
-    </div>
-        </#list>
+    </#list>
 
 </section>
 <footer class="footer">

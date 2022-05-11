@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class RecovPasswordController {
 
-    @GetMapping("/recovery_password")
+ /*  @GetMapping("/recovery")
     public String getSignIn() {
         return "recovery_password";
     }
+*/
 
 }

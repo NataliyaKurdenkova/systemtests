@@ -10,26 +10,26 @@
 <body>
 <div>
     <h1>Ранее сданные тесты</h1>
-<table>
-    <tr>
-        <th>№</th>
-        <th>Название</th>
-        <th>Проходной балл</th>
-        <th>Общее количество вопросов</th>
-        <th>Количество вопросов, для тестирования</th>
-        <th>Время</th>
-    </tr>
-    <#list tests as test>
+    <table>
         <tr>
-            <td>${test.idtest}</td>
-            <td>${test.name}</td>
-            <td>${test.passball}</td>
-            <td>${test.totalque}</td>
-            <td>${test.needque}</td>
-            <td>${test.time}</td>
+            <th>№</th>
+            <th>Название</th>
+            <th>Проходной балл</th>
+            <th>Общее количество вопросов</th>
+            <th>Количество вопросов, для тестирования</th>
+            <th>Время</th>
         </tr>
-    </#list>
-</table>
+        <#list tests as test>
+            <tr>
+                <td>${test.idtest}</td>
+                <td>${test.name}</td>
+                <td>${test.passball}</td>
+                <td>${test.totalque}</td>
+                <td>${test.needque}</td>
+                <td>${test.time}</td>
+            </tr>
+        </#list>
+    </table>
 
 </div>
 </body>
