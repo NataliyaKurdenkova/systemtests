@@ -18,7 +18,7 @@ body
   $k: ($f-max - $f-min)/($v-max - $v-min)
   $b: $f-min - $k * $v-min
   $b: $b + $units
-  @return calc( #{$k} * 100vw + #{$b} )
+  @return calc(#{$k} * 100vw + #{$b})
 
 .ffs
   font-size: calcFluidFontSize(16, 26, 1024, 2652, px)
@@ -114,6 +114,7 @@ body
 
     &-wrapper
       grid-template-columns: auto
+
       .wrapper
         grid-template-columns: 1fr 1fr 1fr 1fr
 
@@ -193,6 +194,88 @@ body
         display: grid
         width: 90%
         height: 90%
+
+        button
+          i
+            font-size: 24px
+
+.statistic
+  &-title
+    display: grid
+    grid-template-columns: 0.65fr 2fr 2fr 0.65fr
+
+    &-p
+      display: grid
+      grid-area: 1 / 2 / 2 / 4
+      font-size: 30px
+      text-align: center
+
+    &-form
+      display: grid
+      grid-area: 1 / 4 / 2 / 5
+      place-items: center
+
+      &-button
+        display: inline-block
+        width: 80%
+        height: 50%
+        cursor: pointer
+        font-size: 20px
+        text-decoration: none
+        color: #FFF
+        background: #0095d9
+        border-radius: 5px
+        border: 0 solid #354251
+
+        &:hover
+          background: #FFF
+          color: #0095d9
+          border: 1px solid #0095d9
+          transition: all 0.2s ease
+
+  &-table
+    display: grid
+    grid-template-columns: 0.7fr 2.7fr 1fr 1fr 1fr
+    background-color: #5dc8d6
+
+    &-title
+      place-items: stretch
+
+    &-content
+      background-color: #ebf4f3
+
+      &:nth-child(2n)
+        background-color: #cdeaee
+
+      &-button
+        display: inline-block
+        width: 100%
+        height: 100%
+        cursor: pointer
+        font-size: 19px
+        text-decoration: none
+        color: #FFF
+        background: #0095d9
+        border-radius: 5px
+        border: 0 solid #354251
+        padding: 1px 3px
+
+        &:hover
+          background: #FFF
+          color: #0095d9
+          border: 1px solid #0095d9
+          transition: all 0.2s ease
+
+    &-action
+      display: grid
+      place-items: center
+      grid-template-columns: 1fr 1fr 1fr
+
+      form
+        display: grid
+        width: 90%
+        height: 90%
+
         button
           i
             font-size: 24px
@@ -240,7 +323,7 @@ body
     &-block
       display: grid
       grid-template-rows: auto
-      grid-template-columns: 2fr 1fr 2fr
+      grid-template-columns: 2fr 1fr 1fr 2fr
       place-items: center
       margin-bottom: 15px
 
@@ -260,6 +343,7 @@ body
           outline: none
           color: #fff
           border-style: none
+
           &:hover
             background-color: #5dc8d6
 
@@ -278,20 +362,24 @@ body
           justify-self: center !important
 
   &-answer
+    grid-template-rows: 1fr
+    grid-template-columns: 1fr
     cursor: pointer
-    width: 85%
-    height: 90%
+    width: 95%
+    height: 95%
     border-radius: 30px
 
     &-label
       display: inline-grid
-      width: 100%
-      height: 100%
+      width: 90%
+      height: 90%
       cursor: pointer
       background-color: #5dc8d6
       border-radius: 30px
       place-items: center
-
+      span
+        display: grid
+        height: max-content
 
       &:hover
         background-color: #cdeaee
@@ -307,17 +395,40 @@ body
       z-index: -1
       opacity: 0
 
+      & + label
+        &::before
+          content: ''
+          display: inline-block
+          position: absolute
+          left: 2em
+          width: 2em
+          height: 2em
+          border: 1px solid #adb5bd
+          border-radius: 0.25em
+          margin-right: 0.5em
+          background-repeat: no-repeat
+          background-position: center center
+          background-size: 50% 50%
+
+      &:checked + label::before
+        border-color: #0095d9
+        background-color: #0095d9
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e")
+
       &:checked
         ~ .test-answer-label
           background-color: #0095d9
 
+    input[type="radio"]
+      & + label
+        &::before
+          border-radius: 50%
+
   &-answers
     &-block
       display: grid
-      grid-template-rows: minmax( 100px, max-content ) minmax( 100px, max-content )
-      grid-template-columns: 1fr 1fr
-      grid-auto-rows: 90px
-      grid-auto-columns: 120px
+      grid-template-columns: 1fr
+      grid-auto-rows: 1fr
       margin-bottom: 10px
       place-items: center
 
@@ -381,6 +492,7 @@ body
       grid-template-rows: auto
       grid-template-columns: 1fr 1fr
       width: 100%
+
     &-block
       grid-template-rows: auto
       grid-template-columns: 1fr 1fr
@@ -427,10 +539,12 @@ body
     width: 100%
     height: 70%
     border-radius: 30px
+
     textarea
       width: 100%
       border-radius: 8px
       border-color: #0095d9
+
       &:focus-visible
         border: 1px solid #88d0e7
         outline: none
@@ -440,14 +554,17 @@ body
       grid-template-columns: auto
       width: 100%
       height: 100%
+
       label
         font-size: 22px
         margin-bottom: 8px
+
       textarea
         width: 80%
         height: 37px
         border-radius: 8px
         border-color: #0095d9
+
         &:focus-visible
           border: 1px solid #88d0e7
           outline: none
@@ -458,14 +575,17 @@ body
       width: 60%
       height: 100%
       line-height: 25px
+
       label
         font-size: 22px
         height: 100%
+
       select
         height: 100%
         width: 100%
         border-radius: 8px
         border-color: #0095d9
+
         &:focus-visible
           border: 1px solid #88d0e7
           outline: none
@@ -473,6 +593,7 @@ body
     &-add
       width: 80%
       place-items: end
+
     &-container
       grid-template-columns: auto
       grid-auto-rows: auto
@@ -532,6 +653,7 @@ body
       row-gap: 10px
       height: 100%
       width: 100%
+
       button
         background-color: #1da1f2
         border-radius: 10px
@@ -541,6 +663,7 @@ body
         height: 40px
         outline: none
         border-style: none
+
         &:hover
           background-color: #5dc8d6
 
@@ -554,6 +677,55 @@ body
 
         p
           text-align: center
+
+.result
+  &-title
+    justify-self: center
+    font-size: 22px
+    font-weight: 500
+    margin: 10px 0
+
+    p
+      text-align: center
+
+  &-action
+    &-block
+      display: grid
+      grid-template-rows: auto
+      grid-template-columns: 1fr 1fr
+      place-items: center
+      margin-bottom: 15px
+
+      form
+        display: grid
+        width: auto
+        height: 50px
+        background-color: #1da1f2
+        border-radius: 10px
+        outline: none
+        justify-self: center
+
+        input
+          background-color: #1da1f2
+          border-radius: 10px
+          font-size: 18px
+          font-weight: 600
+          outline: none
+          color: #fff
+          border-style: none
+
+          &:hover
+            background-color: #5dc8d6
+
+        &:first-child
+          display: grid
+          justify-self: end
+          margin-right: 25px
+
+        &:last-child
+          display: grid
+          justify-self: start
+          margin-left: 25px
 
 
 .treeCSS,
@@ -640,7 +812,22 @@ body
 
     &-2
       grid-template-rows: auto
-      grid-template-columns: 1fr 1fr 2fr 100px
+      grid-template-columns: min-content min-content 1fr min-content
+      grid-auto-columns: min-content
+      background-color: #ebf4f3
+      place-items: center
+
+    &-test
+      grid-template-rows: auto
+      grid-template-columns: min-content min-content 1fr min-content
+      grid-auto-columns: min-content
+      background-color: #ebf4f3
+      place-items: center
+
+    &-statistic
+      grid-template-rows: auto
+      grid-template-columns: min-content min-content min-content 1fr min-content
+      grid-column-gap: 5px
       background-color: #ebf4f3
       place-items: center
 
