@@ -14,11 +14,12 @@ public class PassTestsController {
 
     @Autowired
     private TestsRepository testsRepository;
+
+
     @GetMapping("/lich_page_pass")
     public String getPassedTestsPage(Model model){
-        List<Test> tests1 =testsRepository.findAll();
-        model.addAttribute("tests1",tests1);
         return "tests_pass";
 
     }
+
 }

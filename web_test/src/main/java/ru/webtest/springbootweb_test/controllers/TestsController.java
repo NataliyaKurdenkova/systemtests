@@ -39,7 +39,7 @@ public class TestsController {
         this.testService = testService;
     }
 
-
+    //////////////////// прохождение теста
     @GetMapping("/tests")
     public String getTestsPage(Model model) {
         List<Test> tests = testService.getAllTests();
@@ -47,6 +47,7 @@ public class TestsController {
         return "tests_page";
 
     }
+    ///////////////////////////
 
     @GetMapping("/pass_test/{idtest}")
     public String getQuestionsPage(@PathVariable("idtest") int idtest, Model model) {
@@ -55,12 +56,9 @@ public class TestsController {
         Question[] question = testService.getQuestionByParent_Test(idtest);
         int nomer = question[i].getIdque().intValue();
         System.out.println("nomer voprosa" + nomer);
-
         System.out.println(question[i].getQuestion());
         System.out.println("ответы для вопроса №" + question[i].getIdque());
-
         Answer[] answ = testService.getAnswerByParent_Question(nomer);
-
         model.addAttribute("idtest", idtest);
         model.addAttribute("question", question[i].getQuestion());
         model.addAttribute("answers", answ);
@@ -73,21 +71,19 @@ public class TestsController {
         String login = usersService.getCurrentUsername();
         model.addAttribute("name", login);
         Question[] question = testService.getQuestionByParent_Test(idtest);
-        kolvoque=question.length;
+        ..kolvoque=question.length;
         System.out.println(i);
         System.out.println(question[i].getQuestion());
         System.out.println("ответы для вопроса №" + question[i].getIdque());
         int nomer = question[i].getIdque().intValue();
-
         System.out.println("nomer voprosa" + nomer);
         Answer[] answ = testService.getAnswerByParent_Question(nomer);
-
         model.addAttribute("idtest", idtest);
         model.addAttribute("question", question[i].getQuestion());
         model.addAttribute("answers", answ);
         return "passing_test";
-
     }
+
 
     @PostMapping("/answer")
     public String getNextQuestionAndAnswer(@PathVariable("idtest") int idtest) {
@@ -117,4 +113,33 @@ public class TestsController {
         else  i++;
         return "redirect:/pass_test/{idtest}";
     }
+
+
+    ///////// вопросы + ответы
+    @GetMapping("/tests")
+    public String getPassedTestsPage(Model model) {
+        List<Test> tests = testService.getAllTests();
+        model.addAttribute("tests", tests);
+        return "tests_pass";
+
+    }
+
+    @GetMapping("/lich_page_pass/{idtest}")
+    public String getQuestionsAndAnswers(@PathVariable("idtest") int idtest, Model model) {
+        String login = usersService.getCurrentUsername();
+        model.addAttribute("name", login);
+        Question[] question = testService.getQuestionByParent_Test(idtest);
+        int nomer = question[i].getIdque().intValue();
+        System.out.println("nomer voprosa" + nomer);
+        System.out.println(question[i].getQuestion());
+        System.out.println("правильный ответ для вопроса №" + question[i].question[i].getIdque());
+
+        CorrectAnswer [] correctAnswer = testService.getAnswerByParent_Question(int correct);
+
+        model.addAttribute("idtest", idtest);
+        model.addAttribute("question", question[i].getQuestion());
+        model.addAttribute("answers", question[i].correctAnswer());
+        return "tests_pass";
+    }
+
 }
