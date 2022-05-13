@@ -51,25 +51,28 @@
         <p class="test-question ffs">${question}</p>
     </div>
     <div class="test-answers-title">Варианты ответов:</div>
-    <div class="test-answers-block">
-        <!--    <#list answers as answer>-->
-        <div class="test-answer grid">
-            <input id="${answer.id} 1" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
-            <label for="${answer.id} 1" class="test-answer-label ffs"><span>${answer.name} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto assumenda blanditiis cupiditate dicta dolor doloribus ducimus eaque earum eos explicabo facere fugiat ipsum iste maxime minima modi nisi odio perspiciatis praesentium quae qui quidem quisquam quo, reiciendis saepe similique ullam velit veritatis voluptas! Animi atque blanditiis commodi cum, cupiditate delectus, deserunt ea eos et eum hic id ipsa iusto libero magni nam necessitatibus nulla numquam odio placeat quam qui quibusdam quisquam quod repellendus sequi tempora tempore temporibus, unde veritatis. A at debitis facere impedit molestias rerum, saepe suscipit voluptatum! Corporis enim harum necessitatibus quidem, ratione voluptate? Nostrum, sit, suscipit!</span></label>
-        </div>
-        <!--</#list>-->
-        <div class="test-answer grid">
-            <input id="${answer.id} 2" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
-            <label for="${answer.id} 2" class="test-answer-label ffs"><span>${answer.name}</span></label>
-        </div>
-        <div class="test-answer grid">
-            <input id="${answer.id} 3" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
-            <label for="${answer.id} 3" class="test-answer-label ffs"><span>${answer.name}</span></label>
-        </div>
-        <div class="test-answer grid">
-            <input id="${answer.id} 4" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
-            <label for="${answer.id} 4" class="test-answer-label ffs"><span>${answer.name}</span></label>
-        </div>
+    <div class="test-answers-container grid">
+        <form class="test-answers-block" action="/pass_test/${idtest}/answer" method="post" >
+            <!--    <#list answers as answer>-->
+            <div class="test-answer grid">
+                <input id="${answer.id} 1" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
+                <label for="${answer.id} 1" class="test-answer-label ffs">${answer.name} проверка ответа</label>
+            </div>
+            <!--</#list>-->
+            <div class="test-answer grid">
+                <input id="${answer.id} 2" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
+                <label for="${answer.id} 2" class="test-answer-label ffs"><span>${answer.name}</span></label>
+            </div>
+            <div class="test-answer grid">
+                <input id="${answer.id} 3" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
+                <label for="${answer.id} 3" class="test-answer-label ffs"><span>${answer.name}</span></label>
+            </div>
+            <div class="test-answer grid">
+                <input id="${answer.id} 4" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
+                <label for="${answer.id} 4" class="test-answer-label ffs"><span>${answer.name}</span></label>
+            </div>
+            <input class="test-answers-input" type="submit" value="Ответить">
+        </form>
     </div>
     <div class="test-action-block">
         <form action="/back" method="post">
@@ -80,9 +83,6 @@
         </form>
         <form action="/end" method="post">
             <input type="submit" value="Завершить тест">
-        </form>
-        <form action="/pass_test/${idtest}/answer" method="post">
-            <input type="submit" value="Ответить">
         </form>
     </div>
 </section>

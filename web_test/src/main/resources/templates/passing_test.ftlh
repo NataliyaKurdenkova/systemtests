@@ -48,13 +48,16 @@
         <p class="test-question ffs">${question}</p>
     </div>
     <div class="test-answers-title">Варианты ответов:</div>
-    <div class="test-answers-block">
-        <!--    <#list answers as answer>-->
+    <div class="test-answers-container grid">
+        <form class="test-answers-block" action="/pass_test/${idtest}/answer" method="post" >
+            <!--    <#list answers as answer>-->
             <div class="test-answer grid">
                 <input id="${answer.id}" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
                 <label for="${answer.id}" class="test-answer-label ffs">${answer.name}</label>
             </div>
-        <!--</#list>-->
+            <!--</#list>-->
+            <input class="test-answers-input" type="submit" value="Ответить">
+        </form>
     </div>
     <div class="test-action-block">
         <form action="/back" method="post">
@@ -65,9 +68,6 @@
         </form>
         <form action="/end" method="post">
             <input type="submit" value="Завершить тест">
-        </form>
-        <form action="/pass_test/${idtest}/answer" method="post">
-            <input type="submit" value="Ответить">
         </form>
     </div>
 </section>

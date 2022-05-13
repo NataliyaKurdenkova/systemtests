@@ -260,7 +260,7 @@ body {
 .test-action-block {
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: 2fr 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 2fr;
   place-items: center;
   margin-bottom: 15px; }
   .test-action-block form {
@@ -291,23 +291,19 @@ body {
     .test-action-block-start-form {
       justify-self: center !important; }
 .test-answer {
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
   cursor: pointer;
   width: 95%;
-  height: 95%;
+  height: 100%;
   border-radius: 30px; }
   .test-answer-label {
     display: inline-grid;
     width: 90%;
-    height: 90%;
+    height: 85%;
     cursor: pointer;
     background-color: #5dc8d6;
     border-radius: 30px;
-    place-items: center; }
-    .test-answer-label span {
-      display: grid;
-      height: max-content; }
+    place-items: center;
+    padding: 15px; }
     .test-answer-label:hover {
       background-color: #cdeaee; }
     + .test-answer-label-checkbox {
@@ -341,18 +337,36 @@ body {
     border-radius: 50%; }
 .test-answers-block {
   display: grid;
+  width: 100%;
   grid-template-columns: 1fr;
-  grid-auto-rows: 1fr;
-  margin-bottom: 10px;
+  grid-auto-rows: minmax(50px, max-content);
+  grid-row-gap: 30px;
   place-items: center; }
 .test-answers-title {
   justify-self: center;
   font-size: 24px;
-  font-weight: 600; }
+  font-weight: 600;
+  margin-bottom: 20px; }
   .test-answers-title-start {
     justify-content: center; }
     .test-answers-title-start p {
       text-align: center; }
+.test-answers-input {
+  position: relative;
+  top: 50px;
+  left: 290px;
+  display: grid;
+  width: 150px;
+  height: 50px;
+  background-color: #1da1f2;
+  border-radius: 10px;
+  outline: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  border-style: none; }
+  .test-answers-input:hover {
+    background-color: #5dc8d6; }
 
 .newtest-container {
   grid-template-rows: 80px auto 45px;

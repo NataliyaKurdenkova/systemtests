@@ -323,7 +323,7 @@ body
     &-block
       display: grid
       grid-template-rows: auto
-      grid-template-columns: 2fr 1fr 1fr 2fr
+      grid-template-columns: 1fr 1fr 2fr
       place-items: center
       margin-bottom: 15px
 
@@ -362,24 +362,20 @@ body
           justify-self: center !important
 
   &-answer
-    grid-template-rows: 1fr
-    grid-template-columns: 1fr
     cursor: pointer
     width: 95%
-    height: 95%
+    height: 100%
     border-radius: 30px
 
     &-label
       display: inline-grid
       width: 90%
-      height: 90%
+      height: 85%
       cursor: pointer
       background-color: #5dc8d6
       border-radius: 30px
       place-items: center
-      span
-        display: grid
-        height: max-content
+      padding: 15px
 
       &:hover
         background-color: #cdeaee
@@ -427,21 +423,39 @@ body
   &-answers
     &-block
       display: grid
+      width: 100%
       grid-template-columns: 1fr
-      grid-auto-rows: 1fr
-      margin-bottom: 10px
+      grid-auto-rows: minmax(50px, max-content)
+      grid-row-gap: 30px
       place-items: center
 
     &-title
       justify-self: center
       font-size: 24px
       font-weight: 600
+      margin-bottom: 20px
 
       &-start
         justify-content: center
 
         p
           text-align: center
+    &-input
+      position: relative
+      top: 50px
+      left: 290px
+      display: grid
+      width: 150px
+      height: 50px
+      background-color: #1da1f2
+      border-radius: 10px
+      outline: none
+      font-size: 18px
+      font-weight: 600
+      color: #fff
+      border-style: none
+      &:hover
+        background-color: #5dc8d6
 
 .newtest
   &-container
