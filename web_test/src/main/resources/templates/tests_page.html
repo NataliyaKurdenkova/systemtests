@@ -26,19 +26,24 @@
                 <img class="right-img" src="../static/img/right-img.svg" alt="img">
             </div>
         </div>
-        <div class="header-rows header-rows-test">
+        <div class="header-rows header-rows-admin">
             <div class="header-columns-menu">
-                <form action="/" method="post">
-                    <input class="header-columns-menu-input active" type="submit" value="Назначенные тесты">
+                <form action="/statistic" method="post">
+                    <input class="header-columns-menu-input" type="submit" value="Статистика">
                 </form>
             </div>
             <div class="header-columns-menu">
-                <form action="/" method="post">
-                    <input class="header-columns-menu-input" type="submit" value="Пройденные тесты">
+                <form action="/users" method="post">
+                    <input class="header-columns-menu-input" type="submit" value="Пользователи">
+                </form>
+            </div>
+            <div class="header-columns-menu">
+                <form action="/tests" method="post">
+                    <input class="header-columns-menu-input active" type="submit" value="База тестов">
                 </form>
             </div>
             <div class="header-columns-output">
-                <p class="header-columns-output-p" id="FIO-output">Иванов Иван Иванович</p>
+                <p class="header-columns-output-p" id="FIO-output">${name}</p>
             </div>
             <div class="header-columns-exit">
                 <form action="/logout" method="post">
@@ -48,28 +53,28 @@
         </div>
     </div>
 </header>
-<section class="private-container">
-    <div class="private-title">
-        <p class="private-title-p">Вам назначены следующие тесты:</p>
+<section class="tests-container">
+    <div class="test-title">
+        <p class="test-title-p">Вам назначены следующие тесты:</p>
     </div>
-    <div class="private-table table-styles">
-        <div class="private-table-n table-styles"><p>№</p></div>
-        <div class="private-table-title table-styles"><p>Название теста</p></div>
-        <div class="private-table-estimation table-styles"><p>Проходной балл</p></div>
-        <div class="private-table-estimation table-styles"><p>Общее количество вопросов</p></div>
-        <div class="private-table-estimation table-styles"><p>Количество вопросов, для тестирования</p></div>
-        <div class="private-table-time table-styles"><p>Время(мин)</p></div>
-        <div class="private-table-action table-styles"></div>
+    <div class="test-table table-styles">
+        <div class="test-table-n table-styles"><p>№</p></div>
+        <div class="test-table-title table-styles"><p>Название теста</p></div>
+        <div class="test-table-estimation table-styles"><p>Проходной балл</p></div>
+        <div class="test-table-estimation table-styles"><p>Общее количество вопросов</p></div>
+        <div class="test-table-estimation table-styles"><p>Количество вопросов, для тестирования</p></div>
+        <div class="test-table-time table-styles"><p>Время(мин)</p></div>
+        <div class="test-table-action table-styles"></div>
     </div>
     <!--    <#list tests as test>-->
-    <div class="private-table private-table-content">
-        <div class="private-table-n content-styles"><p>${test.idtest}</p></div>
-        <div class="private-table-title "><p>${test.name}</p></div>
-        <div class="private-table-estimation content-styles"><p>${test.passball}</p></div>
-        <div class="private-table-estimation content-styles"><p>${test.totalque}</p></div>
-        <div class="private-table-estimation content-styles"><p>${test.needque}</p></div>
-        <div class="private-table-time content-styles"><p>${test.time}</p></div>
-        <div class="private-table-action">
+    <div class="test-table private-table-content">
+        <div class="test-table-n content-styles"><p>${test.idtest}</p></div>
+        <div class="test-table-title "><p>${test.name}</p></div>
+        <div class="test-table-estimation content-styles"><p>${test.passball}</p></div>
+        <div class="test-table-estimation content-styles"><p>${test.totalque}</p></div>
+        <div class="test-table-estimation content-styles"><p>${test.needque}</p></div>
+        <div class="test-table-time content-styles"><p>${test.time}</p></div>
+        <div class="test-table-action">
             <form action="/pass_test/${test.idtest}" method="post">
                 <button type="submit"><i class="fa fa-play" aria-hidden="true"></i></button>
             </form>

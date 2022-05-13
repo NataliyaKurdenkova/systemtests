@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Personal Cabinet</title>
+    <title>Пользователи</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
     </style>
@@ -26,9 +26,14 @@
                 <img class="right-img" src="../static/img/right-img.svg" alt="img">
             </div>
         </div>
-        <div class="header-rows header-rows-2">
+        <div class="header-rows header-rows-admin">
             <div class="header-columns-menu">
-                <form action="/adminka" method="post">
+                <form action="/statistic" method="post">
+                    <input class="header-columns-menu-input" type="submit" value="Статистика">
+                </form>
+            </div>
+            <div class="header-columns-menu">
+                <form action="/users" method="post">
                     <input class="header-columns-menu-input active" type="submit" value="Пользователи">
                 </form>
             </div>
@@ -61,6 +66,17 @@
         <div class="private-table-title "><p>${user.name}</p></div>
         <div class="private-table-estimation content-styles"><p>${user.login}</p></div>
         <div class="private-table-time content-styles"><p>${user.idrole}</p></div>
+        <div class="test-table-action">
+            <form action="/pass_test/${test.idtest}" method="post">
+                <button type="submit"><i class="fa fa-play" aria-hidden="true"></i></button>
+            </form>
+            <form action="/change_test/${test.idtest}" method="post">
+                <button type="submit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            </form>
+            <form action="/delete_test/${test.idtest}" method="post">
+                <button type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            </form>
+        </div>
     </div>
     <!--    </#list>-->
 </section>

@@ -154,7 +154,7 @@ body
 
   &-table
     display: grid
-    grid-template-columns: 0.7fr 2.7fr 1fr 1fr 1fr 0.8fr 1fr
+    grid-template-columns: 0.7fr 2.7fr 1fr 0.8fr 1fr
     background-color: #5dc8d6
 
     &-title
@@ -188,7 +188,7 @@ body
     &-action
       display: grid
       place-items: center
-      grid-template-columns: 1fr 1fr 1fr
+      grid-template-columns: 1fr
 
       form
         display: grid
@@ -290,6 +290,86 @@ body
 .test
   &-container
     display: grid
+
+  &-title
+    display: grid
+    grid-template-columns: 0.65fr 2fr 2fr 0.65fr
+
+    &-p
+      display: grid
+      grid-area: 1 / 2 / 2 / 4
+      font-size: 30px
+      text-align: center
+
+    &-form
+      display: grid
+      grid-area: 1 / 4 / 2 / 5
+      place-items: center
+
+      &-button
+        display: inline-block
+        width: 80%
+        height: 50%
+        cursor: pointer
+        font-size: 20px
+        text-decoration: none
+        color: #FFF
+        background: #0095d9
+        border-radius: 5px
+        border: 0 solid #354251
+
+        &:hover
+          background: #FFF
+          color: #0095d9
+          border: 1px solid #0095d9
+          transition: all 0.2s ease
+
+  &-table
+    display: grid
+    grid-template-columns: 0.7fr 2.7fr 1fr 1fr 1fr 0.8fr 1fr
+    background-color: #5dc8d6
+
+    &-title
+      place-items: stretch
+
+    &-content
+      background-color: #ebf4f3
+
+      &:nth-child(2n)
+        background-color: #cdeaee
+
+      &-button
+        display: inline-block
+        width: 100%
+        height: 100%
+        cursor: pointer
+        font-size: 19px
+        text-decoration: none
+        color: #FFF
+        background: #0095d9
+        border-radius: 5px
+        border: 0 solid #354251
+        padding: 1px 3px
+
+        &:hover
+          background: #FFF
+          color: #0095d9
+          border: 1px solid #0095d9
+          transition: all 0.2s ease
+
+    &-action
+      display: grid
+      place-items: center
+      grid-template-columns: 1fr 1fr 1fr
+
+      form
+        display: grid
+        width: 90%
+        height: 90%
+
+        button
+          i
+            font-size: 24px
 
   &-question
     width: 85%
@@ -440,6 +520,7 @@ body
 
         p
           text-align: center
+
     &-input
       position: relative
       top: 50px
@@ -454,6 +535,7 @@ body
       font-weight: 600
       color: #fff
       border-style: none
+
       &:hover
         background-color: #5dc8d6
 
@@ -741,70 +823,6 @@ body
           justify-self: start
           margin-left: 25px
 
-
-.treeCSS,
-.treeCSS ul,
-.treeCSS li
-  margin: 0
-  padding: 0
-  line-height: 1
-  list-style: none
-
-.treeCSS ul
-  margin: 0 0 0 .5em
-/* вести линию вниз где-то с полбуквы родителя */
-
-.treeCSS > li:not(:only-child),
-.treeCSS li li
-  position: relative
-  padding: .2em 0 0 1.2em
-/* отступ до текста; для раскрывающегося списка в ряде случаев (в Хроме есть баг) padding-top (.2em) лучше указывать в px */
-
-.treeCSS li:not(:last-child)
-  border-left: 1px solid #ccc
-/* толщина, цвет и стиль (вместо сплошной пунктирная или точечная) вертикальной линии */
-
-.treeCSS li li:before,
-.treeCSS > li:not(:only-child):before
-  /* горизонтальная линия */
-  content: ""
-  position: absolute
-  top: 0
-  left: 0
-  width: 1.1em
-  /* не более отступа до текста (1.2em) */
-  height: .7em
-  /* начинается приблизительно с половины высоты буквы (.5em + .2em) */
-  border-bottom: 1px solid #ccc
-
-.treeCSS li:last-child:before
-  /* вертикальная линия последнего пункта в каждом списке */
-  width: calc(1.1em - 1px)
-  /* для перфекционистов */
-  border-left: 1px solid #ccc
-
-.treeCSS .drop
-  position: absolute
-  left: -.5em
-  top: .4em
-  /* .2em (font-size: 80%;) + .2em (padding из .treeCSS li li) */
-  width: .9em
-  height: .9em
-  line-height: .9em
-  text-align: center
-  background: #fff
-  font-size: 80%
-  cursor: pointer
-
-.treeCSS li:last-child > .drop
-  margin-left: 1px
-
-.treeCSS .drop + ul
-  display: none
-
-.treeCSS .dropM + ul
-  display: block
-
 .main-container
   display: grid
   grid-template-rows: 100vh
@@ -838,7 +856,7 @@ body
       background-color: #ebf4f3
       place-items: center
 
-    &-statistic
+    &-admin
       grid-template-rows: auto
       grid-template-columns: min-content min-content min-content 1fr min-content
       grid-column-gap: 5px
@@ -1156,3 +1174,66 @@ body
 .wrapper .google:hover .tooltip::before
   background: #000
   color: #ffffff
+
+.treeCSS,
+.treeCSS ul,
+.treeCSS li
+  margin: 0
+  padding: 0
+  line-height: 1
+  list-style: none
+
+.treeCSS ul
+  margin: 0 0 0 .5em
+/* вести линию вниз где-то с полбуквы родителя */
+
+.treeCSS > li:not(:only-child),
+.treeCSS li li
+  position: relative
+  padding: .2em 0 0 1.2em
+/* отступ до текста; для раскрывающегося списка в ряде случаев (в Хроме есть баг) padding-top (.2em) лучше указывать в px */
+
+.treeCSS li:not(:last-child)
+  border-left: 1px solid #ccc
+/* толщина, цвет и стиль (вместо сплошной пунктирная или точечная) вертикальной линии */
+
+.treeCSS li li:before,
+.treeCSS > li:not(:only-child):before
+  /* горизонтальная линия */
+  content: ""
+  position: absolute
+  top: 0
+  left: 0
+  width: 1.1em
+  /* не более отступа до текста (1.2em) */
+  height: .7em
+  /* начинается приблизительно с половины высоты буквы (.5em + .2em) */
+  border-bottom: 1px solid #ccc
+
+.treeCSS li:last-child:before
+  /* вертикальная линия последнего пункта в каждом списке */
+  width: calc(1.1em - 1px)
+  /* для перфекционистов */
+  border-left: 1px solid #ccc
+
+.treeCSS .drop
+  position: absolute
+  left: -.5em
+  top: .4em
+  /* .2em (font-size: 80%;) + .2em (padding из .treeCSS li li) */
+  width: .9em
+  height: .9em
+  line-height: .9em
+  text-align: center
+  background: #fff
+  font-size: 80%
+  cursor: pointer
+
+.treeCSS li:last-child > .drop
+  margin-left: 1px
+
+.treeCSS .drop + ul
+  display: none
+
+.treeCSS .dropM + ul
+  display: block
