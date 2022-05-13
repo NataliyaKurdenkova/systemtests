@@ -5,32 +5,109 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Personal Cabinet</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+    </style>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
 </head>
-<body>
-<div>
-<table>
-    <tr>
-        <th>№</th>
-        <th>Название</th>
-        <th>Проходной балл</th>
-        <th>Общее количество вопросов</th>
-        <th>Количество вопросов, для тестирования</th>
-        <th>Время</th>
-    </tr>
-    <#list tests as test>
-        <tr>
-            <td>${test.idtest}</td>
-            <td>${test.name}</td>
-            <td>${test.passball}</td>
-            <td>${test.totalque}</td>
-            <td>${test.needque}</td>
-            <td>${test.time}</td>
-            <td><input type="button" value="Пройти"></td>
-        </tr>
-    </#list>
-</table>
 
-</div>
+<body>
+<header>
+    <div class="header-container">
+        <div class="header-rows header-rows-1">
+            <div class="header-logo">
+                <img class="header-logo-img" src="img/logo.svg" alt="logo">
+            </div>
+            <div class="header-title">
+                <img class="header-title-image" src="img/Title.png" alt="title-img">
+                <img class="right-img" src="img/right-img.svg" alt="img">
+            </div>
+        </div>
+        <div class="header-rows header-rows-2">
+            <div class="header-columns-menu">
+                <form action="/" method="post">
+                    <input class="header-columns-menu-input active" type="submit" value="Назначенные тесты">
+                </form>
+            </div>
+            <div class="header-columns-menu">
+                <form action="/" method="post">
+                    <input class="header-columns-menu-input" type="submit" value="Пройденные тесты">
+                </form>
+            </div>
+            <div class="header-columns-output">
+                <p class="header-columns-output-p" id="FIO-output">Иванов Иван Иванович</p>
+            </div>
+            <div class="header-columns-exit">
+                <form action="/logout" method="post">
+                    <input class="header-columns-exit-input" type="submit" value="Выход">
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="private-container">
+    <div class="private-title">
+        <p class="private-title-p">Вам назначены следующие тесты:</p>
+    </div>
+    <div class="private-table table-styles">
+        <div class="private-table-n table-styles"><p>№</p></div>
+        <div class="private-table-title table-styles"><p>Название теста</p></div>
+        <div class="private-table-estimation table-styles"><p>Проходной балл</p></div>
+        <div class="private-table-estimation table-styles"><p>Общее количество вопросов</p></div>
+        <div class="private-table-estimation table-styles"><p>Количество вопросов, для тестирования</p></div>
+        <div class="private-table-time table-styles"><p>Время(мин)</p></div>
+        <div class="private-table-action table-styles"></div>
+    </div>
+    <!--    <#list tests as test>-->
+    <div class="private-table private-table-content">
+        <div class="private-table-n content-styles"><p>${test.idtest}</p></div>
+        <div class="private-table-title "><p>${test.name}</p></div>
+        <div class="private-table-estimation content-styles"><p>${test.passball}</p></div>
+        <div class="private-table-estimation content-styles"><p>${test.totalque}</p></div>
+        <div class="private-table-estimation content-styles"><p>${test.needque}</p></div>
+        <div class="private-table-time content-styles"><p>${test.time}</p></div>
+        <div class="private-table-action">
+            <form action="/pass_test/${test.idtest}" method="post">
+                <button type="submit"><i class="fa fa-play" aria-hidden="true"></i></button>
+            </form>
+            <form action="/change_test/${test.idtest}" method="post">
+                <button type="submit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            </form>
+            <form action="/delete_test/${test.idtest}" method="post">
+                <button type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </div>
+    <!--    </#list>-->
+</section>
+<footer class="footer">
+    <div class="title-column title-column-social">
+        <ul class="wrapper">
+            <li class="icon facebook">
+                <span class="tooltip">Facebook</span>
+                <i class="fa fa-facebook"></i>
+            </li>
+            <li class="icon twitter">
+                <span class="tooltip">Twitter</span>
+                <i class="fa fa-twitter"></i>
+            </li>
+            <li class="icon instagram">
+                <span class="tooltip">Instagram</span>
+                <i class="fa fa-instagram"></i>
+            </li>
+            <li class="icon github">
+                <span class="tooltip">Github</span>
+                <i class="fa fa-github"></i>
+            </li>
+            <li class="icon youtube">
+                <span class="tooltip">Youtube</span>
+                <i class="fa fa-youtube"></i>
+            </li>
+        </ul>
+    </div>
+</footer>
 </body>
 </html>

@@ -123,7 +123,7 @@ body {
         transition: all 0.2s ease; }
 .private-table {
   display: grid;
-  grid-template-columns: 0.5fr 3fr 1fr 1fr 0.8fr;
+  grid-template-columns: 0.7fr 2.7fr 1fr 1fr 1fr 0.8fr 1fr;
   background-color: #5dc8d6; }
   .private-table-title {
     place-items: stretch; }
@@ -150,10 +150,14 @@ body {
         transition: all 0.2s ease; }
   .private-table-action {
     display: grid;
-    place-items: center; }
+    place-items: center;
+    grid-template-columns: 1fr 1fr 1fr; }
     .private-table-action form {
+      display: grid;
       width: 90%;
       height: 90%; }
+      .private-table-action form button i {
+        font-size: 24px; }
 
 .table-styles {
   font-size: 20px;

@@ -9,20 +9,20 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
     </style>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/main.min.css">
 </head>
 <body>
 <header>
     <div class="header-container">
         <div class="header-rows header-rows-1">
             <div class="header-logo">
-                <img class="header-logo-img" src="img/logo.svg" alt="logo">
+                <img class="header-logo-img" src="../img/logo.svg" alt="logo">
             </div>
             <div class="header-title">
-                <img class="header-title-image" src="img/Title.png" alt="title-img">
-                <img class="right-img" src="img/right-img.svg" alt="img">
+                <img class="header-title-image" src="../img/Title.png" alt="title-img">
+                <img class="right-img" src="../img/right-img.svg" alt="img">
             </div>
         </div>
         <div class="header-rows header-rows-4">
@@ -30,7 +30,7 @@
                 <p class="header-columns-output-p" id="FIO-output">${name}</p>
             </div>
             <div class="header-columns-exit">
-                <form action="/" method="post">
+                <form action="/logout" method="post">
                     <input class="header-columns-exit-input" type="submit" value="Выход">
                 </form>
             </div>
@@ -48,43 +48,21 @@
     </div>
     <div class="newtest-answers-container grid">
         <div class="newtest-answers-block grid scroll-container">
-            <!--    <#list answers as answer>-->
-            <ul class="treeCSS">
-                <li>Сайт
-                    <ul>
-                        <li>Тест 1
+        <#list tests as test>
+            <#list questions as question>
+                <#list answers as answer>
+                    <ul class="treeCSS">
+                        <li>${test.name}
                             <ul>
-                                <li>Вопрос 1
-                                <li>Вопрос 2
-                                <li>Вопрос 3
-                            </ul>
-                        <li>Тест 2
-                            <ul>
-                                <li>Вопрос 1
-                                <li>Вопрос 2
-                                <li>Вопрос 3
-                            </ul>
-                        <li>Тест 3
-                            <ul>
-                                <li>Вопрос 1
-                                <li>Вопрос 2
-                                <li>Вопрос 3
-                            </ul>
-                        <li>Тест 4
-                            <ul>
-                                <li>Вопрос 1
-                                <li>Вопрос 2
-                                <li>Вопрос 3
-                            </ul>
-                        <li>Тест 5
-                            <ul>
-                                <li>Вопрос 1
-                                <li>Вопрос 2
-                                <li>Вопрос 3
+                                <li>${question.question}
+                                    <ul>
+                                        <li>${answer.name}
+                                    </ul>
                             </ul>
                     </ul>
-            </ul>
-            <!--</#list>-->
+                </#list>
+            </#list>
+        </#list>
         </div>
         <div class="newtest-answers-block grid scroll-container">
             <form action="" class="newtest-answers-form grid">
@@ -101,23 +79,11 @@
                 </div>
                 <div class="newtest-answer-container grid" id="answers-container">
                     <!--    <#list answers as answer>-->
-                    <div class="newtest-answer grid">
-                        <input type="radio" class="answer_type" name="newtest_answer">
-                        <textarea class="ffs" name="" id="123"></textarea>
-                    </div>
+                        <div class="newtest-answer grid">
+                            <input type="radio" class="answer_type" name="newtest_answer">
+                            <textarea class="ffs" name="" id="${answer.idtest}"></textarea>
+                        </div>
                     <!--</#list>-->
-                    <div class="newtest-answer grid">
-                        <input type="radio" class="answer_type" name="newtest_answer">
-                        <textarea class="ffs" name="" id="234"></textarea>
-                    </div>
-                    <div class="newtest-answer grid">
-                        <input type="radio" class="answer_type" name="newtest_answer">
-                        <textarea class="ffs" name="" id="345"></textarea>
-                    </div>
-                    <div class="newtest-answer grid">
-                        <input type="radio" class="answer_type" name="newtest_answer">
-                        <textarea class="ffs" name="" id="456"></textarea>
-                    </div>
                 </div>
                 <div class="newtest-answer-add grid">
                     <button onclick="addAnswer()">Добавить ответ</button>
