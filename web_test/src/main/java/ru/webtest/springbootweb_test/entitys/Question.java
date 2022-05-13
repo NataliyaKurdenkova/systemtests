@@ -32,7 +32,7 @@ public class Question {
     }
 
     //отпределение верного ответа
-    public String correctAnswer(long id) {
+    public String correctAnswer() {
 
         return null;
     }

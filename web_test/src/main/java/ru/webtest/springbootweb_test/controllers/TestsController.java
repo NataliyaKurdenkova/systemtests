@@ -71,7 +71,7 @@ public class TestsController {
         String login = usersService.getCurrentUsername();
         model.addAttribute("name", login);
         Question[] question = testService.getQuestionByParent_Test(idtest);
-        ..kolvoque=question.length;
+        kolvoque=question.length;
         System.out.println(i);
         System.out.println(question[i].getQuestion());
         System.out.println("ответы для вопроса №" + question[i].getIdque());
@@ -132,9 +132,9 @@ public class TestsController {
         int nomer = question[i].getIdque().intValue();
         System.out.println("nomer voprosa" + nomer);
         System.out.println(question[i].getQuestion());
-        System.out.println("правильный ответ для вопроса №" + question[i].question[i].getIdque());
+        System.out.println("правильный ответ для вопроса №" + question[i].getIdque());
 
-        CorrectAnswer [] correctAnswer = testService.getAnswerByParent_Question(int correct);
+        Answer [] correctAnswer = testService.getAnswerByParent_Question(idtest);
 
         model.addAttribute("idtest", idtest);
         model.addAttribute("question", question[i].getQuestion());
