@@ -33,8 +33,6 @@ e
 5web_test/src/main/resources/templates/tests_page.ftlh,2\1\21a93b97c01d1c945b6ca9730e89ceeab375a454
 e
 5web_test/src/main/resources/templates/users_page.ftlh,6\6\6643f2d4bbdc011cb3e29553845f4878947ad873
-b
-2web_test/src/main/resources/templates/newtest.ftlh,d\e\de4eb73f1de87a62a14cc73026398d84a720d7da
 d
 4web_test/src/main/resources/templates/statistic.ftlh,4\3\4349c19a92aa00e6af212719d05d5564f5c94867
 d

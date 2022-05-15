@@ -475,6 +475,8 @@ body {
     grid-template-rows: repeat(2, 40px);
     grid-template-columns: auto;
     width: 100%; }
+    .newtest-question-container form {
+      width: 100%; }
 .newtest-action-container {
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr;
@@ -558,8 +560,20 @@ body {
         border: 1px solid #88d0e7;
         outline: none; }
   .newtest-answer-add {
-    width: 80%;
     place-items: end; }
+    .newtest-answer-add input {
+      display: grid;
+      width: 200px;
+      height: 40px;
+      background-color: #1da1f2;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #FFF;
+      outline: none;
+      border-style: none; }
+      .newtest-answer-add input:hover {
+        background-color: #5dc8d6; }
   .newtest-answer-container {
     grid-template-columns: auto;
     grid-auto-rows: auto;

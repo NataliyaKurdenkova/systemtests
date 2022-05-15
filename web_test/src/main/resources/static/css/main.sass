@@ -588,6 +588,8 @@ body
       grid-template-rows: repeat(2, 40px)
       grid-template-columns: auto
       width: 100%
+      form
+        width: 100%
 
   &-action
     &-container
@@ -693,8 +695,21 @@ body
           outline: none
 
     &-add
-      width: 80%
       place-items: end
+      input
+        display: grid
+        width: 200px
+        height: 40px
+        background-color: #1da1f2
+        border-radius: 10px
+        font-size: 18px
+        font-weight: 600
+        color: #FFF
+        outline: none
+        border-style: none
+
+        &:hover
+          background-color: #5dc8d6
 
     &-container
       grid-template-columns: auto

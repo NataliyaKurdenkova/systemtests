@@ -65,44 +65,44 @@
         </#list>
         </div>
         <div class="newtest-answers-block grid scroll-container">
-            <form action="" class="newtest-answers-form grid">
+            <form id="newtest_add_answer" action="" class="newtest-answers-form grid">
                 <div class="newtest-answer-title grid">
-                    <label for="answer">Содержание вопроса:</label>
-                    <textarea name="" id="answer"></textarea>
+                        <label for="answer">Содержание вопроса:</label>
+                        <textarea name="" id="answer"></textarea>
                 </div>
                 <div class="newtest-answer-type grid">
                     <label for="val"><span>Тип вопроса:</span></label>
-                    <select onchange="answerType()" id="val">
+                    <select id="val">
                         <option value=radio>один вариант</option>
                         <option value=checkbox>Несколько вариантов</option>
                     </select>
                 </div>
                 <div class="newtest-answer-container grid" id="answers-container">
                     <!--    <#list answers as answer>-->
-                        <div class="newtest-answer grid">
-                            <input type="radio" class="answer_type" name="newtest_answer">
-                            <textarea class="ffs" name="" id="${answer.idtest}"></textarea>
-                        </div>
+                    <div class="newtest-answer grid">
+                        <input type="radio" class="answer_type" name="newtest_answer">
+                        <textarea class="ffs" name="" id="${idtest}"></textarea>
+                    </div>
                     <!--</#list>-->
                 </div>
                 <div class="newtest-answer-add grid">
-                    <button onclick="addAnswer()">Добавить ответ</button>
+                    <input type="submit" value="Добавить ответ">
                 </div>
             </form>
         </div>
     </div>
     <div class="newtest-action-container grid">
         <div class="newtest-action-block grid">
-            <form action="/" method="post">
-                <input type="submit" value="Добавить тест">
+            <form>
+                <input form="add_newtest" type="submit" value="Добавить тест">
             </form>
-            <form action="/" method="post">
-                <input type="submit" value="Добавить вопрос">
+            <form>
+                <input form="newtest_add_answer" type="submit" value="Добавить вопрос">
             </form>
         </div>
         <div class="newtest-action-block grid">
-            <form action="/" method="post">
-                <input type="submit" value="Сохранить">
+            <form>
+                <input form="newtest_add_answer" type="submit" value="Сохранить">
             </form>
             <form action="/" method="post">
                 <input type="submit" value="Список тестов">

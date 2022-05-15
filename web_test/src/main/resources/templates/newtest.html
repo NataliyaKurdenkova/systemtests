@@ -41,10 +41,12 @@
     <div class="newtest-question-container grid">
         <!-- <p class="test-question-id">${idtest}</p>-->
         <div class="newtest-question-title grid"><p class="">Новый тест</p></div>
-        <div class="newtest-question grid">
-            <p class="">Название</p>
-            <input class="newtest-question-input" type="text" placeholder="Введите название теста">
-        </div>
+        <form id="add_newtest" action="/newtest" method="post">
+            <div class="newtest-question grid">
+                    <p class="">Название</p>
+                    <input class="newtest-question-input" type="text" placeholder="Введите название теста">
+            </div>
+        </form>
     </div>
     <div class="newtest-answers-container grid">
         <div class="newtest-answers-block grid scroll-container">
@@ -85,16 +87,33 @@
                     </ul>
             </ul>
             <!--</#list>-->
+            <!--
+                    <#list tests as test>
+            <#list questions as question>
+                <#list answers as answer>
+                    <ul class="treeCSS">
+                        <li>${test.name}
+                            <ul>
+                                <li>${question.question}
+                                    <ul>
+                                        <li>${answer.name}
+                                    </ul>
+                            </ul>
+                    </ul>
+                </#list>
+            </#list>
+        </#list>
+        -->
         </div>
         <div class="newtest-answers-block grid scroll-container">
-            <form action="" class="newtest-answers-form grid">
+            <form id="newtest_add_answer" action="" class="newtest-answers-form grid">
                 <div class="newtest-answer-title grid">
-                    <label for="answer">Содержание вопроса:</label>
-                    <textarea name="" id="answer"></textarea>
+                        <label for="answer">Содержание вопроса:</label>
+                        <textarea name="" id="answer"></textarea>
                 </div>
                 <div class="newtest-answer-type grid">
                     <label for="val"><span>Тип вопроса:</span></label>
-                    <select onchange="answerType()" id="val">
+                    <select id="val">
                         <option value=radio>один вариант</option>
                         <option value=checkbox>Несколько вариантов</option>
                     </select>
@@ -108,23 +127,23 @@
                     <!--</#list>-->
                 </div>
                 <div class="newtest-answer-add grid">
-                    <button onclick="addAnswer()">Добавить ответ</button>
+                    <input type="submit" value="Добавить ответ">
                 </div>
             </form>
         </div>
     </div>
     <div class="newtest-action-container grid">
         <div class="newtest-action-block grid">
-            <form id="add_newtest" action="/newtest" method="post">
+            <form>
                 <input form="add_newtest" type="submit" value="Добавить тест">
             </form>
-            <form id="newtest_add_answer" action="/" method="post">
+            <form>
                 <input form="newtest_add_answer" type="submit" value="Добавить вопрос">
             </form>
         </div>
         <div class="newtest-action-block grid">
-            <form action="/" method="post">
-                <input type="submit" value="Сохранить">
+            <form>
+                <input form="newtest_add_answer" type="submit" value="Сохранить">
             </form>
             <form action="/" method="post">
                 <input type="submit" value="Список тестов">
@@ -146,12 +165,6 @@
             }
         }
     })();
-    function answerType() {
-        <!-- SQL запрос на изменение типа поля Input и перезагрузка страницы -->
-    };
-    function addAnswer() {
-        <!-- SQL запрос на добавление строчки в таблицу и перезагрузка страницы -->
-    };
 </script>
 </body>
 </html>

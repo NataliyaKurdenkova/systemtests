@@ -28,13 +28,13 @@
         </div>
         <div class="header-rows header-rows-3">
             <div class="header-columns-time">
-                <p>${time}</p>
+                <p>time</p>
             </div>
             <div class="header-columns-output">
                 <p class="header-columns-output-p" id="FIO-output">${name}</p>
             </div>
             <div class="header-columns-exit">
-                <form action="/logout" method="post">
+                <form action="/" method="post">
                     <input class="header-columns-exit-input" type="submit" value="Выход">
                 </form>
             </div>
@@ -49,24 +49,25 @@
     </div>
     <div class="test-answers-title">Варианты ответов:</div>
     <div class="test-answers-container grid">
-        <form id="test-answer" class="test-answers-block" action="/pass_test/${idtest}/answer" method="post">
-            <!--    <#list answers as answer>-->
+        <form id="test-answer" class="test-answers-block" action="/answer/${idtest}" method="get" modelAttribute="answeruser">
+            <#list answers as answer>
             <div class="test-answer grid">
-                <input id="${answer.id}" class="test-answer-checkbox" type="checkbox <!--${answer.type}-->" name="answer"
-                       value="${answer.id}">
-                <label for="${answer.id}" class="test-answer-label ffs">${answer.name}</label>
+                <input id="${answer.idanswer}" class="test-answer-checkbox" type="${answer.type}" name="id" value="${answer.idanswer}">
+                <label for="${answer.idanswer}" class="test-answer-label ffs">${answer.name}</label>
             </div>
-            <!--</#list>-->
+            </#list>
         </form>
-    </div>
+        </div>
+            <!--<input class="test-answers-input" type="submit" value="Ответить">-->
+
     <div class="test-action-block">
-        <form action="/back" method="post">
+        <form action="/back/${idtest}" method="get">
             <input type="submit" value="Назад">
         </form>
-        <form action="/skip" method="post">
-            <input type="submit" value="Пропустить вопрос">
+        <form action="/skip/${idtest}" method="get">
+            <input type="submit" value="Пропустить">
         </form>
-        <form action="/end" method="post">
+        <form action="/exit" method="get">
             <input type="submit" value="Завершить тест">
         </form>
         <form action="">
