@@ -35,7 +35,8 @@ body {
   background-image: linear-gradient(180deg, var(--scrollbarThumbColor) 0%, var(--scrollbarThumbColorSecond) 90%); }
 
 .footer {
-  background-color: #cdeaee; }
+  background-color: #cdeaee;
+  margin-top: 10px; }
 
 .grid {
   display: grid;
@@ -233,6 +234,7 @@ body {
   text-align: center; }
 
 .test-container {
+  grid-template-rows: min-content 45px auto 70px;
   display: grid; }
 .test-title {
   display: grid;
@@ -310,7 +312,8 @@ body {
   text-overflow: ellipsis;
   word-wrap: break-word;
   word-break: break-all;
-  margin: 5px 0; }
+  margin: 5px 0;
+  padding: 25px; }
   .test-question-title {
     justify-self: center;
     font-size: 24px;
@@ -325,16 +328,17 @@ body {
 .test-action-block {
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-columns: 1fr 250px 210px 1fr;
   place-items: center;
-  margin-bottom: 15px; }
+  margin: 20px 0 15px 0; }
   .test-action-block form {
     display: grid;
-    width: 150px;
+    min-width: 150px;
     height: 50px;
     background-color: #1da1f2;
     border-radius: 10px;
-    outline: none; }
+    outline: none;
+    justify-self: center; }
     .test-action-block form input {
       background-color: #1da1f2;
       border-radius: 10px;
@@ -400,26 +404,26 @@ body {
       background-color: #0095d9; }
   .test-answer input[type="radio"] + label::before {
     border-radius: 50%; }
+.test-answers-container {
+  height: 100%;
+  margin-bottom: 20px; }
 .test-answers-block {
   display: grid;
   width: 100%;
+  height: 100%;
   grid-template-columns: 1fr;
-  grid-auto-rows: minmax(50px, max-content);
+  grid-template-rows: repeat(auto-fit, minmax(60px, max-content));
   grid-row-gap: 30px;
   place-items: center; }
 .test-answers-title {
   justify-self: center;
   font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 20px; }
+  font-weight: 600; }
   .test-answers-title-start {
     justify-content: center; }
     .test-answers-title-start p {
       text-align: center; }
 .test-answers-input {
-  position: relative;
-  top: 50px;
-  left: 290px;
   display: grid;
   width: 150px;
   height: 50px;

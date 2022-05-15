@@ -52,18 +52,14 @@
     </div>
     <div class="test-answers-title">Варианты ответов:</div>
     <div class="test-answers-container grid">
-        <form class="test-answers-block" action="/pass_test/${idtest}/answer" method="post" >
+        <form id="test-answer" class="test-answers-block" action="/pass_test/${idtest}/answer" method="post">
             <!--    <#list answers as answer>-->
             <div class="test-answer grid">
-                <input id="${answer.id} 1" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
-                <label for="${answer.id} 1" class="test-answer-label ffs">${answer.name} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias beatae, consequuntur corporis dicta dolores ea earum eligendi harum ipsam, minus natus nesciunt nihil non nostrum officiis perferendis perspiciatis placeat reiciendis repellat repellendus repudiandae saepe sequi sit tempora vel voluptate voluptatem. Aspernatur atque distinctio enim error explicabo iste minus, mollitia reprehenderit sed similique veritatis voluptas, voluptatibus? Adipisci aut commodi cupiditate dolores enim esse magnam maiores molestiae mollitia neque nihil quae quia quod tempore ullam, unde velit. Alias consequuntur culpa dignissimos dolorem labore magni modi repellat. Distinctio doloribus eaque excepturi minima nemo officia quis temporibus totam. Accusantium in ipsam quod voluptate.</label>
+                <input id="${answer.id}" class="test-answer-checkbox" type="checkbox" name="answer"
+                       value="${answer.id}">
+                <label for="${answer.id}" class="test-answer-label ffs">${answer.name}</label>
             </div>
             <!--</#list>-->
-            <div class="test-answer grid">
-                <input id="${answer.id} 2" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
-                <label for="${answer.id} 2" class="test-answer-label ffs"><span>${answer.name}</span></label>
-            </div>
-            <input class="test-answers-input" type="submit" value="Ответить">
         </form>
     </div>
     <div class="test-action-block">
@@ -75,6 +71,9 @@
         </form>
         <form action="/end" method="post">
             <input type="submit" value="Завершить тест">
+        </form>
+        <form action="">
+            <input form="test-answer" class="test-answers-input" type="submit" value="Ответить">
         </form>
     </div>
 </section>

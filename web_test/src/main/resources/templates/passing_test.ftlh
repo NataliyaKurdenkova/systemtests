@@ -34,7 +34,7 @@
                 <p class="header-columns-output-p" id="FIO-output">${name}</p>
             </div>
             <div class="header-columns-exit">
-                <form action="/" method="post">
+                <form action="/logout" method="post">
                     <input class="header-columns-exit-input" type="submit" value="Выход">
                 </form>
             </div>
@@ -49,14 +49,14 @@
     </div>
     <div class="test-answers-title">Варианты ответов:</div>
     <div class="test-answers-container grid">
-        <form class="test-answers-block" action="/pass_test/${idtest}/answer" method="post" >
+        <form id="test-answer" class="test-answers-block" action="/pass_test/${idtest}/answer" method="post">
             <!--    <#list answers as answer>-->
             <div class="test-answer grid">
-                <input id="${answer.id}" class="test-answer-checkbox" type="checkbox" name="answer" value="${answer.id}">
+                <input id="${answer.id}" class="test-answer-checkbox" type="checkbox <!--${answer.type}-->" name="answer"
+                       value="${answer.id}">
                 <label for="${answer.id}" class="test-answer-label ffs">${answer.name}</label>
             </div>
             <!--</#list>-->
-            <input class="test-answers-input" type="submit" value="Ответить">
         </form>
     </div>
     <div class="test-action-block">
@@ -68,6 +68,9 @@
         </form>
         <form action="/end" method="post">
             <input type="submit" value="Завершить тест">
+        </form>
+        <form action="">
+            <input form="test-answer" class="test-answers-input" type="submit" value="Ответить">
         </form>
     </div>
 </section>
