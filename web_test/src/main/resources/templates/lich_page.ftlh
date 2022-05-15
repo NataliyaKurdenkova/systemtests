@@ -10,22 +10,22 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
     </style>
     <!-- <link rel="stylesheet" href="../static/css/normalize.css">-->
-       <link rel="stylesheet" href="css/normalize.css">
+       <link rel="stylesheet" href="../css/normalize.css">
     <!--<link rel="stylesheet" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
-        <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--<link rel="stylesheet" href="../static/css/main.min.css">-->
-        <link rel="stylesheet" href="css/main.min.css">
+        <link rel="stylesheet" href="../css/main.min.css">
 </head>
 <body>
 <header>
     <div class="header-container">
         <div class="header-rows header-rows-1">
             <div class="header-logo">
-                <img class="header-logo-img" src="img/logo.svg" alt="logo">
+                <img class="header-logo-img" src="../img/logo.svg" alt="logo">
             </div>
             <div class="header-title">
-                <img class="header-title-image" src="img/Title.png" alt="title-img">
-                <img class="right-img" src="img/right-img.svg" alt="img">
+                <img class="header-title-image" src="../img/Title.png" alt="title-img">
+                <img class="right-img" src="../img/right-img.svg" alt="img">
             </div>
         </div>
         <div class="header-rows header-rows-2">
@@ -39,6 +39,7 @@
                     <input class="header-columns-menu-input" type="submit" value="Пройденные тесты">
                 </form>
             </div>
+
             <div class="header-columns-output">
                 <p class="header-columns-output-p" id="FIO-output"> ${name}</p>
             </div>
@@ -79,7 +80,7 @@
         <div class="private-table-estimation content-styles"><p>${test.passball}</p></div>
         <div class="private-table-time content-styles"><p>${test.time}</p></div>
         <div class="private-table-action">
-            <form action="/pass_test/${test.idtest}" method="post">
+            <form action="/start/${test.idtest}" method="get">
                 <input class="private-table-content-button" type="submit" value="Начать">
             </form>
         </div>

@@ -7,5 +7,6 @@ import ru.webtest.springbootweb_test.entitys.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {
     Role findByName(String theRoleName);
+    Role findByIdrole(int nomer);
 
 }

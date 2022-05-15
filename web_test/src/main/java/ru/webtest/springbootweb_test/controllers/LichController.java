@@ -4,12 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.webtest.springbootweb_test.entitys.Role;
+import ru.webtest.springbootweb_test.repositories.RoleRepository;
 import ru.webtest.springbootweb_test.repositories.TestsRepository;
 import ru.webtest.springbootweb_test.repositories.UsersRepository;
 import ru.webtest.springbootweb_test.entitys.Test;
 import ru.webtest.springbootweb_test.security.details.UserDetailsServiceImpl;
 import ru.webtest.springbootweb_test.service.TestService;
-import ru.webtest.springbootweb_test.service.UsersService;
 
 
 import java.util.List;
@@ -22,8 +23,9 @@ public class LichController {
     private TestService testService;
 
 
+
     @Autowired
-    private UsersRepository usersRepository;
+    private RoleRepository roleRepository;
     @Autowired
     private TestsRepository testsRepository;
 
@@ -36,8 +38,8 @@ public class LichController {
         List<Test> tests = testsRepository.findAll();
 
         model.addAttribute("tests", tests);
+
         return "lich_page";
     }
-
 
 }

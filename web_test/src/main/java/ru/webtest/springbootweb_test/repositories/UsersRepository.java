@@ -10,4 +10,5 @@ public interface UsersRepository extends JpaRepository<User,Long> {
 
     User findByLogin(String login);//для авторизации для поиска по логину(почте)
 
+    User findById(long iduser);
 }

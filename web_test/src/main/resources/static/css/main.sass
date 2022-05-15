@@ -12,6 +12,18 @@ body
   --scrollbarWidth: 16px
   --scrollbarBorder: 0 solid var(--scrollbarBgColor)
   --scrollbarBorderRadius: calc(var(--scrollbarWidth) / 4)
+
+
+@function calcFluidFontSize($f-min, $f-max, $v-min, $v-max, $units: px)
+  $k: ($f-max - $f-min)/($v-max - $v-min)
+  $b: $f-min - $k * $v-min
+  $b: $b + $units
+  @return calc(#{$k} * 100vw + #{$b})
+
+.ffs
+  font-size: calcFluidFontSize(16, 28, 1024, 2652, px)
+
+
 .scroll-container
   scrollbar-width: var(--scrollbarWidth)
   scrollbar-color: var(--scrollbarThumbColor) var(--scrollbarBgColor)
@@ -32,6 +44,8 @@ body
 
 .footer
   background-color: #cdeaee
+  margin-top: 10px
+
 .grid
   display: grid
   place-items: center
@@ -39,16 +53,19 @@ body
 .authorize
   width: 100vw
   height: 100vh
-  background: rgb(235,244,243)
-  background: radial-gradient(circle, rgba(235,244,243,1) 10%, rgba(93,200,214,1) 100%)
+  background: rgb(235, 244, 243)
+  background: radial-gradient(circle, rgba(235, 244, 243, 1) 10%, rgba(93, 200, 214, 1) 100%)
+
   &-container
     width: 45vw
+
   &-form
     width: 100%
     margin-bottom: 10px
-    &-span
 
+    &-span
       margin-bottom: 10px
+
       span
         font-style: italic
         font-weight: 500
@@ -57,21 +74,27 @@ body
     &-logo
       justify-content: center
       margin-bottom: 25px
+
       .logo-img
         width: 20%
+
       .logo-title
         width: 75%
+
     &-input
       width: 70%
       margin: 1% 1%
+
       .input-login, .input-password, .input-name, .input-surname, .input-middle-name
         width: 100%
         height: 35px
         text-align: center
         border-radius: 15px
         border: 2px solid #1da1f2
+
         &:invalid
           border: 2px solid red
+
       .password-control
         position: relative
         bottom: 30px
@@ -80,19 +103,21 @@ body
         width: 20px
         height: 20px
         background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat
+
       .password-control.view
         background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat
 
 
     &-recovery, &-registration
       .iksweb
-        background: none
+      background: none
       margin-bottom: 10px
+
     &-wrapper
+      grid-template-columns: auto
+
       .wrapper
         grid-template-columns: 1fr 1fr 1fr 1fr
-
-
 
 .private
   &-title
@@ -130,7 +155,7 @@ body
 
   &-table
     display: grid
-    grid-template-columns: 0.5fr 3fr 1fr 1fr 0.8fr
+    grid-template-columns: 0.7fr 2.7fr 1fr 0.8fr 1fr
     background-color: #5dc8d6
 
     &-title
@@ -164,10 +189,97 @@ body
     &-action
       display: grid
       place-items: center
+      grid-template-columns: 1fr
 
       form
+        display: grid
         width: 90%
         height: 90%
+
+        button
+          i
+            font-size: 24px
+
+.statistic
+  &-title
+    display: grid
+    grid-template-columns: 0.65fr 2fr 2fr 0.65fr
+
+    &-p
+      display: grid
+      grid-area: 1 / 2 / 2 / 4
+      font-size: 30px
+      text-align: center
+
+    &-form
+      display: grid
+      grid-area: 1 / 4 / 2 / 5
+      place-items: center
+
+      &-button
+        display: inline-block
+        width: 80%
+        height: 50%
+        cursor: pointer
+        font-size: 20px
+        text-decoration: none
+        color: #FFF
+        background: #0095d9
+        border-radius: 5px
+        border: 0 solid #354251
+
+        &:hover
+          background: #FFF
+          color: #0095d9
+          border: 1px solid #0095d9
+          transition: all 0.2s ease
+
+  &-table
+    display: grid
+    grid-template-columns: 0.7fr 2.7fr 1fr 1fr 1fr
+    background-color: #5dc8d6
+
+    &-title
+      place-items: stretch
+
+    &-content
+      background-color: #ebf4f3
+
+      &:nth-child(2n)
+        background-color: #cdeaee
+
+      &-button
+        display: inline-block
+        width: 100%
+        height: 100%
+        cursor: pointer
+        font-size: 19px
+        text-decoration: none
+        color: #FFF
+        background: #0095d9
+        border-radius: 5px
+        border: 0 solid #354251
+        padding: 1px 3px
+
+        &:hover
+          background: #FFF
+          color: #0095d9
+          border: 1px solid #0095d9
+          transition: all 0.2s ease
+
+    &-action
+      display: grid
+      place-items: center
+      grid-template-columns: 1fr 1fr 1fr
+
+      form
+        display: grid
+        width: 90%
+        height: 90%
+
+        button
+          i
+            font-size: 24px
 
 .table-styles
   font-size: 20px
@@ -178,7 +290,88 @@ body
 
 .test
   &-container
+    grid-template-rows: min-content 45px auto 70px
     display: grid
+
+  &-title
+    display: grid
+    grid-template-columns: 0.65fr 2fr 2fr 0.65fr
+
+    &-p
+      display: grid
+      grid-area: 1 / 2 / 2 / 4
+      font-size: 30px
+      text-align: center
+
+    &-form
+      display: grid
+      grid-area: 1 / 4 / 2 / 5
+      place-items: center
+
+      &-button
+        display: inline-block
+        width: 80%
+        height: 50%
+        cursor: pointer
+        font-size: 20px
+        text-decoration: none
+        color: #FFF
+        background: #0095d9
+        border-radius: 5px
+        border: 0 solid #354251
+
+        &:hover
+          background: #FFF
+          color: #0095d9
+          border: 1px solid #0095d9
+          transition: all 0.2s ease
+
+  &-table
+    display: grid
+    grid-template-columns: 0.7fr 2.7fr 1fr 1fr 1fr 0.8fr 1fr
+    background-color: #5dc8d6
+
+    &-title
+      place-items: stretch
+
+    &-content
+      background-color: #ebf4f3
+
+      &:nth-child(2n)
+        background-color: #cdeaee
+
+      &-button
+        display: inline-block
+        width: 100%
+        height: 100%
+        cursor: pointer
+        font-size: 19px
+        text-decoration: none
+        color: #FFF
+        background: #0095d9
+        border-radius: 5px
+        border: 0 solid #354251
+        padding: 1px 3px
+
+        &:hover
+          background: #FFF
+          color: #0095d9
+          border: 1px solid #0095d9
+          transition: all 0.2s ease
+
+    &-action
+      display: grid
+      place-items: center
+      grid-template-columns: 1fr 1fr 1fr
+
+      form
+        display: grid
+        width: 90%
+        height: 90%
+
+        button
+          i
+            font-size: 24px
 
   &-question
     width: 85%
@@ -192,14 +385,17 @@ body
     word-wrap: break-word
     word-break: break-all
     margin: 5px 0
+    padding: 25px
 
     &-title
       justify-self: center
       font-size: 24px
       font-weight: 600
       margin: 10px 0
+
       &-start
         justify-self: center
+
         p
           text-align: center
 
@@ -210,22 +406,30 @@ body
     &-block
       display: grid
       grid-template-rows: auto
-      grid-template-columns: 2fr 1fr 2fr
+      grid-template-columns: 1fr 250px 210px 1fr
       place-items: center
-      margin-bottom: 15px
+      margin: 20px 0 15px 0
+
+      &.test-end
+        grid-template-columns: 1fr 250px 1fr
 
       form
         display: grid
-        width: 150px
+        min-width: 150px
         height: 50px
         background-color: #1da1f2
         border-radius: 10px
+        outline: none
+        justify-self: center
 
         input
           background-color: #1da1f2
           border-radius: 10px
           font-size: 18px
           font-weight: 600
+          outline: none
+          color: #fff
+          border-style: none
 
           &:hover
             background-color: #5dc8d6
@@ -233,30 +437,31 @@ body
         &:first-child
           display: grid
           justify-self: end
-
         &:last-child
           display: grid
           justify-self: start
+
       &-start
         grid-template-columns: 1fr
+
         &-form
           justify-self: center !important
 
   &-answer
     cursor: pointer
-    width: 70%
-    height: 70%
+    width: 95%
+    height: 100%
     border-radius: 30px
 
     &-label
       display: inline-grid
-      width: 100%
-      height: 100%
+      width: 90%
+      height: 85%
       cursor: pointer
       background-color: #5dc8d6
       border-radius: 30px
-      text-align: center
-      vertical-align: middle
+      place-items: center
+      padding: 15px
 
       &:hover
         background-color: #cdeaee
@@ -272,87 +477,81 @@ body
       z-index: -1
       opacity: 0
 
+      & + label
+        &::before
+          content: ''
+          display: inline-block
+          position: absolute
+          left: 2em
+          width: 2em
+          height: 2em
+          border: 1px solid #adb5bd
+          border-radius: 0.25em
+          margin-right: 0.5em
+          background-repeat: no-repeat
+          background-position: center center
+          background-size: 50% 50%
+
+      &:checked + label::before
+        border-color: #0095d9
+        background-color: #0095d9
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e")
+
       &:checked
         ~ .test-answer-label
           background-color: #0095d9
 
+    input[type="radio"]
+      & + label
+        &::before
+          border-radius: 50%
+
   &-answers
+    &-container
+      height: 100%
+      margin-bottom: 20px
     &-block
       display: grid
-      grid-template-rows: minmax( min-content, 100px ) minmax( min-content, 100px )
-      grid-template-columns: auto auto
-      grid-auto-rows: 90px
-      grid-auto-columns: 120px
-      margin-bottom: 10px
+      width: 100%
+      height: 100%
+      grid-template-columns: 1fr
+      grid-template-rows: repeat(auto-fit, minmax(60px, max-content))
+      grid-row-gap: 30px
       place-items: center
 
     &-title
       justify-self: center
       font-size: 24px
       font-weight: 600
+
       &-start
         justify-content: center
+
         p
           text-align: center
 
-.treeCSS,
-.treeCSS ul,
-.treeCSS li
-  margin: 0
-  padding: 0
-  line-height: 1
-  list-style: none
+    &-input
+      display: grid
+      width: 150px
+      height: 50px
+      background-color: #1da1f2
+      border-radius: 10px
+      outline: none
+      font-size: 18px
+      font-weight: 600
+      color: #fff
+      border-style: none
 
-.treeCSS ul
-  margin: 0 0 0 .5em /* вести линию вниз где-то с полбуквы родителя */
-
-.treeCSS > li:not(:only-child),
-.treeCSS li li
-  position: relative
-  padding: .2em 0 0 1.2em /* отступ до текста; для раскрывающегося списка в ряде случаев (в Хроме есть баг) padding-top (.2em) лучше указывать в px */
-
-.treeCSS li:not(:last-child)
-  border-left: 1px solid #ccc /* толщина, цвет и стиль (вместо сплошной пунктирная или точечная) вертикальной линии */
-
-.treeCSS li li:before,
-.treeCSS > li:not(:only-child):before  /* горизонтальная линия */
-  content: ""
-  position: absolute
-  top: 0
-  left: 0
-  width: 1.1em /* не более отступа до текста (1.2em) */
-  height: .7em /* начинается приблизительно с половины высоты буквы (.5em + .2em) */
-  border-bottom: 1px solid #ccc
-
-.treeCSS li:last-child:before  /* вертикальная линия последнего пункта в каждом списке */
-  width: calc(1.1em - 1px) /* для перфекционистов */
-  border-left: 1px solid #ccc
-
-.treeCSS .drop
-  position: absolute
-  left: -.5em
-  top: .4em /* .2em (font-size: 80%;) + .2em (padding из .treeCSS li li) */
-  width: .9em
-  height: .9em
-  line-height: .9em
-  text-align: center
-  background: #fff
-  font-size: 80%
-  cursor: pointer
-
-.treeCSS li:last-child > .drop
-  margin-left: 1px
-
-.treeCSS .drop + ul
-  display: none
-
-.treeCSS .dropM + ul
-  display: block
+      &:hover
+        background-color: #5dc8d6
 
 .newtest
   &-container
+    grid-template-rows: 80px auto 45px
+    gap: 5px
     justify-items: center
     align-items: start
+
   &-question
     grid-template-rows: auto
     grid-template-columns: 1fr 4fr
@@ -361,11 +560,13 @@ body
     background-color: #6bc6d8
     line-height: 30px
     margin: 5px 0
+
     &-input
       width: 95%
       height: 70%
       border-radius: 7px
       border: 2px solid #1da1f2
+
     p
       font-size: 26px
       font-weight: 600
@@ -378,6 +579,7 @@ body
       font-weight: 600
       margin: 10px 0
       background-color: #88d0e7
+
       p
         text-align: center
         margin: 0 5px
@@ -388,17 +590,21 @@ body
       width: 100%
 
   &-action
-    &-block
-      display: grid
+    &-container
       grid-template-rows: auto
-      grid-template-columns: 2fr 1fr 2fr
-      place-items: center
-      margin-bottom: 15px
+      grid-template-columns: 1fr 1fr
+      width: 100%
+
+    &-block
+      grid-template-rows: auto
+      grid-template-columns: 1fr 1fr
+      gap: 2%
+      width: 100%
 
       form
         display: grid
-        width: 150px
-        height: 50px
+        width: 70%
+        height: 40px
         background-color: #1da1f2
         border-radius: 10px
 
@@ -407,6 +613,9 @@ body
           border-radius: 10px
           font-size: 18px
           font-weight: 600
+          color: #FFF
+          outline: none
+          border-style: none
 
           &:hover
             background-color: #5dc8d6
@@ -418,16 +627,81 @@ body
         &:last-child
           display: grid
           justify-self: start
+
       &-start
         grid-template-columns: 1fr
+
         &-form
           justify-self: center !important
 
   &-answer
+    grid-template-rows: 1fr
+    grid-template-columns: 35px auto
     cursor: pointer
-    width: 70%
+    width: 100%
     height: 70%
     border-radius: 30px
+
+    textarea
+      width: 100%
+      border-radius: 8px
+      border-color: #0095d9
+
+      &:focus-visible
+        border: 1px solid #88d0e7
+        outline: none
+
+    &-title
+      grid-template-rows: 25px auto
+      grid-template-columns: auto
+      width: 100%
+      height: 100%
+
+      label
+        font-size: 22px
+        margin-bottom: 8px
+
+      textarea
+        width: 80%
+        height: 37px
+        border-radius: 8px
+        border-color: #0095d9
+
+        &:focus-visible
+          border: 1px solid #88d0e7
+          outline: none
+
+    &-type
+      grid-template-rows: 25px
+      grid-template-columns: 1fr 2fr
+      width: 60%
+      height: 100%
+      line-height: 25px
+
+      label
+        font-size: 22px
+        height: 100%
+
+      select
+        height: 100%
+        width: 100%
+        border-radius: 8px
+        border-color: #0095d9
+
+        &:focus-visible
+          border: 1px solid #88d0e7
+          outline: none
+
+    &-add
+      width: 80%
+      place-items: end
+
+    &-container
+      grid-template-columns: auto
+      grid-auto-rows: auto
+      width: 80%
+      height: 100%
+      row-gap: 1vw
 
     &-label
       display: inline-grid
@@ -449,41 +723,111 @@ body
         background-color: #cdeaee
 
     input[type="checkbox"], input[type="radio"]
-      position: absolute
-      z-index: -1
-      opacity: 0
 
       &:checked
-        ~ .test-answer-label
+        ~ .newtest-answer-label
           background-color: #0095d9
 
   &-answers
     &-container
       grid-template-rows: 1fr
-      grid-template-columns: 1fr 2.5fr
-      width: 100%
-      column-gap: 1vw
-    &-block
+      grid-template-columns: 1fr 3.5fr
       width: 100%
       height: 100%
+      column-gap: 0.75vw
+
+    &-block
+      margin: 5px 10px
+      width: 100%
+      height: 55vh
       grid-template-columns: auto
-      grid-auto-rows: 90px
-      grid-auto-columns: 120px
+      grid-auto-rows: 1fr
+      grid-auto-columns: 1fr
       margin-bottom: 10px
       justify-items: start
       align-items: start
       overflow-x: auto
       overflow-y: auto
+
+    &-form
+      grid-template-columns: auto
+      grid-template-rows: 75px 25px auto 50px
+      row-gap: 10px
+      height: 100%
+      width: 100%
+
+      button
+        background-color: #1da1f2
+        border-radius: 10px
+        font-size: 18px
+        font-weight: 600
+        color: #FFF
+        height: 40px
+        outline: none
+        border-style: none
+
+        &:hover
+          background-color: #5dc8d6
+
     &-title
       height: 35px
       font-size: 24px
       font-weight: 600
+
       &-start
         justify-content: center
+
         p
           text-align: center
 
+.result
+  &-title
+    justify-self: center
+    font-size: 22px
+    font-weight: 500
+    margin: 10px 0
 
+    p
+      text-align: center
+
+  &-action
+    &-block
+      display: grid
+      grid-template-rows: auto
+      grid-template-columns: 1fr 1fr
+      place-items: center
+      margin-bottom: 15px
+
+      form
+        display: grid
+        width: auto
+        height: 50px
+        background-color: #1da1f2
+        border-radius: 10px
+        outline: none
+        justify-self: center
+
+        input
+          background-color: #1da1f2
+          border-radius: 10px
+          font-size: 18px
+          font-weight: 600
+          outline: none
+          color: #fff
+          border-style: none
+
+          &:hover
+            background-color: #5dc8d6
+
+        &:first-child
+          display: grid
+          justify-self: end
+          margin-right: 25px
+
+        &:last-child
+          display: grid
+          justify-self: start
+          margin-left: 25px
 
 .main-container
   display: grid
@@ -506,7 +850,22 @@ body
 
     &-2
       grid-template-rows: auto
-      grid-template-columns: 1fr 1fr 2fr 100px
+      grid-template-columns: min-content min-content 1fr min-content
+      grid-auto-columns: min-content
+      background-color: #ebf4f3
+      place-items: center
+
+    &-test
+      grid-template-rows: auto
+      grid-template-columns: min-content min-content 1fr min-content
+      grid-auto-columns: min-content
+      background-color: #ebf4f3
+      place-items: center
+
+    &-admin
+      grid-template-rows: auto
+      grid-template-columns: min-content min-content min-content 1fr min-content
+      grid-column-gap: 5px
       background-color: #ebf4f3
       place-items: center
 
@@ -515,6 +874,7 @@ body
       grid-template-columns: 1fr 3fr 100px
       background-color: #ebf4f3
       place-items: center
+
     &-4
       grid-template-rows: auto
       grid-template-columns: 4fr 100px
@@ -820,3 +1180,66 @@ body
 .wrapper .google:hover .tooltip::before
   background: #000
   color: #ffffff
+
+.treeCSS,
+.treeCSS ul,
+.treeCSS li
+  margin: 0
+  padding: 0
+  line-height: 1
+  list-style: none
+
+.treeCSS ul
+  margin: 0 0 0 .5em
+/* вести линию вниз где-то с полбуквы родителя */
+
+.treeCSS > li:not(:only-child),
+.treeCSS li li
+  position: relative
+  padding: .2em 0 0 1.2em
+/* отступ до текста; для раскрывающегося списка в ряде случаев (в Хроме есть баг) padding-top (.2em) лучше указывать в px */
+
+.treeCSS li:not(:last-child)
+  border-left: 1px solid #ccc
+/* толщина, цвет и стиль (вместо сплошной пунктирная или точечная) вертикальной линии */
+
+.treeCSS li li:before,
+.treeCSS > li:not(:only-child):before
+  /* горизонтальная линия */
+  content: ""
+  position: absolute
+  top: 0
+  left: 0
+  width: 1.1em
+  /* не более отступа до текста (1.2em) */
+  height: .7em
+  /* начинается приблизительно с половины высоты буквы (.5em + .2em) */
+  border-bottom: 1px solid #ccc
+
+.treeCSS li:last-child:before
+  /* вертикальная линия последнего пункта в каждом списке */
+  width: calc(1.1em - 1px)
+  /* для перфекционистов */
+  border-left: 1px solid #ccc
+
+.treeCSS .drop
+  position: absolute
+  left: -.5em
+  top: .4em
+  /* .2em (font-size: 80%;) + .2em (padding из .treeCSS li li) */
+  width: .9em
+  height: .9em
+  line-height: .9em
+  text-align: center
+  background: #fff
+  font-size: 80%
+  cursor: pointer
+
+.treeCSS li:last-child > .drop
+  margin-left: 1px
+
+.treeCSS .drop + ul
+  display: none
+
+.treeCSS .dropM + ul
+  display: block

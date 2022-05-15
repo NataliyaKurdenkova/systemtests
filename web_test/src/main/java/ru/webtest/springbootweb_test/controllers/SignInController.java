@@ -142,6 +142,12 @@ public class SignInController {
             ex.printStackTrace();
         }
     }
+
+    @GetMapping("/onHome")
+    public String onHome(){
+        return "redirect:/main";
+    }
+
 }
 
 

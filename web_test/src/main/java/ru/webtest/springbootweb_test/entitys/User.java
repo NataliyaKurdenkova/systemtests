@@ -29,6 +29,11 @@ public class User {
     private String password;
     @Transient
     private String passwordConfirm;
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
     //роли
     @ManyToMany
     @JoinTable(name = "account_role", joinColumns = @JoinColumn(name = "iduser"),
@@ -48,4 +53,13 @@ public class User {
         this.name = name;
 
     }
+
+    public String getRolesUser(){
+        //если роль одна, то пока так, потом переделать
+        String roleuser=null;
+        for(Role r:roles){
+            roleuser=r.getName();}
+        return roleuser;
+    }
+
 }

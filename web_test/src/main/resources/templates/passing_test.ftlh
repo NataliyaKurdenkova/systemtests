@@ -5,33 +5,28 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Test</title>
+    <title>Personal Cabinet</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
     </style>
-    <!-- <link rel="stylesheet" href="../static/css/normalize.css">-->
-    <link rel="stylesheet" href="css/normalize.css">
-    <!--<link rel="stylesheet" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
-    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--<link rel="stylesheet" href="../static/css/main.min.css">-->
-    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/main.min.css">
 </head>
 
 <body>
-
 <header>
-
     <div class="header-container">
         <div class="header-rows header-rows-1">
             <div class="header-logo">
-                <img class="header-logo-img" src="img/logo.svg" alt="logo">
+                <img class="header-logo-img" src="../img/logo.svg" alt="logo">
             </div>
             <div class="header-title">
-                <img class="header-title-image" src="img/Title.png" alt="title-img">
-                <img class="right-img" src="img/right-img.svg" alt="img">
+                <img class="header-title-image" src="../img/Title.png" alt="title-img">
+                <img class="right-img" src="../img/right-img.svg" alt="img">
             </div>
         </div>
-      <!--   <div class="header-rows header-rows-3">
+        <div class="header-rows header-rows-3">
             <div class="header-columns-time">
                 <p>time</p>
             </div>
@@ -39,43 +34,47 @@
                 <p class="header-columns-output-p" id="FIO-output">${name}</p>
             </div>
             <div class="header-columns-exit">
-                <form action="/exit" method="post">
+                <form action="/" method="post">
                     <input class="header-columns-exit-input" type="submit" value="Выход">
                 </form>
             </div>
         </div>
-    </div>-->
+    </div>
 </header>
-
 <section class="test-container">
     <div class="test-question-container">
-
+        <!-- <p class="test-question-id">${idtest}</p>-->
         <p class="test-question-title">Вопрос:</p>
-        <p class="test-question">${question}</p>
+        <p class="test-question ffs">${question}</p>
     </div>
     <div class="test-answers-title">Варианты ответов:</div>
-    <div class="test-answers-block">
-      <#list answers as answer>
-        <div class="test-answer">
-
-           <input  class="test-answer-checkbox" type="radio" name="answer" value="${answer.name}">
-            <label  class="test-answer-label"><span>${answer.name}</span></label>
+    <div class="test-answers-container grid">
+        <form id="test-answer" class="test-answers-block" action="/answer/${idtest}" method="get" modelAttribute="answeruser">
+            <#list answers as answer>
+            <div class="test-answer grid">
+                <input id="${answer.idanswer}" class="test-answer-checkbox" type="${answer.type}" name="id" value="${answer.idanswer}">
+                <label for="${answer.idanswer}" class="test-answer-label ffs">${answer.name}</label>
+            </div>
+            </#list>
+        </form>
         </div>
-        </#list>
-    </div>
+            <!--<input class="test-answers-input" type="submit" value="Ответить">-->
+
     <div class="test-action-block">
-        <form action="/back/${idtest}" method="post">
+        <form action="/back/${idtest}" method="get">
             <input type="submit" value="Назад">
         </form>
-        <form action="/skip/${idtest}" method="post">
+        <form action="/skip/${idtest}" method="get">
             <input type="submit" value="Пропустить">
         </form>
-        <form action="/pass_test/${idtest}/answer" method="post">
-            <input type="submit" value="Ответить">
+        <form action="/exit" method="get">
+            <input type="submit" value="Завершить тест">
+        </form>
+        <form action="">
+            <input form="test-answer" class="test-answers-input" type="submit" value="Ответить">
         </form>
     </div>
 </section>
-<!--
 <footer class="footer">
     <div class="title-column title-column-social">
         <ul class="wrapper">
@@ -101,6 +100,6 @@
             </li>
         </ul>
     </div>
-</footer>-->
+</footer>
 </body>
 </html>

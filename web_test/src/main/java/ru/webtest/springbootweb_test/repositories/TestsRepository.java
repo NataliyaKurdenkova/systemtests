@@ -6,4 +6,6 @@ import ru.webtest.springbootweb_test.entitys.Test;
 
 @Repository
 public interface TestsRepository extends JpaRepository<Test,Long> {
+    Test findByIdtest(long idtest);
+
 }

@@ -22,7 +22,11 @@ public class Answer {
     private int correct;
 
     //к какому вопросу принадлежит
-    private int parent;
+    private long parent;
+
+    //тип чекбокс или радио или свой
+    private String type="radio";
+
 
 
 }
