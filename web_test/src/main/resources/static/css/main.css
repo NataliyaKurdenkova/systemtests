@@ -38,6 +38,16 @@ body {
   background-color: #cdeaee;
   margin-top: 10px; }
 
+.fa.fa-pencil-square-o {
+  font-size: 39px; }
+
+.fa.fa-unlock-alt {
+  position: relative;
+  z-index: 2;
+  left: -35px;
+  top: -13px;
+  font-size: 16px; }
+
 .grid {
   display: grid;
   place-items: center; }
@@ -299,8 +309,16 @@ body {
       display: grid;
       width: 90%;
       height: 90%; }
-      .test-table-action form button i {
-        font-size: 24px; }
+      .test-table-action form button {
+        background-color: #1da1f2;
+        border-radius: 10px;
+        outline: none;
+        border-style: none; }
+        .test-table-action form button:hover {
+          background-color: #5dc8d6; }
+        .test-table-action form button i {
+          font-size: 29px;
+          color: #FFF; }
 .test-question {
   width: 85%;
   min-height: 50px;
