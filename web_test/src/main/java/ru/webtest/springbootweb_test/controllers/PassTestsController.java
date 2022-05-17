@@ -20,7 +20,7 @@ public class PassTestsController {
     public String getPassedTestsPage(Model model){
 //        List<Test> tests1 =testsRepository.findAll();
 //        model.addAttribute("tests1",tests1);
-        return "tests_pass";
+        return "tests_pass"; // "/lich_page_pass"
 
     }
 

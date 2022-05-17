@@ -64,26 +64,28 @@
 
       </div>-->
     <div class="private-title">
-        <p class="private-title-p">Пройденные тесты:</p> /// !!!!!!!!!!
+        <p class="private-title-p">Пройденные тесты:</p>
     </div>
     <div class="private-table table-styles">
         <div class="private-table-n table-styles"><p>№</p></div>
         <div class="private-table-title table-styles"><p>Название теста</p></div>
-        <div class="private-table-estimation table-styles"><p>Полученный балл</p></div> /// !!!!!!!!!!
-        <div class="private-table-time table-styles"><p>Время(мин)</p></div>
-        <div class="private-table-action table-styles"></div>
+        <div class="private-table-n table-styles"><p>№ вопроса</p></div>
+        <div class="private-table-title table-styles"><p></p>Вопрос</div>
+        <div class="private-table-n table-styles"><p>№ выбранного ответа</p></div>
+       // <p>правильный или нет/p></div>
+
+
     </div>
     <#list tests as test>
         <div class="private-table private-table-content">
             <div class="private-table-n content-styles"><p>${test.idtest}</p></div>
             <div class="private-table-title "><p>${test.name}</p></div>
-            <div class="private-table-estimation content-styles"><p>${attempt.balls}</p></div> /// !!!!!
-            <div class="private-table-time content-styles"><p>${attempt.timeTest}</p></div> /// !!!!
-            <div class="private-table-action">
-                <form action="/start/${test.idtest}" method="get">
-                    <input class="private-table-content-button" type="submit" value="Подробнее"> /// !!!!!!
-                </form>
-            </div>
+            <div class="private-table-n content-styles"><p>${question.idque}</p></div> /// вопрос
+            <div class="private-table-title "><p>${question.question}</p></div> /// вопрос
+            <div class="private-table-n content-styles"><p>${answerUser.idanswer}</p></div> // выбранный ответ
+            // <p>${answerUser.correct}</p></div> // правильный или нет
+
+
         </div>
     </#list>
 

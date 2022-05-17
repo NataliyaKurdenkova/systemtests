@@ -51,7 +51,6 @@ public class TestService {
 
     //для поиска от ответов по номеру вопроса
     public Answer[] getAnswerByParent_Question(long parent) {
-        //return answerRepository.findAnswerByParent(parent);
         return answerRepository.findAnswerByParent(parent);
 
     }

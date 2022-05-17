@@ -293,34 +293,39 @@ public class TestsController {
     }
 
 
-//
-//
-//    ///////// вопросы + ответы
-//    @GetMapping("/tests")
-//    public String getPassedTestsPage(Model model) {
-//        List<Test> tests = testService.getAllTests();
-//        model.addAttribute("tests", tests);
-//        return "tests_pass";
-//
-//    }
-//
-//    @GetMapping("/lich_page_pass/{idtest}")
-//    public String getQuestionsAndAnswers(@PathVariable("idtest") int idtest, Model model) {
-//        String login = usersService.getCurrentUsername();
-//        model.addAttribute("name", login);
-//        Question[] question = testService.getQuestionByParent_Test(idtest);
-//        int nomer = question[i].getIdque().intValue();
-//        System.out.println("nomer voprosa" + nomer);
-//        System.out.println(question[i].getQuestion());
-//        System.out.println("правильный ответ для вопроса №" + question[i].getIdque());
-//
-//        Answer [] correctAnswer = testService.getAnswerByParent_Question(idtest);
-//
-//        model.addAttribute("idtest", idtest);
-//        model.addAttribute("question", question[i].getQuestion());
-//        model.addAttribute("answers", question[i].correctAnswer());
-//        return "tests_pass";
-//    }
+
+    // страница с пройденными тестами
+    @GetMapping("/tests")
+    public String getPassedTestsPage(Model model) {
+        login = usersService.getCurrentUsername();
+        model.addAttribute("name", login);
+        List<Test> tests = testService.getAllTests();
+        model.addAttribute("tests", tests);
+        return "tests_pass"; // "/lich_page_pass"
+    }
+
+// страница пройденного теста
+    @GetMapping("/lich_page_pass_results/{idtest}")
+    public String getTestResults(Model model) {
+        login = usersService.getCurrentUsername();
+        model.addAttribute("name", login);
+
+        List<Test> tests = testService.getAllTests();
+        model.addAttribute("tests", tests);
+
+        List<Question> questions = testService.getAllQuestions();
+        model.addAttribute("questions", questions);
+        // передать сюда список ответов юзера
+        Collection<AnswerUser> answerUsers = attempt.getAnswerUsers();
+        model.addAttribute("answers", answerUsers);
+
+
+        return "..." ;
+    }
+
+
+
+
 
 
 
