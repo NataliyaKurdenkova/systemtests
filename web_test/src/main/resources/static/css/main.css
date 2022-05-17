@@ -277,7 +277,7 @@ body {
 .test-table {
   display: grid;
   grid-template-columns: 0.7fr 2.7fr 1fr 1fr 1fr 0.8fr 1fr;
-  background-color: #5dc8d6; }
+  background-color: #cdeaee; }
   .test-table-title {
     place-items: stretch; }
   .test-table-content {

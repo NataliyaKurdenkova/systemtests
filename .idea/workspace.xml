@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="432622e3-f961-427a-90c6-d9357f683315" name="Changes" comment="" />
+    <list default="true" id="432622e3-f961-427a-90c6-d9357f683315" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/511f067411d8e7e873ac459c2c0b9b4308cc9652" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/4/949e2b182c62afbd9be97c692c93104c5502dfae" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/systemtests.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/systemtests.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_test/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_test/src/main/resources/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_test/src/main/resources/static/css/main.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_test/src/main/resources/static/css/main.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_test/src/main/resources/static/css/main.sass" beforeDir="false" afterPath="$PROJECT_DIR$/web_test/src/main/resources/static/css/main.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_test/src/main/resources/templates/statistic.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_test/src/main/resources/templates/statistic.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,12 +48,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/systemtests",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\systemtests\web_test\src\main\resources\templates" />
@@ -91,6 +109,8 @@
       <workItem from="1652814123603" duration="121000" />
       <workItem from="1652814264822" duration="18000" />
       <workItem from="1652814422239" duration="29000" />
+      <workItem from="1652815750568" duration="148000" />
+      <workItem from="1652815921422" duration="1054000" />
     </task>
     <servers />
   </component>

@@ -17,8 +17,6 @@ _
 /web_test/src/main/resources/templates/main.ftlh,2\2\22018f6c71d198d5cb6d7b9607df80f9ac541a9d
 a
 1web_test/src/main/resources/templates/signIn.ftlh,f\0\f04bf784c3f18fb6694d6794963c14d911a798ca
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 l
 <web_test/src/main/resources/templates/recovery_password.html,0\1\0123c014b9c3c52c8d7a947c324219db21a3d451
 l
@@ -61,9 +59,11 @@ b
 2web_test/src/main/resources/templates/newtest.ftlh,d\e\de4eb73f1de87a62a14cc73026398d84a720d7da
 b
 2web_test/src/main/resources/templates/newtest.html,c\5\c5ebc9e2d4f0834fb1932ee8455e7511d7b2b5bb
+e
+5web_test/src/main/resources/templates/users_page.html,7\2\72dc8782d4b1b0588178372d9e82fb5a0280f40c
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 d
 4web_test/src/main/resources/templates/statistic.html,5\1\511f067411d8e7e873ac459c2c0b9b4308cc9652
 `
 0web_test/src/main/resources/static/css/main.sass,9\4\949e2b182c62afbd9be97c692c93104c5502dfae
-e
-5web_test/src/main/resources/templates/users_page.html,7\2\72dc8782d4b1b0588178372d9e82fb5a0280f40c
