@@ -8,7 +8,9 @@ import ru.webtest.springbootweb_test.repositories.QuestionRepository;
 import ru.webtest.springbootweb_test.repositories.TestsRepository;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,13 +23,6 @@ public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idtest;
-
-    @ManyToMany
-    @JoinTable(name = "account_x_tests",
-    joinColumns = @JoinColumn(name = "idtest"),
-    inverseJoinColumns = @JoinColumn(name = "iduser"))
-    private List<User> users;
-
     //название теста
     private String name;
     //проходной балл
@@ -38,7 +33,9 @@ public class Test {
     private int needque;
     //время на тест
     private int time;
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinColumn(name = "parent")
+    private Collection<Question> questions;
+
 
 }
-
-

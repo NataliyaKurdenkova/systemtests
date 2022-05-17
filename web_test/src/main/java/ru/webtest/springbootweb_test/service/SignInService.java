@@ -1,14 +1,10 @@
 package ru.webtest.springbootweb_test.service;
 
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 import org.springframework.stereotype.Service;
-import sun.rmi.transport.Transport;
-
-import javax.jms.Message;
-import javax.jms.Session;
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 @Service

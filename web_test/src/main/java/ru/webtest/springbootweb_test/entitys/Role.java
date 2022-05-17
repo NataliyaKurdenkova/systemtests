@@ -16,23 +16,6 @@ public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idrole;
-
-    public Long getIdrole() {
-        return idrole;
-    }
-
-    public void setIdrole(Long idrole) {
-        this.idrole = idrole;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     private String name;
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)

@@ -34,6 +34,22 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    public void setUserRepository(UsersRepository usersRepository) {
+        this.usersRepository = usersRepository;
+    }
+
+    @Autowired
+    public void setRoleRepository(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
+    }
+
+    @Autowired
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
+
+
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
@@ -44,8 +60,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                     mapRolesToAuthorities(user.getRoles()));
         } else throw new UsernameNotFoundException("Такого пользователя нет");
 
-        // return new  org.springframework.security.core.userdetails.User(user.getLogin(), user.getHashPassword(),
-        //       mapRolesToAuthorities(user.getRoles()));
+
 
     }
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
@@ -80,26 +95,58 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     }
 
+    public long getCurrentUserId() {
+        //получаем логин по которому пользователь авторизировался
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        //ищем ФИО в репозитории по логину
+        User user = usersRepository.findByLogin(auth.getName());
+        //возвращаем id пользователя
+        return user.getIduser();
 
-    @Autowired
-    public void setUserRepository(UsersRepository usersRepository) {
-        this.usersRepository = usersRepository;
     }
 
-    @Autowired
-    public void setRoleRepository(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
+    //получение логина по номеру пользователя
+    public String getUserName(long iduser){
+        User user=usersRepository.findById(iduser);
+        return user.getName();
     }
 
-    @Autowired
-    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
+    //изменение пароля
+    public boolean savePasswordBD(String password,long iduser) {
+        //проверка если такой пользователь в базе
+        User user=usersRepository.findById(iduser);
+        System.out.println(user.getLogin());
+        if ((usersRepository.findById(iduser) == null)) {
+            return false;
+        }
+
+        //получаем пароль из введенной формы и хешируем его
+        user.setHashPassword(passwordEncoder.encode(password));
+        usersRepository.save(user);
+        return true;
+    }
+    //редактирование пользователя
+    public boolean saveUserBD(User user) {
+        User usernew = new User();
+        usernew.setIduser(user.getIduser());
+        usernew.setLogin(user.getLogin());
+        usernew.setName(user.getName());
+        usernew.setHashPassword(user.getHashPassword());
+        System.out.println(usernew.getHashPassword());
+        System.out.println("save "+ usernew.getName() );
+
+        Role role = roleRepository.findByName("ROLE_USER");
+        usernew.setRoles(Collections.singleton(role));
+        usersRepository.save(usernew);
+        return true;
     }
 
-//    @Override
-//    @Transactional
-//    public User findByLogin(String username) {
-//        return usersRepository.findByLogin(username);
-//    }
+    public User getUser(long iduser){
+        User user=usersRepository.findById(iduser);
+        return user;
+    }
+    public void deleteUser(long iduser){
+        usersRepository.deleteById(iduser);
+    }
 
 }

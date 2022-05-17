@@ -1,28 +1,3 @@
-<!--<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<div>
-    <h1>Регистрация</h1>
-<form action="/registration" method="post">
-    <input name="login" placeholder="email">
-    <br>
-    <input name="name" placeholder="ФИО">
-    <br>
-    <input name="password" type="password" placeholder="Пароль">
-    <br>
-    <input type="submit" value="Сохранить">
-</form>
-</div>
-
-</body>
-</html>-->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -46,6 +21,19 @@
     <script>
         function show_hide_password(target){
             var input = document.getElementById('input-password');
+            if (input.getAttribute('type') == 'password') {
+                target.classList.add('view');
+                input.setAttribute('type', 'text');
+            } else {
+                target.classList.remove('view');
+                input.setAttribute('type', 'password');
+            }
+            return false;
+        }
+    </script>
+    <script>
+        function show_hide_password2(target){
+            var input = document.getElementById('passwordConfirm');
             if (input.getAttribute('type') == 'password') {
                 target.classList.add('view');
                 input.setAttribute('type', 'text');
@@ -95,12 +83,12 @@
                        буквы в различных регистрах, цифры и спец. символы (!@#$%^&*?+-_ )."
                        placeholder="Введите пароль">
                 <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
-                <input class="input-password" id="input-password" type="password" name="passwordConfirm"
+                <input class="input-password" id="passwordConfirm" type="password" name="passwordConfirm"
                        pattern="^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?+-_ ]).*$"
                        title="Пароль должен содержать от 8 знаков латинского алфавита и иметь
                        буквы в различных регистрах, цифры и спец. символы (!@#$%^&*?+-_ )."
                        placeholder="Повторите пароль">
-                <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+                <a href="#" class="password-control" onclick="return show_hide_password2(this);"></a>
 
 
                 <!--<input class="input-password" name="password" type="password" placeholder="Пароль">-->
