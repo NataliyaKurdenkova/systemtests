@@ -39,7 +39,7 @@
 </header>
 <section class="newtest-container grid">
     <div class="newtest-question-container grid">
-       <p class="test-question-id">${idtest}</p>
+
         <div class="newtest-question-title grid"><p class="">Новый тест</p></div>
         <div class="newtest-question grid">
             <p class="">Название</p>
@@ -49,19 +49,19 @@
     <div class="newtest-answers-container grid">
         <div class="newtest-answers-block grid scroll-container">
             <#list tests as test>
-                <#list questions as question>
-                    <#list answers as answer>
-                        <ul class="treeCSS">
-                            <li>${test.name}
-                                <ul>
-                                    <li>${question.question}
+                <ul class="treeCSS">
+                    <li>${test.name}
+                        <#list test.questions as question>
+                            <ul class="treeCSS">
+                                <li>${question.question}
+                                    <#list question.answers as answer>
                                         <ul>
                                             <li>${answer.name}
                                         </ul>
-                                </ul>
-                        </ul>
-                    </#list>
-                </#list>
+                                    </#list>
+                            </ul>
+                        </#list>
+                </ul>
             </#list>
         </div>
 
@@ -73,14 +73,7 @@
                 </div>
 
 
-                <!--
-                <div class="newtest-answer-type grid">
-                    <label for="val"><span>Тип вопроса:</span></label>
-                    <select onchange="answerType()" id="val">
-                        <option value=radio>один вариант</option>
-                        <option value=checkbox>Несколько вариантов</option>
-                    </select>
-                </div>-->
+
                 <div class="newtest-answer-type grid">
                     <label for="val"><span>Тип вопроса:</span></label>
                     <select id="val">
@@ -89,29 +82,10 @@
                     </select>
                 </div>
 
-                <!--
-                 <div class="newtest-answer-container grid" id="answers-container">
-                    <#list answers as answer>
-                    <div class="newtest-answer grid">
-                        <input type="radio" class="answer_type" name="newtest_answer">
-                        <textarea class="ffs" name="" id="${answer.parent}"></textarea>
-                    </div>
-                    </#list>
-                </div>
-                -->
-                <div class="newtest-answer-container grid" id="answers-container">
-                    <#list answers as answer>
-                    <div class="newtest-answer grid">
-                        <input type="radio" class="answer_type" name="newtest_answer">
-                        <textarea class="ffs" name="" id="${idtest}"></textarea>
-                    </div>
-                    </#list>
-                </div>
 
-                <!--    <div class="newtest-answer-add grid">
-                    <button onclick="addAnswer()">Добавить ответ</button>
-                </div>
-  -->
+
+
+
 
                 <div class="newtest-answer-add grid">
                     <input type="submit" value="Добавить ответ">
@@ -119,7 +93,6 @@
             </form>
         </div>
     </div>
-
 
 
     </div>
@@ -143,22 +116,24 @@
     </div>
 </section>
 <script>
-    (function() {
+    (function () {
         var ul = document.querySelectorAll('.treeCSS > li:not(:only-child) ul, .treeCSS ul ul');
         for (var i = 0; i < ul.length; i++) {
             var div = document.createElement('div');
             div.className = 'drop';
             div.innerHTML = '+'; // картинки лучше выравниваются, т.к. символы на одном браузере ровно выглядят, на другом — чуть съезжают
             ul[i].parentNode.insertBefore(div, ul[i].previousSibling);
-            div.onclick = function() {
+            div.onclick = function () {
                 this.innerHTML = (this.innerHTML == '+' ? '−' : '+');
                 this.className = (this.className == 'drop' ? 'drop dropM' : 'drop');
             }
         }
     })();
+
     function answerType() {
         <!-- SQL запрос на изменение типа поля Input и перезагрузка страницы -->
     };
+
     function addAnswer() {
         <!-- SQL запрос на добавление строчки в таблицу и перезагрузка страницы -->
     };

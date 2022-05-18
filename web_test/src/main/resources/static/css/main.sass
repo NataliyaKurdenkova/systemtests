@@ -46,6 +46,15 @@ body
   background-color: #cdeaee
   margin-top: 10px
 
+.fa.fa-pencil-square-o
+  font-size: 39px
+.fa.fa-unlock-alt
+  position: relative
+  z-index: 2
+  left: -35px
+  top: -13px
+  font-size: 16px
+
 .grid
   display: grid
   place-items: center
@@ -329,7 +338,7 @@ body
   &-table
     display: grid
     grid-template-columns: 0.7fr 2.7fr 1fr 1fr 1fr 0.8fr 1fr
-    background-color: #5dc8d6
+    background-color: #cdeaee
 
     &-title
       place-items: stretch
@@ -370,8 +379,15 @@ body
         height: 90%
 
         button
+          background-color: #1da1f2
+          border-radius: 10px
+          outline: none
+          border-style: none
+          &:hover
+            background-color: #5dc8d6
           i
-            font-size: 24px
+            font-size: 29px
+            color: #FFF
 
   &-question
     width: 85%
@@ -588,6 +604,8 @@ body
       grid-template-rows: repeat(2, 40px)
       grid-template-columns: auto
       width: 100%
+      form
+        width: 100%
 
   &-action
     &-container
@@ -693,8 +711,21 @@ body
           outline: none
 
     &-add
-      width: 80%
       place-items: end
+      input
+        display: grid
+        width: 200px
+        height: 40px
+        background-color: #1da1f2
+        border-radius: 10px
+        font-size: 18px
+        font-weight: 600
+        color: #FFF
+        outline: none
+        border-style: none
+
+        &:hover
+          background-color: #5dc8d6
 
     &-container
       grid-template-columns: auto

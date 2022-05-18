@@ -298,7 +298,6 @@ public class TestsController {
         model.addAttribute("balls", attempt.getBalls());
         model.addAttribute("attempt", attempt.getAttempt());
         model.addAttribute("currenttime", attempt.getCurrentDataTime());
-
         model.addAttribute("answusers", answUsr);
         return "result";
     }
