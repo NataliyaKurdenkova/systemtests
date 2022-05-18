@@ -6,12 +6,14 @@ import ru.webtest.springbootweb_test.entitys.*;
 import ru.webtest.springbootweb_test.repositories.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @Service
 public class TestService {
     private TestsRepository testsRepository;
+    private PrescPassedTestsRepository prescPassedTestsRepository;
     private QuestionRepository questionRepository;
     private AnswerRepository answerRepository;
 
@@ -23,6 +25,12 @@ public class TestService {
     public void setTestsRepository(TestsRepository testsRepository) {
 
         this.testsRepository = testsRepository;
+    }
+
+    @Autowired
+    public void setPrescPassedTestsRepository(PrescPassedTestsRepository prescPassedTestsRepository) {
+
+        this.prescPassedTestsRepository = prescPassedTestsRepository;
     }
 
     @Autowired
@@ -66,6 +74,20 @@ public class TestService {
         return testsRepository.findByIdtest(idtest);
     }
 
+    //поиск теста по id юзера
+    public List<PrescPassedTests> getPrescAndPassedTestsByUserId(long iduser) {
+        return prescPassedTestsRepository.findPrescPassedTestsByIduser(iduser);
+    }
+
+    public List<Test> getTestPresc(long[] idtest) {
+        List<Test> tests = new ArrayList<>();
+        for (int i = 0; i <= idtest.length - 1; i++) {
+            Test test = testsRepository.findByIdtest(idtest[i]);
+            tests.add(test);
+        }
+        return tests;
+    }
+
 
     public Answer getAnswerById(Long id) {
         return answerRepository.findById(id).orElse(null);
@@ -92,28 +114,28 @@ public class TestService {
         //балл за выбранный ответ
         double count;
         //количество правильных ответов по вопросу
-        double kolvocorrectansw=0;
+        double kolvocorrectansw = 0;
         for (Answer a : answers) {
             if (a.getCorrect() == 1) kolvocorrectansw++;
         }
         count = (1 / kolvocorrectansw);
-        System.out.println("kolvocorrectansw "+kolvocorrectansw);
-        System.out.println("count "+count);
-        return  count;
+        System.out.println("kolvocorrectansw " + kolvocorrectansw);
+        System.out.println("count " + count);
+        return count;
     }
 
-    public int getAttemptUser(long idtest,long iduser){
+    public int getAttemptUser(long idtest, long iduser) {
         int kolvo;
         try {
-            Attempt attempt= attemptRepository.findAttemptByIduserAndIdtest(iduser,idtest);
-            kolvo=attempt.getAttempt();
+            Attempt attempt = attemptRepository.findAttemptByIduserAndIdtest(iduser, idtest);
+            kolvo = attempt.getAttempt();
         } catch (NullPointerException e) {
-            kolvo=0;
+            kolvo = 0;
         }
         return kolvo;
     }
 
-    public void saveResult(Attempt attempt,AnswerUser answerUser) {
+    public void saveResult(Attempt attempt, AnswerUser answerUser) {
         answerUserRepository.save(answerUser);
         attemptRepository.save(attempt);
     }

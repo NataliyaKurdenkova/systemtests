@@ -30,12 +30,12 @@
         </div>
         <div class="header-rows header-rows-2">
             <div class="header-columns-menu">
-                <form action="/" method="post">
+                <form action="/lich_page" method="get">
                     <input class="header-columns-menu-input active" type="submit" value="Назначенные тесты">
                 </form>
             </div>
             <div class="header-columns-menu">
-                <form action="/" method="post">
+                <form action="/passedtests" method="get">
                     <input class="header-columns-menu-input" type="submit" value="Пройденные тесты">
                 </form>
             </div>

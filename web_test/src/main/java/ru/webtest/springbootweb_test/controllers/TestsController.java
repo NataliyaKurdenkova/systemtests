@@ -294,34 +294,13 @@ public class TestsController {
 
 
 
-    // страница с пройденными тестами
-    @GetMapping("/tests")
-    public String getPassedTestsPage(Model model) {
-        login = usersService.getCurrentUsername();
-        model.addAttribute("name", login);
-        List<Test> tests = testService.getAllTests();
-        model.addAttribute("tests", tests);
-        return "tests_pass"; // "/lich_page_pass"
-    }
-
-// страница пройденного теста
-    @GetMapping("/lich_page_pass_results/{idtest}")
-    public String getTestResults(Model model) {
-        login = usersService.getCurrentUsername();
-        model.addAttribute("name", login);
-
-        List<Test> tests = testService.getAllTests();
-        model.addAttribute("tests", tests);
-
-        List<Question> questions = testService.getAllQuestions();
-        model.addAttribute("questions", questions);
-        // передать сюда список ответов юзера
-        Collection<AnswerUser> answerUsers = attempt.getAnswerUsers();
-        model.addAttribute("answers", answerUsers);
+//     страница с пройденными тестами
+//    @GetMapping("/passedtests")
+//    public String getPassedTestsPage(Model model) {
+//        login = usersService.getCurrentUsername();
+//        model.addAttribute("name", login);
 
 
-        return "..." ;
-    }
 
 
 
