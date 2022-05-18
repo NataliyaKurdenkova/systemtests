@@ -26,15 +26,15 @@ public class RedactorController {
        model.addAttribute("name", login);
         List<Test> tests = testService.getAllTests();
        model.addAttribute("tests", tests);
-        List<Question> questions = testService.getAllQuestions();
-        model.addAttribute("questions", questions);
-        List<Answer> answers = testService.getAllAnswers();
-       model.addAttribute("answers", answers);
-        long lastnomer=5;
+        //List<Question> questions = testService.getAllQuestions();
+        //model.addAttribute("questions", questions);
+       // List<Answer> answers = testService.getAllAnswers();
+       //model.addAttribute("answers", answers);
+       //long lastnomer=5;
       // System.out.println(testService.getNomerTest(tests.size()));
        // long lastnomer=testService.getNomerTest(tests.size());
       // lastnomer++;
-        model.addAttribute("idtest", lastnomer);
+     // model.addAttribute("idtest", lastnomer);
 
         return "newtest";
     }
