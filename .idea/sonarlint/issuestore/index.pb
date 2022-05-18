@@ -29,10 +29,6 @@ e
 5web_test/src/main/resources/templates/test_start.ftlh,c\8\c80e51eec16f729b53510fe5a6a9c48441eae3fd
 e
 5web_test/src/main/resources/templates/tests_page.ftlh,2\1\21a93b97c01d1c945b6ca9730e89ceeab375a454
-e
-5web_test/src/main/resources/templates/users_page.ftlh,6\6\6643f2d4bbdc011cb3e29553845f4878947ad873
-d
-4web_test/src/main/resources/templates/statistic.ftlh,4\3\4349c19a92aa00e6af212719d05d5564f5c94867
 m
 =web_test/src/main/resources/templates/lich_page_redactor.html,e\c\ec5f3e036970e78e43caf1edba5b3f9e6e22ed44
 e
@@ -41,12 +37,8 @@ g
 7web_test/src/main/resources/templates/registration.html,4\9\49a43a263f9618332b9a66611410bb512e3519f7
 a
 1web_test/src/main/resources/templates/result.ftlh,a\7\a7e166471196f4bf0c4fcd5c3e1480361214678f
-a
-1web_test/src/main/resources/templates/result.html,2\6\261a7cc200ad883881f0c264f9632370ac0fffcf
 d
 4web_test/src/main/resources/templates/lich_page.html,d\8\d8deb510cc14d6b46976c2c442a535323c290fde
-e
-5web_test/src/main/resources/templates/tests_page.html,4\b\4bd9f68052f7056ec9f18aceef7377ebff388484
 c
 3web_test/src/main/resources/templates/test_end.html,1\3\136726968d60ba6e37ee87713141322cfaad4f48
 c
@@ -59,11 +51,5 @@ b
 2web_test/src/main/resources/templates/newtest.ftlh,d\e\de4eb73f1de87a62a14cc73026398d84a720d7da
 b
 2web_test/src/main/resources/templates/newtest.html,c\5\c5ebc9e2d4f0834fb1932ee8455e7511d7b2b5bb
-e
-5web_test/src/main/resources/templates/users_page.html,7\2\72dc8782d4b1b0588178372d9e82fb5a0280f40c
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-d
-4web_test/src/main/resources/templates/statistic.html,5\1\511f067411d8e7e873ac459c2c0b9b4308cc9652
-`
-0web_test/src/main/resources/static/css/main.sass,9\4\949e2b182c62afbd9be97c692c93104c5502dfae

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../static/css/normalize.css">
     <link rel="stylesheet" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../static/css/main.min.css">
+
 </head>
 <body>
 <header>
@@ -25,34 +26,66 @@
                 <img class="right-img" src="../static/img/right-img.svg" alt="img">
             </div>
         </div>
-        <div class="header-rows header-rows-4">
+        <div class="header-rows header-rows-admin">
+            <div class="header-columns-menu">
+                <form action="/adminka/statistic" method="get">
+                    <input class="header-columns-menu-input active" type="submit" value="Статистика">
+                </form>
+            </div>
+            <div class="header-columns-menu">
+                <form action="/users" method="get">
+                    <input class="header-columns-menu-input" type="submit" value="Пользователи">
+                </form>
+            </div>
+
+            <div class="header-columns-menu">
+                <form action="/tests" method="get">
+                    <input class="header-columns-menu-input" type="submit" value="База тестов">
+                </form>
+            </div>
+
             <div class="header-columns-output">
-                <p class="header-columns-output-p" id="FIO-output">${name}</p>
+                <p class="header-columns-output-p" id="FIO-output"> ${name}</p>
             </div>
             <div class="header-columns-exit">
-                <form action="/" method="post">
+                <form action="/logout" method="post">
                     <input class="header-columns-exit-input" type="submit" value="Выход">
                 </form>
             </div>
         </div>
     </div>
 </header>
-<section class="result-container grid">
-    <div class="result-question-container grid">
-        <!-- <p class="test-question-id">${idtest}</p>-->
-        <p class="result-title ffs">${nametest}</p>
+<section class="statistic-container">
+    <div class="statistic-table table-styles">
+        <div class="statistic-table-n table-styles"><p>№</p></div>
+        <div class="statistic-table-title table-styles"><p>Дата и время</p></div>
+        <div class="statistic-table-title table-styles"><p>Пользователь</p></div>
+        <div class="statistic-table-title table-styles"><p>Название теста</p></div>
+        <div class="statistic-table-estimation table-styles"><p>Баллы</p></div>
+        <div class="private-table-time table-styles"><p>Количество попыток</p></div>
+        <div class="statistic-table-time table-styles"><p>Время(мин)</p></div>
     </div>
-    <div class="result-title ffs"><p>${msg}</p></div>
-    <div class="result-title ffs"><p>Время прохождения теста ${time}.</p></div>
-    <div class="result-title ffs"><p>Набрали ${ball} баллов.</p></div>
-    <div class="result-action-block">
-        <form action="/start" method="post">
-            <input type="submit" value="Пройти заново">
-        </form>
-        <form action="/lich_page" method="post">
-            <input type="submit" value="Главная страница">
-        </form>
+<!--    <#list attempts as attempt>-->
+<!--    <div class="statistic-table table-styles">-->
+<!--        <div class="statistic-table-n table-styles"><p>${attempt.id}</p></div>-->
+<!--        <div class="statistic-table-title table-styles"><p>${attempt.currentDataTime}</p></div>-->
+<!--        <div class="statistic-table-title table-styles"><p>${attempt.username}</p></div>-->
+<!--        <div class="statistic-table-title table-styles"><p>${attempt.testname}</p></div>-->
+<!--        <div class="statistic-table-estimation table-styles"><p>${attempt.balls}</p></div>-->
+<!--        <div class="private-table-time table-styles"><p>${attempt.attempt}</p></div>-->
+<!--        <div class="statistic-table-time table-styles"><p>${attempt.timeTest}</p></div>-->
+<!--    </div>-->
+<!--    </#list>-->
+    <div class="statistic-table table-styles">
+        <div class="statistic-table-n table-styles"><p>1</p></div>
+        <div class="statistic-table-title table-styles"><p>Wed May 18 20:30:11 MSK 2022</p></div>
+        <div class="statistic-table-title table-styles"><p>Зятиков Вячеслав Леонидович</p></div>
+        <div class="statistic-table-title table-styles"><p>Тест проверки знаний по Инструкции по антивирусной защите АС и ПК пользователей</p></div>
+        <div class="statistic-table-estimation table-styles"><p>4</p></div>
+        <div class="private-table-time table-styles"><p>3</p></div>
+        <div class="statistic-table-time table-styles"><p>00:03:40</p></div>
     </div>
 </section>
+
 </body>
 </html>
