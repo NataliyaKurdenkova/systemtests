@@ -5,9 +5,13 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.webtest.springbootweb_test.entitys.Attempt;
+import ru.webtest.springbootweb_test.entitys.AttemptView;
+import ru.webtest.springbootweb_test.entitys.Test;
 import ru.webtest.springbootweb_test.entitys.User;
 import ru.webtest.springbootweb_test.security.details.UserDetailsServiceImpl;
 import org.springframework.validation.BindingResult;
+import ru.webtest.springbootweb_test.service.AttemptService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +22,8 @@ public class AdminController {
     public String login;
     @Autowired
     private UserDetailsServiceImpl usersService;
+    @Autowired
+    private AttemptService attemptService;
 
     @Secured("ROLE_ADMIN")
     @GetMapping("/statistic")
@@ -25,6 +31,10 @@ public class AdminController {
         //получаем имя текущего пользователя
         login = usersService.getCurrentUsername();
         model.addAttribute("name", login);
+        List<AttemptView> attemptViews=attemptService.getAttemptAll();
+        model.addAttribute("attempts", attemptViews);
+
+
         return "statistic";
     }
 
@@ -60,30 +70,25 @@ public class AdminController {
         User user = usersService.getUser(iduser);
         model.addAttribute("iduser", iduser);
         model.addAttribute("name", login);
-        model.addAttribute("nameuser",user.getName());
-        model.addAttribute("login",user.getLogin());
+        model.addAttribute("nameuser", user.getName());
+        model.addAttribute("login", user.getLogin());
         model.addAttribute("fio", user.getName());
         model.addAttribute("hashpassword", user.getHashPassword());
-
-       /* List<String> roles =new ArrayList<>();
-        roles.add("ROLE_ADMIN");
-        roles.add("ROLE_EDITOR");
-        roles.add("ROLE_USER");
-        model.addAttribute("roles",roles);*/
         model.addAttribute(user);
         return "redactoruser";
     }
 
     @PostMapping("/updateuser/{iduser}")
-    public String saveuser(@ModelAttribute("userch") User user, BindingResult theBindingResult,@PathVariable("iduser") long iduser) {
+    public String saveuser(@ModelAttribute("userch") User user, BindingResult theBindingResult, @PathVariable("iduser") long iduser, String namerole, String hashpassword) {
         System.out.println("savereduser");
         System.out.println(user.getName());
-        System.out.println("hashpassword1 "+user.getHashPassword());
+        //System.out.println("hashpassword1 " + hashpassword);
+        //System.out.println("namerole " + namerole);
 
         if (theBindingResult.hasErrors()) {
             return "redactoruser/{iduser}";
         }
-        boolean changeUser=usersService.saveUserBD(user);
+        boolean changeUser = usersService.saveUserBD(user, namerole, hashpassword);
         if (!changeUser) {
             System.out.println("Данные не обновлены");
             return "redactoruser/{iduser}";
@@ -93,8 +98,9 @@ public class AdminController {
 
 
     }
+
     @PostMapping("/delete_user/{iduser}")
-    public String deleteUser(@PathVariable("iduser") long iduser){
+    public String deleteUser(@PathVariable("iduser") long iduser) {
         usersService.deleteUser(iduser);
         return "redirect:/users";
     }
