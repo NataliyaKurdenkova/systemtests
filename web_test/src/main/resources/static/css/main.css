@@ -170,6 +170,80 @@ body {
       .private-table-action form button i {
         font-size: 24px; }
 
+.users-title {
+  display: grid;
+  grid-template-columns: 0.65fr 2fr 2fr 0.65fr; }
+  .users-title-p {
+    display: grid;
+    grid-area: 1/2/2/4;
+    font-size: 30px;
+    text-align: center; }
+  .users-title-form {
+    display: grid;
+    grid-area: 1/4/2/5;
+    place-items: center; }
+    .users-title-form-button {
+      display: inline-block;
+      width: 80%;
+      height: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      text-decoration: none;
+      color: #FFF;
+      background: #0095d9;
+      border-radius: 5px;
+      border: 0 solid #354251; }
+      .users-title-form-button:hover {
+        background: #FFF;
+        color: #0095d9;
+        border: 1px solid #0095d9;
+        transition: all 0.2s ease; }
+.users-table {
+  display: grid;
+  grid-template-columns: 0.7fr 2.7fr 1fr 0.8fr 220px;
+  background-color: #5dc8d6; }
+  .users-table-title {
+    place-items: stretch; }
+  .users-table-content {
+    background-color: #ebf4f3; }
+    .users-table-content:nth-child(2n) {
+      background-color: #cdeaee; }
+    .users-table-content-button {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      font-size: 19px;
+      text-decoration: none;
+      color: #FFF;
+      background: #0095d9;
+      border-radius: 5px;
+      border: 0 solid #354251;
+      padding: 1px 3px; }
+      .users-table-content-button:hover {
+        background: #FFF;
+        color: #0095d9;
+        border: 1px solid #0095d9;
+        transition: all 0.2s ease; }
+  .users-table-action {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr 1fr; }
+    .users-table-action form {
+      display: grid;
+      width: 90%;
+      height: 90%; }
+      .users-table-action form button {
+        background-color: #1da1f2;
+        border-radius: 10px;
+        outline: none;
+        border-style: none; }
+        .users-table-action form button:hover {
+          background-color: #5dc8d6; }
+        .users-table-action form button i {
+          font-size: 29px;
+          color: #FFF; }
+
 .statistic-title {
   display: grid;
   grid-template-columns: 0.65fr 2fr 2fr 0.65fr; }
@@ -200,11 +274,13 @@ body {
         transition: all 0.2s ease; }
 .statistic-table {
   display: grid;
-  grid-template-columns: 0.7fr 2.7fr 1fr 1fr 1fr;
+  grid-template-columns: 0.2fr 0.5fr 0.8fr 1.6fr 0.4fr 0.4fr 0.5fr;
   background-color: #5dc8d6; }
   .statistic-table-title {
     place-items: stretch; }
   .statistic-table-content {
+    display: grid;
+    grid-template-columns: 0.2fr 0.5fr 0.8fr 1.6fr 0.4fr 0.4fr 0.5fr;
     background-color: #ebf4f3; }
     .statistic-table-content:nth-child(2n) {
       background-color: #cdeaee; }
@@ -239,6 +315,10 @@ body {
 .table-styles {
   font-size: 20px;
   place-items: center; }
+  .table-styles p {
+    place-content: center;
+    margin: 7px 0;
+    padding: 0; }
 
 .content-styles {
   text-align: center; }
@@ -276,7 +356,7 @@ body {
         transition: all 0.2s ease; }
 .test-table {
   display: grid;
-  grid-template-columns: 0.7fr 2.7fr 1fr 1fr 1fr 0.8fr 1fr;
+  grid-template-columns: 0.7fr 2.7fr 1fr 1fr 1fr 0.8fr 220px;
   background-color: #cdeaee; }
   .test-table-title {
     place-items: stretch; }
