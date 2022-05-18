@@ -66,7 +66,7 @@
                 Редактирование данных пользователя <p>N ${iduser}   ${nameuser} </p>
             </span>
         </div>
-    <form class="authorize-form grid" action="/adminka/updateuser/${iduser}" method="post" modelAttribute="userch">
+    <form id="user" class="authorize-form grid" action="/adminka/updateuser/${iduser}" method="post" modelAttribute="userch">
         <div class="authorize-form-input grid" data-validate="Login is required">
             <input class="input-login" type="text" name="login"
                    pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
@@ -77,14 +77,15 @@
             <input class="input-surname" type="text" name="name" placeholder="${fio}" value="${fio}">
         </div>
         <div>
-            <select name="nameRole">
+            <select name="namerole" form="user">
                 <option value="ROLE_ADMIN">ROLE_ADMIN</option>
                 <option value="ROLE_EDITOR">ROLE_EDITOR</option>
-                <option value="ROLE_USER">ROLE_USER</option>
+                <option selected value="ROLE_USER">ROLE_USER</option>
             </select>
+
         </div>
         <div class="authorize-form-input grid" data-validate="surname is required">
-            <input type="hidden" type="text" name="hashpassword" value="${hashpassword}">
+            <input type="hidden" name="hashpassword" value="${hashpassword}">
         </div>
 
         <input class="entrance-button" type="submit" value="Сохранить">

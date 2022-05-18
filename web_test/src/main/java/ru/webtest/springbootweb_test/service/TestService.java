@@ -15,8 +15,8 @@ public class TestService {
     private QuestionRepository questionRepository;
     private AnswerRepository answerRepository;
 
-    public AttemptsRepository attemptRepository;
-    public AnswerUserRepository answerUserRepository;
+    public AttemptRepository attemptRepository;
+    //public AnswerUserRepository answerUserRepository;
 
 
     @Autowired
@@ -36,11 +36,20 @@ public class TestService {
         this.answerRepository = answersRepository;
 
     }
+    @Autowired
+    public void setAttemptRepository(AttemptRepository attemptRepository) {
+        this.attemptRepository = attemptRepository;
+
+    }
 
 
     //поиск вопроса по номеру теста
     public Question[] getQuestionByParent_Test(long parent) {
         return questionRepository.findQuestionsByParent(parent);
+    }
+
+    public Question getQuestionById(long id){
+        return questionRepository.findByIdque(id);
     }
 
     //для пролучения списка ответов
@@ -102,7 +111,7 @@ public class TestService {
         System.out.println("count "+count);
         return  count;
     }
-
+//количество попыток
     public int getAttemptUser(long idtest,long iduser){
         int kolvo;
         try {
@@ -114,9 +123,26 @@ public class TestService {
          return kolvo;
     }
 
-    public void saveResult(Attempt attempt,AnswerUser answerUser) {
-        answerUserRepository.save(answerUser);
-        attemptRepository.save(attempt);
+    //id попытки
+    public long getAttemptId(long idtest,long iduser){
+        long idatt;
+        try {
+            Attempt attempt= attemptRepository.findAttemptByIduserAndIdtest(iduser,idtest);
+            idatt=attempt.getId();
+        }catch (NullPointerException e){
+            idatt=0;
+        }
+
+        return idatt;
+
+    }
+
+
+    // сохранение результата теста
+    public void saveResult(Attempt attempt) {
+        //answerUserRepository.save(answerUser);
+
+         attemptRepository.save(attempt);
     }
 }
 

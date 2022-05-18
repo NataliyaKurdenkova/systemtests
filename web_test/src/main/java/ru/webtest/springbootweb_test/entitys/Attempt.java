@@ -8,6 +8,7 @@ import java.util.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "attempts")
 public class Attempt{
@@ -33,13 +34,13 @@ public class Attempt{
 
     //время прохождения теста (последняя попытка)
     private String timeTest;
-
+/*
     //ответы
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinColumn(name = "attempts_id")
     private Collection<AnswerUser> answerUsers;
 
-
+*/
 
 
 

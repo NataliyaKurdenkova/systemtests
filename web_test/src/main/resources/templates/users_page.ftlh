@@ -75,7 +75,7 @@
             <div class="test-table-action">
                 <form action="/adminka/change_password/${user.iduser}" method="get">
                     <!--   <input type="submit" value="Сменить пароль">-->
-                    <button type="submit"><i class="fa fa-play" aria-hidden="true"></i></button>
+                    <button type="submit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><i class="fa fa-unlock-alt" aria-hidden="true"></i></button>
                 </form>
                 <form action="/adminka/edit_user/${user.iduser}" method="get">
                     <!--<input type="submit" value="Редактировать">-->
