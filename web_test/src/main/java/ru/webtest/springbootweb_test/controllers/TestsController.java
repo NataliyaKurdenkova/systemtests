@@ -7,18 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.webtest.springbootweb_test.entitys.*;
-import ru.webtest.springbootweb_test.repositories.AnswerRepository;
-import ru.webtest.springbootweb_test.repositories.AnswerUserRepository;
-import ru.webtest.springbootweb_test.repositories.QuestionRepository;
-import ru.webtest.springbootweb_test.repositories.TestsRepository;
 import ru.webtest.springbootweb_test.security.details.UserDetailsServiceImpl;
 import ru.webtest.springbootweb_test.service.TestService;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class TestsController {
@@ -48,6 +41,7 @@ public class TestsController {
     //время прохождения теста
     public long timeTest;
     public Attempt attempt;
+    public List<AnswerUser> answUsr;
 
 
     @Secured("ROLE_ADMIN")
@@ -92,7 +86,9 @@ public class TestsController {
         model.addAttribute("name", login);
 
         attempt = new Attempt();
+///создали ответы пользователя
         AnswerUser answerUser=new AnswerUser();
+        answUsr = new ArrayList<>();
         Question[] questions = testService.getQuestionByParent_Test(idtest);
 
         //количество вопросов
@@ -102,8 +98,9 @@ public class TestsController {
         System.out.println("ответы для вопроса " + questions[i].getQuestion());
         //номер вопроса
         long nomer = questions[i].getIdque();
+///название вопроса в ответы пользователя добавили
+        answerUser.setQuestionName(questions[i].getQuestion());
 
-        answerUser.setIdquestion(nomer);
         System.out.println("nomer voprosa " + nomer);
         //ответы
         System.out.println("ответы");
@@ -155,19 +152,22 @@ public class TestsController {
     @GetMapping("/answer/{idtest}")
     public String answerQuestion(@PathVariable("idtest") int idtest, @RequestParam String[] id, Model model) {
         Test test = testService.getTest(idtest);
-        AnswerUser answerUser=new AnswerUser();
+
+        AnswerUser answerUser = new AnswerUser();
         //login = usersService.getCurrentUsername();
         model.addAttribute("name", login);
 
 
-        if (i >= kolvoque-1) {
+        if (i >= kolvoque - 1) {
             i = i;
             System.out.println("Это был последний вопрос");
 
-            for (int j = 0; j <= id.length-1; j++) {
+            for (int j = 0; j <= id.length - 1; j++) {
                 System.out.println("полученный ответ " + id);
                 Answer answer = testService.getAnswerById(Long.valueOf(id[j]));
-                answerUser.setIdanswer(Long.valueOf(id[j]));
+                Question que=testService.getQuestionById(answer.getParent());
+                answerUser.setQuestionName(que.getQuestion());
+                answerUser.setAnswerName(answer.getName());
                 System.out.println("ответ: " + answer.getName());
 
                 if (answer.getCorrect() == 1) {
@@ -176,7 +176,8 @@ public class TestsController {
                 } else System.out.println("Выбран не верный ответ");
                 System.out.println("Количество правильных ответов " + correctAnswers);
                 answerUser.setCorrect(answer.getCorrect());
-                attempt.setAnswerUsers(Arrays.asList(answerUser));
+                //attempt.setAnswerUsers(Arrays.asList(answerUser));
+                answUsr.add(answerUser);
             }
 
             System.out.println("balls " + correctAnswers);
@@ -194,25 +195,30 @@ public class TestsController {
             //id  пользователя
             long iduser = usersService.getCurrentUserId();
             attempt.setIduser(iduser);
-            int kolvoAttempt=testService.getAttemptUser(idtest,iduser);
-            if(kolvoAttempt==0)kolvoAttempt=1;
-            else kolvoAttempt++;
+            int kolvoAttempt = testService.getAttemptUser(idtest, iduser);
+            long idattempt;
+            if (kolvoAttempt!=0) {
+                idattempt= testService.getAttemptId(idtest, iduser);
+                attempt.setId(idattempt);
+            }
+
+            kolvoAttempt++;
             attempt.setAttempt(kolvoAttempt);
             attempt.setTimeTest(timetestf);
             Date current = new Date();
             attempt.setCurrentDataTime(String.valueOf(current));
             attempt.setBalls(correctAnswers);
             attempt.setIdtest(idtest);
-            attempt.setAnswerUsers(Arrays.asList(answerUser));
-            //testService.saveResult(attempt,answerUser);
+            //attempt.(answUsr);
+
             //проверка результата
             if (correctAnswers >= test.getPassball()) {
 
-                String msg = test.getName()+" СДАН! ";
+                String msg = test.getName() + " СДАН! ";
                 model.addAttribute("Msg", msg);
                 System.out.println(msg);
             } else {
-                String msg1 = test.getName()+" НЕ СДАН! ";
+                String msg1 = test.getName() + " НЕ СДАН! ";
                 model.addAttribute("Msg", msg1);
                 System.out.println(msg1);
             }
@@ -220,17 +226,20 @@ public class TestsController {
             model.addAttribute("balls", correctAnswers);
             model.addAttribute("timetest", timetestf);
 
+            testService.saveResult(attempt);
             i = 0;
             correctAnswers = 0;
             return "test_end";
 
         } else {
 
-            for (int j = 0; j <= id.length-1; j++) {
+            for (int j = 0; j <= id.length - 1; j++) {
                 System.out.println("полученный ответ " + id);
                 Answer answer = testService.getAnswerById(Long.valueOf(id[j]));
+                Question que=testService.getQuestionById(answer.getParent());
+                answerUser.setQuestionName(que.getQuestion());
+                answerUser.setAnswerName(answer.getName());
 
-                answerUser.setIdanswer(Long.valueOf(id[j]));
                 System.out.println("ответ: " + answer.getName());
 
                 if (answer.getCorrect() == 1) {
@@ -239,7 +248,8 @@ public class TestsController {
                 } else System.out.println("Выбран не верный ответ");
                 System.out.println("Количество правильных ответов " + correctAnswers);
                 answerUser.setCorrect(answer.getCorrect());
-                attempt.setAnswerUsers(Arrays.asList(answerUser));
+
+                answUsr.add(answerUser);
             }
             i++;
             return "redirect:/pass_test/{idtest}";
@@ -288,25 +298,8 @@ public class TestsController {
         model.addAttribute("balls", attempt.getBalls());
         model.addAttribute("attempt", attempt.getAttempt());
         model.addAttribute("currenttime", attempt.getCurrentDataTime());
-
+        model.addAttribute("answusers", answUsr);
         return "result";
     }
-
-
-
-//     страница с пройденными тестами
-//    @GetMapping("/passedtests")
-//    public String getPassedTestsPage(Model model) {
-//        login = usersService.getCurrentUsername();
-//        model.addAttribute("name", login);
-
-
-
-
-
-
-
-
-
 
 }

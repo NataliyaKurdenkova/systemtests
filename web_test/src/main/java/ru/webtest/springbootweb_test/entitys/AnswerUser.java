@@ -3,28 +3,26 @@ package ru.webtest.springbootweb_test.entitys;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-@Table(name = "answers_user")
+@AllArgsConstructor
 public class AnswerUser {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
-
     //номер вопроса к которому принадлежит ответ
-    private long idquestion;
+    private String questionName;
 
     //номер выбранного ответа
-    private long idanswer;
+    private List<String> answerName=new ArrayList<>();
 
     //правильный или нет
     private int correct;
 
-
-
-
+    public void setAnswerName(String name) {
+        answerName.add(name);
+    }
 }
+

@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface PrescPassedTestsRepository extends JpaRepository<PrescPassedTests,Long> {
     List<PrescPassedTests> findPrescPassedTestsByIduser(long iduser);
+
 }

@@ -126,16 +126,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return true;
     }
     //редактирование пользователя
-    public boolean saveUserBD(User user) {
+    public boolean saveUserBD(User user, String namerole, String hashpassword) {
         User usernew = new User();
         usernew.setIduser(user.getIduser());
         usernew.setLogin(user.getLogin());
         usernew.setName(user.getName());
-        usernew.setHashPassword(user.getHashPassword());
-        System.out.println(usernew.getHashPassword());
+        usernew.setHashPassword(hashpassword);
+        System.out.println("hashpassword "+hashpassword);
         System.out.println("save "+ usernew.getName() );
-
-        Role role = roleRepository.findByName("ROLE_USER");
+        Role role = roleRepository.findByName(namerole);
         usernew.setRoles(Collections.singleton(role));
         usersRepository.save(usernew);
         return true;

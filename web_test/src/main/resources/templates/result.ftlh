@@ -59,25 +59,36 @@
         </div>
 
         <div class="private-table-n content-styles"><p>${currenttime}</p></div>
-        <div class="private-table-title "><p>${iduser}</p></div>
+        <div class="private-table-title"><p>${iduser}</p></div>
         <div class="private-table-estimation content-styles"><p>${idtest}</p></div>
         <div class="private-table-time content-styles"><p>${timetest}</p></div>
         <div class="private-table-time content-styles"><p>${timetest}</p></div>
         <div class="private-table-time content-styles"><p>${balls}</p></div>
         <div class="private-table-time content-styles"><p>${attempt}</p></div>
 
+
+
+        <div>Результат по вопросам:</div>
+        <#list answusers as answuser>
+
+            <div class="private-table-time content-styles"><p>${answuser.questionName}</p></div>
+            <#list answuser.answerName as ans>
+                <div class="private-table-time content-styles"><p>${ans}</p></div>
+
+            </#list>
+            <div class="private-table-time content-styles"><p>${answuser.correct}</p></div>
+        </#list>
+
         <div class="test-action-block">
-            <form  action="/start/${idtest}" method="get">
+            <form action="/start/${idtest}" method="get">
                 <input type="submit" value="Пересдать">
             </form>
 
-            <form  action="/lich_page" method="get">
+            <form action="/lich_page" method="get">
                 <input type="submit" value="Домой">
             </form>
 
         </div>
-
-
     </div>
 </section>
 <footer class="footer">

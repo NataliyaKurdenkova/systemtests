@@ -10,6 +10,7 @@ import java.util.Set;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question,Long> {
     Question[] findQuestionsByParent(long parent);
+    Question findByIdque(long id);
 
 
 }

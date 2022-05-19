@@ -1,47 +1,28 @@
 package ru.webtest.springbootweb_test.entitys;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.*;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "attempts")
-public class Attempt{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AttemptView {
     private Long id;
-
-    //номер пользователя
-
-    private long iduser;
-
-    //номер теста
-    private long idtest;
-
+    //имя пользователя
+    private String username;
+    //имя теста
+    private String testname;
     //количество попыток
     private int attempt;
-
     //время и дата когда проходил тест
     private String currentDataTime;
-
     //количество набранных баллов
     private double balls;
-
     //время прохождения теста (последняя попытка)
     private String timeTest;
-/*
-    //ответы
-    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-    @JoinColumn(name = "attempts_id")
-    private Collection<AnswerUser> answerUsers;
-
-*/
-
-
 
 }

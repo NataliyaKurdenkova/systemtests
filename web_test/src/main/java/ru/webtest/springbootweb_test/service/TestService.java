@@ -5,9 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.webtest.springbootweb_test.entitys.*;
 import ru.webtest.springbootweb_test.repositories.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -17,8 +15,8 @@ public class TestService {
     private QuestionRepository questionRepository;
     private AnswerRepository answerRepository;
 
-    public AttemptsRepository attemptRepository;
-    public AnswerUserRepository answerUserRepository;
+    public AttemptRepository attemptRepository;
+//    public AnswerUserRepository answerUserRepository;
 
 
     @Autowired
@@ -45,10 +43,22 @@ public class TestService {
 
     }
 
+    @Autowired
+    public void setAttemptRepository(AttemptRepository attemptRepository) {
+        this.attemptRepository = attemptRepository;
+
+    }
+
+
+
 
     //поиск вопроса по номеру теста
     public Question[] getQuestionByParent_Test(long parent) {
         return questionRepository.findQuestionsByParent(parent);
+    }
+
+    public Question getQuestionById(long id){
+        return questionRepository.findByIdque(id);
     }
 
     //для пролучения списка ответов
@@ -88,6 +98,15 @@ public class TestService {
         return tests;
     }
 
+    public List<Test> getTestPassed(long[] idtest) {
+        List<Test> tests = new ArrayList<>();
+        for (int i = 0; i <= idtest.length - 1; i++) {
+            Test test = testsRepository.findByIdtest(idtest[i]);
+            tests.add(test);
+        }
+        return tests;
+    }
+
 
     public Answer getAnswerById(Long id) {
         return answerRepository.findById(id).orElse(null);
@@ -114,29 +133,46 @@ public class TestService {
         //балл за выбранный ответ
         double count;
         //количество правильных ответов по вопросу
-        double kolvocorrectansw = 0;
+        double kolvocorrectansw=0;
         for (Answer a : answers) {
             if (a.getCorrect() == 1) kolvocorrectansw++;
         }
         count = (1 / kolvocorrectansw);
-        System.out.println("kolvocorrectansw " + kolvocorrectansw);
-        System.out.println("count " + count);
-        return count;
+        System.out.println("kolvocorrectansw "+kolvocorrectansw);
+        System.out.println("count "+count);
+        return  count;
     }
-
-    public int getAttemptUser(long idtest, long iduser) {
+    //количество попыток
+    public int getAttemptUser(long idtest,long iduser){
         int kolvo;
         try {
-            Attempt attempt = attemptRepository.findAttemptByIduserAndIdtest(iduser, idtest);
-            kolvo = attempt.getAttempt();
+            Attempt attempt= attemptRepository.findAttemptByIduserAndIdtest(iduser,idtest);
+            kolvo=attempt.getAttempt();
         } catch (NullPointerException e) {
-            kolvo = 0;
+            kolvo=0;
         }
         return kolvo;
     }
 
-    public void saveResult(Attempt attempt, AnswerUser answerUser) {
-        answerUserRepository.save(answerUser);
+    //id попытки
+    public long getAttemptId(long idtest,long iduser){
+        long idatt;
+        try {
+            Attempt attempt= attemptRepository.findAttemptByIduserAndIdtest(iduser,idtest);
+            idatt=attempt.getId();
+        }catch (NullPointerException e){
+            idatt=0;
+        }
+
+        return idatt;
+
+    }
+
+
+    // сохранение результата теста
+    public void saveResult(Attempt attempt) {
+        //answerUserRepository.save(answerUser);
+
         attemptRepository.save(attempt);
     }
 }

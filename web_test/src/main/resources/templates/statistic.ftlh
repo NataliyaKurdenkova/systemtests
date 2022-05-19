@@ -57,34 +57,28 @@
         </div>
     </div>
 </header>
-<section class="private-container">
-    <div class="private-table table-styles">
-        <div class="private-table-n table-styles"><p>№</p></div>
-        <div class="private-table-time table-styles"><p>Дата и время</p></div>
-        <div class="private-table-title table-styles"><p>Пользователь</p></div>
-        <div class="private-table-title table-styles"><p>Название теста</p></div>
-        <div class="private-table-time table-styles"><p>Баллы</p></div>
-        <div class="private-table-time table-styles"><p>Время(мин)</p></div>
-        <div class="private-table-action table-styles"></div>
+<section class="statistic-container">
+    <div class="statistic-table table-styles">
+        <div class="statistic-table-n table-styles"><p>№</p></div>
+        <div class="statistic-table-title table-styles"><p>Дата и время</p></div>
+        <div class="statistic-table-title table-styles"><p>Пользователь</p></div>
+        <div class="statistic-table-title table-styles"><p>Название теста</p></div>
+        <div class="statistic-table-estimation table-styles"><p>Баллы</p></div>
+        <div class="private-table-time table-styles"><p>Количество попыток</p></div>
+        <div class="statistic-table-time table-styles"><p>Время(мин)</p></div>
     </div>
-    <div class="private-table private-table-content">
-        <div class="private-table-n content-styles"><p>1</p></div>
-        <div class="private-table-time content-styles"><p>Иванов Иван иванович</p></div>
-        <div class="private-table-time content-styles"><p>14/05/2022</p></div>
-        <div class="private-table-time content-styles"><p>Тест по Бережливому производству</p></div>
-        <div class="private-table-estimation content-styles"><p>22</p></div>
-        <div class="private-table-estimation content-styles"><p>26</p></div>
+    <#list attempts as attempt>
+        <div class="private-table private-table-content">
+            <div class="private-table-n content-styles"><p>${attempt.id}</p></div>
+            <div class="private-table-time content-styles"><p>${attempt.currentDataTime}</p></div>
+            <div class="private-table-time content-styles"><p>${attempt.username}</p></div> <!--ФИО-->
+            <div class="private-table-time content-styles"><p>${attempt.testname}</p></div> <!-- Название теста-->
+            <div class="private-table-estimation content-styles"><p>${attempt.balls}</p></div>
+            <div class="private-table-estimation content-styles"><p>${attempt.attempt}</p></div>
+            <div class="private-table-estimation content-styles"><p>${attempt.timeTest}</p></div>
 
-    </div>
-    <div class="private-table private-table-content">
-        <div class="private-table-n content-styles"><p>2</p></div>
-        <div class="private-table-time content-styles"><p>hfhgjfhf</p></div>
-        <div class="private-table-time content-styles"><p>14/05/2022</p></div>
-        <div class="private-table-time content-styles"><p>Тест по антивирусной защите</p></div>
-        <div class="private-table-estimation content-styles"><p>10</p></div>
-        <div class="private-table-estimation content-styles"><p>11</p></div>
-
-    </div>
+        </div>
+    </#list>
 </section>
 
 </body>

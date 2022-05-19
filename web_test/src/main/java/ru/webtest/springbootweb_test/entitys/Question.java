@@ -31,7 +31,8 @@ public class Question {
     //ответы
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinColumn(name = "parent")
-    private List<Answer> answers;
+    private Collection<Answer> answers;
+//    private List<Answer> answers;
 
 
 

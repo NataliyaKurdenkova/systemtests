@@ -57,8 +57,16 @@
 </header>
 <section class="tests-container">
     <div class="test-title">
-        <p class="test-title-p">Вам назначены следующие тесты:</p>
+        <p class="test-title-p">В базе следующие тесты:</p>
+
     </div>
+
+    <div>
+        <form action="/newtest" method="get">
+            <button type="submit">Создать новый</button>
+        </form>
+    </div>
+
     <div class="test-table table-styles">
         <div class="test-table-n table-styles"><p>№</p></div>
         <div class="test-table-title table-styles"><p>Название теста</p></div>
@@ -67,6 +75,7 @@
         <div class="test-table-estimation table-styles"><p>Количество вопросов, для тестирования</p></div>
         <div class="test-table-time table-styles"><p>Время(мин)</p></div>
         <div class="test-table-action table-styles"></div>
+
     </div>
     <#list tests as test>
         <div class="test-table private-table-content">
@@ -77,9 +86,6 @@
             <div class="test-table-estimation content-styles"><p>${test.needque}</p></div>
             <div class="test-table-time content-styles"><p>${test.time}</p></div>
             <div class="test-table-action">
-                <form action="/new_test/${test.idtest}" method="get">
-                    <button type="submit"><i class="fa fa-play" aria-hidden="true"></i></button>
-                </form>
                 <form action="/pass_test/${test.idtest}" method="get">
                     <button type="submit"><i class="fa fa-play" aria-hidden="true"></i></button>
                 </form>
@@ -92,7 +98,9 @@
             </div>
         </div>
     </#list>
+
 </section>
+
 <footer class="footer">
     <div class="title-column title-column-social">
         <ul class="wrapper">

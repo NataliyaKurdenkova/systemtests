@@ -41,13 +41,12 @@ public class LichController {
         long[] nomerpas=new long[1];
         int k=0;
         for (PrescPassedTests p:prescPassedTests) {
-            nomerpas[k]=p.getIdpresc();// getIdpassed()
+            nomerpas[k]=p.getIdpresc();
             k++;
         }
-//        List<Test> tests=testService.getTestPassed(nomerpas);
+
         List<Test> tests=testService.getTestPresc(nomerpas);
         model.addAttribute("tests", tests);
-
         return "lich_page";
 
 
