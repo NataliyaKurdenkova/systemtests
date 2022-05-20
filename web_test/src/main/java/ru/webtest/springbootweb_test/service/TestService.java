@@ -179,6 +179,11 @@ public class TestService {
     public void savePassedTests(PassedTests passedTests) {
         passedTestsRepository.save(passedTests);
     }
+    // сохранить тест в назначенных
+    public void saveAsPresc(PrescTests prescTests) {
+
+        prescTestsRepository.save(prescTests);
+    }
 
     public void saveDefaultPrescTests(long iduser) {
         PrescTests prescTests = new PrescTests();

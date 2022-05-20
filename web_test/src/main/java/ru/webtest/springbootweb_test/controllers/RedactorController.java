@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.webtest.springbootweb_test.entitys.Answer;
-import ru.webtest.springbootweb_test.entitys.Question;
-import ru.webtest.springbootweb_test.entitys.Test;
+import org.springframework.web.bind.annotation.PathVariable;
+import ru.webtest.springbootweb_test.entitys.*;
+import ru.webtest.springbootweb_test.repositories.PrescTestsRepository;
 import ru.webtest.springbootweb_test.security.details.UserDetailsServiceImpl;
 import ru.webtest.springbootweb_test.service.TestService;
 
@@ -19,6 +19,10 @@ public class RedactorController {
     private TestService testService;
     @Autowired
     private UserDetailsServiceImpl usersService;
+    @Autowired
+    private PrescTestsRepository prescTestsRepository;
+    public PrescTests prescTests;
+
 
     @GetMapping("/newtest")
     public String getNewTestPage(Model model){
@@ -26,16 +30,44 @@ public class RedactorController {
        model.addAttribute("name", login);
         List<Test> tests = testService.getAllTests();
        model.addAttribute("tests", tests);
-        //List<Question> questions = testService.getAllQuestions();
-        //model.addAttribute("questions", questions);
-       // List<Answer> answers = testService.getAllAnswers();
-       //model.addAttribute("answers", answers);
-       //long lastnomer=5;
-      // System.out.println(testService.getNomerTest(tests.size()));
-       // long lastnomer=testService.getNomerTest(tests.size());
-      // lastnomer++;
-     // model.addAttribute("idtest", lastnomer);
-
-        return "newtest";
+       return "newtest";
     }
+
+
+
+    // вывести список пользователей
+    @GetMapping("/redactor_page")
+    public String getUsersList (Model model) {
+        String login = usersService.getCurrentUsername();
+        model.addAttribute("name", login);
+
+        List<User> users = usersService.getAllUsers();
+        model.addAttribute("users", users);
+
+        return "redactor_page";
+    }
+
+
+    // назначить тест
+    @GetMapping("/prescribeuser/{iduser}")
+    public String testShow(@PathVariable("iduser") long iduser, Model model) {
+        String login = usersService.getCurrentUsername();
+        model.addAttribute("name", login);
+        prescTests= new PrescTests();
+        prescTests.setIduser(iduser);
+        List<Test> tests = testService.getAllTests();
+        model.addAttribute("tests", tests);
+        return "prescribe_test";
+    }
+
+    // назначить тест
+    @GetMapping("/prescribetest/{idtest}")
+    public String prescribeTest (@PathVariable("idtest") long idtest, Model model) {
+        String login = usersService.getCurrentUsername();
+        model.addAttribute("name", login);
+        prescTests.setIdpresc(idtest);
+        prescTestsRepository.save(prescTests);
+        return "redirect:/redactor_page";
+    }
+
 }

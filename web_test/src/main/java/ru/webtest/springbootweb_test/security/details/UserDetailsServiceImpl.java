@@ -19,6 +19,7 @@ import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -111,6 +112,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return user.getName();
     }
 
+    public List<User> getAllUsers(){
+        return usersRepository.findAll();
+    }
     //получение id зарегистрированного пользователя
     public long getRegUserlogin(String login){
         User user=usersRepository.findByLogin(login);

@@ -38,19 +38,21 @@
     </div>
 </header>
 <section class="result-container grid">
-    <div class="result-question-testname ffs">Название теста: {testname}</div>
+    <div class="result-question-testname ffs">Название теста: ${testname}</div>
     <div class="result-question-container grid">
         <div class="result-question-tittle ffs">Результат по вопросам:</div>
         <div class="result-table grid">
-                   <#list answusers as answuser>-
-            <div class="result-table-content grid">
-                <div class="result-table-question ffs grid"><p> ${answuser.questionName} </p></div>
-                       <#list answuser.answerName as ans>
-                <div class="result-table-answer ffs grid"><p>${ans}</p></div>
-                        </#list>
-                <div class="result-table-correct grid"><p class="result-answer ffs">${answuser.correct}</p></div>
-            </div>
+            <#list answusers as answuser>-
+                <div class="result-table-content grid">
+                    <div>Вопрос:</div>
+                    <div class="result-table-question ffs grid"><p>  ${answuser.questionName} </p></div>
+                    <#list answuser.answerName as ans>
+
+                        <div class="result-table-answer ffs grid"><p> ${ans}</p></div>
                     </#list>
+                    <div class="result-table-correct grid"><p class="result-answer ffs">${answuser.correct}</p></div>
+                </div>
+            </#list>
         </div>
     </div>
     <div class="result-question-balls">Общее количество баллов: ${balls}</div>
