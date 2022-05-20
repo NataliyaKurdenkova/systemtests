@@ -46,33 +46,32 @@
             <input class="newtest-question-input" type="text" placeholder="Введите название теста">
         </div>
     </div>
-    <div class="newtest-answers-container grid">
-        <div class="newtest-answers-block grid scroll-container">
-            <#list tests as test>
-                <ul class="treeCSS">
-                    <li>${test.name}
-                        <#list test.questions as question>
-                            <ul class="treeCSS">
-                                <li>${question.question}
-                                    <#list question.answers as answer>
-                                        <ul>
-                                            <li>${answer.name}
-                                        </ul>
-                                    </#list>
-                            </ul>
-                        </#list>
-                </ul>
-            </#list>
-        </div>
 
+    <div class="newtest-answers-container grid">
+        <form>
+            <div class="newtest-answers-block grid scroll-container" >
+                <#list tests as test>
+                    <ul class="treeCSS">
+                        <li><div style="cursor: pointer;" onclick="location.href='/newt/${test.idtest}'"> ${test.name}</div>
+                            <#list test.questions as question>
+                                <ul class="treeCSSq">
+                                    <li><div style="cursor: pointer;" onclick="location.href='/newq/${question.idque}'"> ${question.question}</div>                                        <#list question.answers as answer>
+                                            <ul class="treeCSSa">
+                                                <li><div style="cursor: pointer;" > ${answer.name}
+                                            </ul>
+                                        </#list>
+                                </ul>
+                            </#list>
+                    </ul>
+                </#list>
+            </div>
+        </form>
         <div class="newtest-answers-block grid scroll-container">
             <form id="newtest_add_answer" action="" class="newtest-answers-form grid">
                 <div class="newtest-answer-title grid">
                     <label for="answer">Содержание вопроса:</label>
                     <textarea name="" id="answer"></textarea>
                 </div>
-
-
 
                 <div class="newtest-answer-type grid">
                     <label for="val"><span>Тип вопроса:</span></label>
@@ -81,11 +80,6 @@
                         <option value=checkbox>Несколько вариантов</option>
                     </select>
                 </div>
-
-
-
-
-
 
                 <div class="newtest-answer-add grid">
                     <input type="submit" value="Добавить ответ">
@@ -102,19 +96,20 @@
                 <input form="add_newtest" type="submit" value="Добавить тест">
             </form>
             <form>
-                <input form="newtest_add_answer" type="submit" value="Добавить вопрос">
+                <input form="newtest_add_question" type="submit" value="Добавить вопрос">
             </form>
         </div>
         <div class="newtest-action-block grid">
             <form>
-                <input form="newtest_add_answer" type="submit" value="Сохранить">
+                <input form="save" type="submit" value="Сохранить">
             </form>
-            <form action="/" method="post">
+            <form action="/list" method="post">
                 <input type="submit" value="Список тестов">
             </form>
         </div>
     </div>
 </section>
+<!--
 <script>
     (function () {
         var ul = document.querySelectorAll('.treeCSS > li:not(:only-child) ul, .treeCSS ul ul');
@@ -132,11 +127,11 @@
 
     function answerType() {
         <!-- SQL запрос на изменение типа поля Input и перезагрузка страницы -->
-    };
+};
 
-    function addAnswer() {
-        <!-- SQL запрос на добавление строчки в таблицу и перезагрузка страницы -->
-    };
-</script>
+function addAnswer() {
+<!-- SQL запрос на добавление строчки в таблицу и перезагрузка страницы -->
+};
+</script>-->
 </body>
 </html>

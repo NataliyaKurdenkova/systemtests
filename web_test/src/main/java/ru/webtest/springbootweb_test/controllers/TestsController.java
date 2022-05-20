@@ -5,14 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.webtest.springbootweb_test.entitys.*;
 import ru.webtest.springbootweb_test.security.details.UserDetailsServiceImpl;
 import ru.webtest.springbootweb_test.service.TestService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
+@Validated
 @Controller
 public class TestsController {
 
@@ -87,7 +89,7 @@ public class TestsController {
 
         attempt = new Attempt();
 ///создали ответы пользователя
-        AnswerUser answerUser=new AnswerUser();
+        AnswerUser answerUser = new AnswerUser();
         answUsr = new ArrayList<>();
         Question[] questions = testService.getQuestionByParent_Test(idtest);
 
@@ -149,8 +151,10 @@ public class TestsController {
 
 
     //кнопка ответить
+
     @GetMapping("/answer/{idtest}")
-    public String answerQuestion(@PathVariable("idtest") int idtest, @RequestParam String[] id, Model model) {
+    public String answerQuestion(@PathVariable("idtest") int idtest,@RequestParam String[] id, Model model, HttpServletRequest request) {
+
         Test test = testService.getTest(idtest);
 
         AnswerUser answerUser = new AnswerUser();
@@ -165,7 +169,7 @@ public class TestsController {
             for (int j = 0; j <= id.length - 1; j++) {
                 System.out.println("полученный ответ " + id);
                 Answer answer = testService.getAnswerById(Long.valueOf(id[j]));
-                Question que=testService.getQuestionById(answer.getParent());
+                Question que = testService.getQuestionById(answer.getParent());
                 answerUser.setQuestionName(que.getQuestion());
                 answerUser.setAnswerName(answer.getName());
                 System.out.println("ответ: " + answer.getName());
@@ -188,8 +192,9 @@ public class TestsController {
             System.out.println("timetest " + timeTest);
             long sek = (timeTest % 60000) / 1000;
             long min = timeTest / 60000;
-            long chas = timeTest / 3600000;
-            String timetestf = chas + ":" + min + ":" + sek;
+            //long chas = timeTest / 3600000;
+            //String timetestf = chas + ":" + min + ":" + sek;
+            String timetestf =  min + ":" + sek;
             System.out.println(timetestf);
 
             //id  пользователя
@@ -197,16 +202,18 @@ public class TestsController {
             attempt.setIduser(iduser);
             int kolvoAttempt = testService.getAttemptUser(idtest, iduser);
             long idattempt;
-            if (kolvoAttempt!=0) {
-                idattempt= testService.getAttemptId(idtest, iduser);
+            if (kolvoAttempt != 0) {
+                idattempt = testService.getAttemptId(idtest, iduser);
                 attempt.setId(idattempt);
             }
 
             kolvoAttempt++;
             attempt.setAttempt(kolvoAttempt);
             attempt.setTimeTest(timetestf);
-            Date current = new Date();
-            attempt.setCurrentDataTime(String.valueOf(current));
+            SimpleDateFormat simpleDateF=new SimpleDateFormat("dd.MM.yy HH:mm:ss");
+            Date current=new Date();
+            System.out.println(simpleDateF.format(current));
+            attempt.setCurrentDataTime(simpleDateF.format(current));
             attempt.setBalls(correctAnswers);
             attempt.setIdtest(idtest);
             //attempt.(answUsr);
@@ -236,7 +243,7 @@ public class TestsController {
             for (int j = 0; j <= id.length - 1; j++) {
                 System.out.println("полученный ответ " + id);
                 Answer answer = testService.getAnswerById(Long.valueOf(id[j]));
-                Question que=testService.getQuestionById(answer.getParent());
+                Question que = testService.getQuestionById(answer.getParent());
                 answerUser.setQuestionName(que.getQuestion());
                 answerUser.setAnswerName(answer.getName());
 
@@ -289,15 +296,18 @@ public class TestsController {
     }
 
     //кнопка посмотреть результат
-    @GetMapping("/result")
-    public String result(Model model) {
+    @GetMapping("/result/{idtest}")
+    public String result(Model model, @PathVariable("idtest") long idtest) {
         model.addAttribute("name", login);
-        model.addAttribute("iduser", attempt.getIduser());
-        model.addAttribute("idtest", attempt.getIdtest());
-        model.addAttribute("timetest", attempt.getTimeTest());
+        // model.addAttribute("iduser", attempt.getIduser());
+        // model.addAttribute("idtest", attempt.getIdtest());
+        //model.addAttribute("timetest", attempt.getTimeTest());
         model.addAttribute("balls", attempt.getBalls());
-        model.addAttribute("attempt", attempt.getAttempt());
-        model.addAttribute("currenttime", attempt.getCurrentDataTime());
+        // model.addAttribute("attempt", attempt.getAttempt());
+        //model.addAttribute("currenttime", attempt.getCurrentDataTime());
+        Test test=testService.getTest(idtest);
+        model.addAttribute("testname", test.getName());
+
         model.addAttribute("answusers", answUsr);
         return "result";
     }
