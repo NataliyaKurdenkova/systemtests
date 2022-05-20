@@ -10,12 +10,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
     </style>
     <link rel="stylesheet" href="css/normalize.css">
-    <!--    <link rel="stylesheet" href="css/normalize.css">-->
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
     <link rel="stylesheet" href="css/main.min.css">
-    <!--    <link rel="stylesheet" href="css/main.min.css">-->
-
 
     <!--скрипт для того, чтоб был глазок на поле пароля-->
     <script>
