@@ -10,11 +10,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
     </style>
     <!-- <link rel="stylesheet" href="../static/css/normalize.css">-->
-       <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/normalize.css">
     <!--<link rel="stylesheet" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
-        <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--<link rel="stylesheet" href="../static/css/main.min.css">-->
-        <link rel="stylesheet" href="../css/main.min.css">
+    <link rel="stylesheet" href="../css/main.min.css">
 </head>
 <body>
 <header>
@@ -31,12 +31,12 @@
         <div class="header-rows header-rows-2">
             <div class="header-columns-menu">
                 <form action="/lich_page" method="get">
-                    <input class="header-columns-menu-input active" type="submit" value="Назначенные тесты">
+                    <input class="header-columns-menu-input " type="submit" value="Назначенные тесты">
                 </form>
             </div>
             <div class="header-columns-menu">
-                <form action="/passedtests" method="get">
-                    <input class="header-columns-menu-input" type="submit" value="Пройденные тесты">
+                <form action="/passedtests" method="post">
+                    <input class="header-columns-menu-input active" type="submit" value="Пройденные тесты">
                 </form>
             </div>
 
@@ -52,40 +52,19 @@
     </div>
 </header>
 <section class="private-container">
-    <!--<div class="private-title">
 
-    <p>Ваши данные</p>
-    <table>
-        <tr>
-            <th>№</th>
-            <th>ФИО</th>
-            <th>Роль</th>
-        </tr>
-
-      </div>-->
     <div class="private-title">
-        <p class="private-title-p">Вам назначены следующие тесты:</p>
+        <p class="private-title-p">Пройденные тесты:</p>
     </div>
     <div class="private-table table-styles">
         <div class="private-table-n table-styles"><p>№</p></div>
         <div class="private-table-title table-styles"><p>Название теста</p></div>
-        <div class="private-table-estimation table-styles"><p>Проходной балл</p></div>
+        <div class="private-table-time table-styles"><p>Дата и время прохождения</p></div>
+        <div class="private-table-time table-styles"><p>Набранные баллы</p></div>
         <div class="private-table-time table-styles"><p>Время(мин)</p></div>
         <div class="private-table-action table-styles"></div>
     </div>
-      <#list tests as test>
-    <div class="private-table private-table-content">
-        <div class="private-table-n content-styles"><p>${test.idtest}</p></div>
-        <div class="private-table-title "><p>${test.name}</p></div>
-        <div class="private-table-estimation content-styles"><p>${test.passball}</p></div>
-        <div class="private-table-time content-styles"><p>${test.time}</p></div>
-        <div class="private-table-action">
-            <form action="/start/${test.idtest}" method="get">
-                <input class="private-table-content-button" type="submit" value="Начать">
-            </form>
-        </div>
-    </div>
-        </#list>
+
 
 </section>
 <footer class="footer">

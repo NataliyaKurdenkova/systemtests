@@ -32,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                .antMatchers("/users/**").access("hasRole('ADMIN')") //эта страница доступна только admin
                 .antMatchers("/statistic").access("hasRole('ADMIN')") //эта страница доступна только admin
                 .antMatchers("/lich_page/**").authenticated()//эта страница доступна только авторизированным пользователям
+                .antMatchers("//passedtests/**").authenticated()//эта страница доступна только авторизированным пользователям
                 .antMatchers("/newtest").access("hasAnyRole('ADMIN','EDITOR')")//эта страница доступна только авторизированным пользователям
                 .antMatchers("/tests/**").access("hasAnyRole('ADMIN','EDITOR')")
                 // .antMatchers("/tests/**").authenticated()//эта страница доступна только авторизированным пользователям

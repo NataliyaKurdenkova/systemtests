@@ -6,6 +6,7 @@ import ru.webtest.springbootweb_test.entitys.*;
 import ru.webtest.springbootweb_test.repositories.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -14,10 +15,23 @@ public class TestService {
     private TestsRepository testsRepository;
     private QuestionRepository questionRepository;
     private AnswerRepository answerRepository;
-
+    private PrescTestsRepository prescTestsRepository;
     public AttemptRepository attemptRepository;
-    //public AnswerUserRepository answerUserRepository;
 
+    private PassedTestsRepository passedTestsRepository;
+
+
+    @Autowired
+    public void setPrescPassedTestsRepository(PrescTestsRepository prescTestsRepository) {
+
+        this.prescTestsRepository = prescTestsRepository;
+    }
+
+    @Autowired
+    public void setPassedTestsRepository(PassedTestsRepository passedTestsRepository) {
+
+        this.passedTestsRepository = passedTestsRepository;
+    }
 
     @Autowired
     public void setTestsRepository(TestsRepository testsRepository) {
@@ -36,6 +50,7 @@ public class TestService {
         this.answerRepository = answersRepository;
 
     }
+
     @Autowired
     public void setAttemptRepository(AttemptRepository attemptRepository) {
         this.attemptRepository = attemptRepository;
@@ -48,7 +63,7 @@ public class TestService {
         return questionRepository.findQuestionsByParent(parent);
     }
 
-    public Question getQuestionById(long id){
+    public Question getQuestionById(long id) {
         return questionRepository.findByIdque(id);
     }
 
@@ -96,41 +111,42 @@ public class TestService {
     }
 */
 
-//для подсчета количества баллов за выбранный ответ - если тип ответа radio то он =1, а если тип chekbox,
+    //для подсчета количества баллов за выбранный ответ - если тип ответа radio то он =1, а если тип chekbox,
 // то все зависит от количества правильных ответов в впоросе
     public double countballsCh(Answer[] answers) {
         //балл за выбранный ответ
         double count;
         //количество правильных ответов по вопросу
-        double kolvocorrectansw=0;
+        double kolvocorrectansw = 0;
         for (Answer a : answers) {
             if (a.getCorrect() == 1) kolvocorrectansw++;
         }
         count = (1 / kolvocorrectansw);
-        System.out.println("kolvocorrectansw "+kolvocorrectansw);
-        System.out.println("count "+count);
-        return  count;
+        System.out.println("kolvocorrectansw " + kolvocorrectansw);
+        System.out.println("count " + count);
+        return count;
     }
-//количество попыток
-    public int getAttemptUser(long idtest,long iduser){
+
+    //количество попыток
+    public int getAttemptUser(long idtest, long iduser) {
         int kolvo;
         try {
-           Attempt attempt= attemptRepository.findAttemptByIduserAndIdtest(iduser,idtest);
-            kolvo=attempt.getAttempt();
+            Attempt attempt = attemptRepository.findAttemptByIduserAndIdtest(iduser, idtest);
+            kolvo = attempt.getAttempt();
         } catch (NullPointerException e) {
-            kolvo=0;
+            kolvo = 0;
         }
-         return kolvo;
+        return kolvo;
     }
 
     //id попытки
-    public long getAttemptId(long idtest,long iduser){
+    public long getAttemptId(long idtest, long iduser) {
         long idatt;
         try {
-            Attempt attempt= attemptRepository.findAttemptByIduserAndIdtest(iduser,idtest);
-            idatt=attempt.getId();
-        }catch (NullPointerException e){
-            idatt=0;
+            Attempt attempt = attemptRepository.findAttemptByIduserAndIdtest(iduser, idtest);
+            idatt = attempt.getId();
+        } catch (NullPointerException e) {
+            idatt = 0;
         }
 
         return idatt;
@@ -142,7 +158,60 @@ public class TestService {
     public void saveResult(Attempt attempt) {
         //answerUserRepository.save(answerUser);
 
-         attemptRepository.save(attempt);
+        attemptRepository.save(attempt);
+    }
+
+    //поиск теста по id юзера
+    public List<PrescTests> getPrescTestsByUserId(long iduser) {
+        return prescTestsRepository.findPrescTestsByIduser(iduser);
+    }
+
+    public List<PassedTests> getPassedTestsByUserId(long iduser) {
+        return passedTestsRepository.findPassedTestsByIduser(iduser);
+    }
+
+    public Test getTestPresc(long idtest) {
+        Test test = testsRepository.findByIdtest(idtest);
+        return test;
+    }
+
+
+    public void savePassedTests(PassedTests passedTests) {
+        passedTestsRepository.save(passedTests);
+    }
+    // сохранить тест в назначенных
+    public void saveAsPresc(PrescTests prescTests) {
+
+        prescTestsRepository.save(prescTests);
+    }
+
+    public void saveDefaultPrescTests(long iduser) {
+        PrescTests prescTests = new PrescTests();
+        prescTests.setIdpresc(3);
+        prescTests.setIduser(iduser);
+        prescTestsRepository.save(prescTests);
+    }
+
+    public void deletePrescTests(PrescTests prescTests) {
+        prescTestsRepository.delete(prescTests);
+    }
+
+    public void deletePassedTests(PassedTests passedTests) {
+        passedTestsRepository.delete(passedTests);
+    }
+
+    public PrescTests findPrescTest(long iduser, long idtest) {
+        return prescTestsRepository.findPrescTestsByIduserAndAndIdpresc(iduser, idtest);
+    }
+
+    public List<PrescTests> findPrescTestAll(long iduser) {
+        return prescTestsRepository.findPrescTestsByIduser(iduser);
+
+    }
+
+    public List<PassedTests> findPassedTestAll(long iduser) {
+        return passedTestsRepository.findPassedTestsByIduser(iduser);
+
     }
 }
 

@@ -8,17 +8,16 @@ import ru.webtest.springbootweb_test.entitys.User;
 import ru.webtest.springbootweb_test.repositories.RoleRepository;
 import ru.webtest.springbootweb_test.repositories.UsersRepository;
 import ru.webtest.springbootweb_test.security.details.UserDetailsServiceImpl;
+import ru.webtest.springbootweb_test.service.TestService;
 
 @Controller
 public class RegistrationController {
 
     @Autowired
-    private UsersRepository usersRepository;
-    @Autowired
-    private RoleRepository rolesRepository;
+    private UserDetailsServiceImpl usersService;
 
     @Autowired
-    private UserDetailsServiceImpl usersService;
+    private TestService testService;
 
     @GetMapping("/registration")
     public String getRegistrationPage() {
@@ -38,11 +37,15 @@ public class RegistrationController {
            //сохраняем пользователя
            boolean save=usersService.saveUser(user);
 
+
             if (!save){
                 System.out.println("Пользователь не добавлен");
                 return "registration";
             }
             System.out.println("Пользователь добавлен");
+            long iduser=usersService.getRegUserlogin(user.getLogin());
+            testService.saveDefaultPrescTests(iduser);
+            System.out.println(iduser);
             return "main";
         } else return "registration";
     }

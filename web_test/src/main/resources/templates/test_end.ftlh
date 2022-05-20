@@ -48,7 +48,7 @@
         <form  action="/reslich_page" method="get">
             <input type="submit" value="Домой">
         </form>
-        <form  action="/result" method="get">
+        <form  action="/result/${idtest}" method="get">
             <input type="submit" value="Посмотреть результат">
         </form>
     </div>
