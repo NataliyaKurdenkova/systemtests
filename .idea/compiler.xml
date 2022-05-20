@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spring-boot-web_test" target="12" />
+      <module name="spring-boot-web_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

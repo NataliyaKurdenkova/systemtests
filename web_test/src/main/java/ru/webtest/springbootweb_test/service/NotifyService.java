@@ -7,7 +7,9 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 @Service
 public class NotifyService {
-    public static void recoveryPassLinkCreateAndSend (String redactorLogin, String userName, String testName, String testResult) throws MessagingException {
+
+
+    public void recoveryPassLinkCreateAndSend (String redactorLogin, String userName, String testName, double testResult) throws MessagingException {
         //Объект properties хранит параметры соединения.
         //Для каждого почтового сервера они разные.
         //Если не знаете нужные - обратитесь к администратору почтового сервера.

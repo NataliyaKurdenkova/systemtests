@@ -9,8 +9,10 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.webtest.springbootweb_test.entitys.*;
 import ru.webtest.springbootweb_test.security.details.UserDetailsServiceImpl;
+import ru.webtest.springbootweb_test.service.NotifyService;
 import ru.webtest.springbootweb_test.service.TestService;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -180,7 +182,7 @@ public class TestsController {
                 } else System.out.println("Выбран не верный ответ");
                 System.out.println("Количество правильных ответов " + correctAnswers);
                 answerUser.setCorrect(answer.getCorrect());
-                //attempt.setAnswerUsers(Arrays.asList(answerUser));
+
                 answUsr.add(answerUser);
             }
 
@@ -224,6 +226,13 @@ public class TestsController {
                 String msg = test.getName() + " СДАН! ";
                 model.addAttribute("Msg", msg);
                 System.out.println(msg);
+                String redactorLogin="nata.kurdenkova@yandex.ru";
+                NotifyService notifyService=new NotifyService();
+                try {
+                    notifyService.recoveryPassLinkCreateAndSend(redactorLogin, login, test.getName(), correctAnswers);
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+                }
             } else {
                 String msg1 = test.getName() + " НЕ СДАН! ";
                 model.addAttribute("Msg", msg1);
