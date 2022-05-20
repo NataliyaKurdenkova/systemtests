@@ -5,13 +5,11 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.webtest.springbootweb_test.entitys.Attempt;
-import ru.webtest.springbootweb_test.entitys.AttemptView;
-import ru.webtest.springbootweb_test.entitys.Test;
-import ru.webtest.springbootweb_test.entitys.User;
+import ru.webtest.springbootweb_test.entitys.*;
 import ru.webtest.springbootweb_test.security.details.UserDetailsServiceImpl;
 import org.springframework.validation.BindingResult;
 import ru.webtest.springbootweb_test.service.AttemptService;
+import ru.webtest.springbootweb_test.service.TestService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +22,8 @@ public class AdminController {
     private UserDetailsServiceImpl usersService;
     @Autowired
     private AttemptService attemptService;
+    @Autowired
+    private TestService testService;
 
     @Secured("ROLE_ADMIN")
     @GetMapping("/statistic")
@@ -101,7 +101,22 @@ public class AdminController {
 
     @PostMapping("/delete_user/{iduser}")
     public String deleteUser(@PathVariable("iduser") long iduser) {
+
         usersService.deleteUser(iduser);
+        List<PrescTests> prescTests=testService.findPrescTestAll(iduser);
+        for (PrescTests ps:prescTests) {
+            testService.deletePrescTests(ps);
+        }
+        List<PassedTests> passedTests=testService.findPassedTestAll(iduser);
+        for (PassedTests p:passedTests) {
+            testService.deletePassedTests(p);
+        }
+
+        List<Attempt> attempt=attemptService.getAttemptByIdUser(iduser);
+        for (Attempt a: attempt) {
+            attemptService.deleteAttemptByIdUser(a);
+        }
+
         return "redirect:/users";
     }
 

@@ -9,7 +9,7 @@ import java.util.Properties;
 public class NotifyService {
 
 
-    public void recoveryPassLinkCreateAndSend (String redactorLogin, String userName, String testName, double testResult) throws MessagingException {
+    public void SendMsg (String redactorLogin, String userName, String testName, double testResult) throws MessagingException {
         //Объект properties хранит параметры соединения.
         //Для каждого почтового сервера они разные.
         //Если не знаете нужные - обратитесь к администратору почтового сервера.

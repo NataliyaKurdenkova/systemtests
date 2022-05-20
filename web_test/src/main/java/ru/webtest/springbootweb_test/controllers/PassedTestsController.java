@@ -32,19 +32,24 @@ public class PassedTestsController {
 
     @GetMapping("/passedtests")
     public String getPassedTestsPage(Model model) {
+
         //получаем имя текущего пользователя
         String login = usersService.getCurrentUsername();
         model.addAttribute("name", login);
         long iduser = usersService.getCurrentUserId();
         List<PassedTests> passedTests = testService.getPassedTestsByUserId(iduser);
-        List<Attempt> attempts=new ArrayList<>();
-        for (PassedTests p : passedTests) {
-            attempts.add(attemptService.getAttemptByOneIduserAndIdtest(iduser,p.getIdpassed()));
-        }
-        List<AttemptView> attemptViews=attemptService.getAttemptViewByOneIduserAndIdtest(attempts);
+        if (passedTests.isEmpty()) {
+            return "passedtestsempty";
+        } else {
+            List<Attempt> attempts = new ArrayList<>();
+            for (PassedTests p : passedTests) {
+                attempts.add(attemptService.getAttemptByOneIduserAndIdtest(iduser, p.getIdpassed()));
+            }
+            List<AttemptView> attemptViews = attemptService.getAttemptViewByOneIduserAndIdtest(attempts);
 
-        model.addAttribute("attempts", attemptViews);
-        return "passedtests";
+            model.addAttribute("attempts", attemptViews);
+            return "passedtests";
+        }
     }
 
 

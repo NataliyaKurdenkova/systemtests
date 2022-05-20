@@ -16,6 +16,11 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 @Validated
 @Controller
 public class TestsController {
@@ -158,7 +163,7 @@ public class TestsController {
     public String answerQuestion(@PathVariable("idtest") int idtest,@RequestParam String[] id, Model model, HttpServletRequest request) {
 
         Test test = testService.getTest(idtest);
-
+        int time = test.getTime();
         AnswerUser answerUser = new AnswerUser();
         //login = usersService.getCurrentUsername();
         model.addAttribute("name", login);
@@ -226,10 +231,20 @@ public class TestsController {
                 String msg = test.getName() + " СДАН! ";
                 model.addAttribute("Msg", msg);
                 System.out.println(msg);
+
+                PassedTests passedTests=new PassedTests();
+                passedTests.setIduser(iduser);
+                passedTests.setIdpassed(idtest);
+                testService.savePassedTests(passedTests);
+
+                PrescTests prescTests=testService.findPrescTest(iduser,idtest);
+                testService.deletePrescTests(prescTests);
+
+                ///////// отправка уведомления об успешной сдаче, пока на мою почту
                 String redactorLogin="nata.kurdenkova@yandex.ru";
                 NotifyService notifyService=new NotifyService();
                 try {
-                    notifyService.recoveryPassLinkCreateAndSend(redactorLogin, login, test.getName(), correctAnswers);
+                    notifyService.SendMsg(redactorLogin, login, test.getName(), correctAnswers);
                 } catch (MessagingException e) {
                     e.printStackTrace();
                 }
@@ -248,7 +263,7 @@ public class TestsController {
             return "test_end";
 
         } else {
-
+           // if(timeTest>time) return "test_start";
             for (int j = 0; j <= id.length - 1; j++) {
                 System.out.println("полученный ответ " + id);
                 Answer answer = testService.getAnswerById(Long.valueOf(id[j]));
@@ -289,6 +304,7 @@ public class TestsController {
         model.addAttribute("ball", ball);
         int time = test.getTime();
         model.addAttribute("time", time);
+        tiktak(time);
         return "test_start";
     }
 
@@ -308,17 +324,33 @@ public class TestsController {
     @GetMapping("/result/{idtest}")
     public String result(Model model, @PathVariable("idtest") long idtest) {
         model.addAttribute("name", login);
-        // model.addAttribute("iduser", attempt.getIduser());
-        // model.addAttribute("idtest", attempt.getIdtest());
-        //model.addAttribute("timetest", attempt.getTimeTest());
         model.addAttribute("balls", attempt.getBalls());
-        // model.addAttribute("attempt", attempt.getAttempt());
-        //model.addAttribute("currenttime", attempt.getCurrentDataTime());
         Test test=testService.getTest(idtest);
         model.addAttribute("testname", test.getName());
 
         model.addAttribute("answusers", answUsr);
         return "result";
+    }
+
+    public void tiktak(int time) {
+        final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+        final Runnable runnable = new Runnable() {
+            int countdownStarter = time;
+
+            public void run() {
+
+                System.out.println(countdownStarter);
+                countdownStarter--;
+
+                if (countdownStarter < 0) {
+                    System.out.println("Timer Over!");
+                    scheduler.shutdown();
+                }
+            }
+        };
+        scheduler.scheduleAtFixedRate(runnable, 0, 1, SECONDS);
+
     }
 
 }

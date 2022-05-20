@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface PrescTestsRepository extends JpaRepository<PrescTests,Long> {
     List<PrescTests> findPrescTestsByIduser(long iduser);
+    PrescTests findPrescTestsByIduserAndAndIdpresc(long iduser,long idtest);
 
 }

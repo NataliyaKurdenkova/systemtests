@@ -1,16 +1,19 @@
 <!doctype html>
-<html lang="ru" xmlns:form="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Test</title>
+    <title>Personal Cabinet</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
     </style>
+    <!-- <link rel="stylesheet" href="../static/css/normalize.css">-->
     <link rel="stylesheet" href="../css/normalize.css">
+    <!--<link rel="stylesheet" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
     <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="../static/css/main.min.css">-->
     <link rel="stylesheet" href="../css/main.min.css">
 </head>
 <body>
@@ -25,9 +28,20 @@
                 <img class="right-img" src="../img/right-img.svg" alt="img">
             </div>
         </div>
-        <div class="header-rows header-rows-4">
+        <div class="header-rows header-rows-2">
+            <div class="header-columns-menu">
+                <form action="/lich_page" method="get">
+                    <input class="header-columns-menu-input " type="submit" value="Назначенные тесты">
+                </form>
+            </div>
+            <div class="header-columns-menu">
+                <form action="/passedtests" method="post">
+                    <input class="header-columns-menu-input active" type="submit" value="Пройденные тесты">
+                </form>
+            </div>
+
             <div class="header-columns-output">
-                <p class="header-columns-output-p" id="FIO-output">${name}</p>
+                <p class="header-columns-output-p" id="FIO-output"> ${name}</p>
             </div>
             <div class="header-columns-exit">
                 <form action="/logout" method="post">
@@ -37,33 +51,21 @@
         </div>
     </div>
 </header>
-<section class="result-container grid">
-    <div class="result-question-testname ffs">Название теста: ${testname}</div>
-    <div class="result-question-container grid">
-        <div class="result-question-tittle ffs">Результат по вопросам:</div>
-        <div class="result-table grid">
-            <#list answusers as answuser>-
-                <div class="result-table-content grid">
-                    <div>Вопрос:</div>
-                    <div class="result-table-question ffs grid"><p>  ${answuser.questionName} </p></div>
-                    <#list answuser.answerName as ans>
+<section class="private-container">
 
-                        <div class="result-table-answer ffs grid"><p> ${ans}</p></div>
-                    </#list>
-                    <div class="result-table-correct grid"><p class="result-answer ffs">${answuser.correct}</p></div>
-                </div>
-            </#list>
-        </div>
+    <div class="private-title">
+        <p class="private-title-p">Пройденные тесты:</p>
     </div>
-    <div class="result-question-balls">Общее количество баллов: ${balls}</div>
-    <div class="result-action-block grid">
-        <form action="/start/${idtest}" method="get">
-            <input type="submit" value="Пересдать">
-        </form>
-        <form action="/lich_page" method="get">
-            <input type="submit" value="Домой">
-        </form>
+    <div class="private-table table-styles">
+        <div class="private-table-n table-styles"><p>№</p></div>
+        <div class="private-table-title table-styles"><p>Название теста</p></div>
+        <div class="private-table-time table-styles"><p>Дата и время прохождения</p></div>
+        <div class="private-table-time table-styles"><p>Набранные баллы</p></div>
+        <div class="private-table-time table-styles"><p>Время(мин)</p></div>
+        <div class="private-table-action table-styles"></div>
     </div>
+
+
 </section>
 <footer class="footer">
     <div class="title-column title-column-social">
@@ -92,16 +94,4 @@
     </div>
 </footer>
 </body>
-<script>
-    var result = document.getElementsByClassName("result-answer");
-    for (i = 0; i < result.length; i++) {
-        if (result[i].innerHTML == "0") {
-            result[i].parentElement.classList.add("answer-nocorrect");
-            result[i].innerHTML = "Ошибка"
-        } else {
-            result[i].parentElement.classList.add("answer-correct");
-            result[i].innerHTML = "Верно"
-        }
-    }
-</script>
 </html>

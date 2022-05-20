@@ -32,7 +32,7 @@
         </div>
         <div class="header-rows header-rows-3">
             <div class="header-columns-time">
-                <p>time</p>
+               <!-- <p>time</p>-->
             </div>
             <div class="header-columns-output">
                 <p class="header-columns-output-p" id="FIO-output">${name}</p>
@@ -47,7 +47,7 @@
 </header>
 <section class="test-container">
     <div class="test-question-container">
-        <!-- <p class="test-question-id">${idtest}</p>-->
+        <#-- <p class="test-question-id">${idtest}</p>-->
         <p class="test-question-title">Вопрос:</p>
         <p class="test-question ffs">${question}</p>
     </div>

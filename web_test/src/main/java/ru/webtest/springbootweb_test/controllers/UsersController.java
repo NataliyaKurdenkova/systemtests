@@ -10,6 +10,7 @@ import ru.webtest.springbootweb_test.entitys.User;
 import ru.webtest.springbootweb_test.repositories.UsersRepository;
 import ru.webtest.springbootweb_test.security.details.UserDetailsServiceImpl;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.Collection;
 import java.util.List;
 
@@ -29,7 +30,8 @@ public class UsersController {
         String login = usersService.getCurrentUsername();
         model.addAttribute("name", login);
 
-        List<User> users =usersRepository.findAll();
+       // List<User> users =usersRepository.findAll();
+       List<User> users=usersService.getAllUsers();
         model.addAttribute("users",users);
 
         return "users_page";
