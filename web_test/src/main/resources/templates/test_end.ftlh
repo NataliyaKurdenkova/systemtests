@@ -40,7 +40,7 @@
     </div>
 </header>
 <section class="test-container">
-       <div class="test-answers-title-start ffs"><p>${Msg}</p><br><p> Вы набрали - ${balls} баллов.</p><br><p> Врямя прохождения теста - ${timetest} .</p></div>
+    <div class="test-answers-title-start ffs"><p>${Msg}</p><br><p> Вы набрали - ${balls} баллов.</p><br><p> Врямя прохождения теста - ${timetest} .</p></div>
     <div class="test-action-block test-end">
         <form  action="/restart/${idtest}" method="get">
             <input type="submit" value="Пересдать">

@@ -7,23 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test</title>
     <style>
-        <!--
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
-        -->
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
     </style>
-    <!-- <link rel="stylesheet" href="../static/css/normalize.css">-->
     <link rel="stylesheet" href="../css/normalize.css">
-    <!--<link rel="stylesheet" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
     <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--<link rel="stylesheet" href="../static/css/main.min.css">-->
     <link rel="stylesheet" href="../css/main.min.css">
 </head>
-
 <body>
-
 <header>
-
     <div class="header-container">
         <div class="header-rows header-rows-1">
             <div class="header-logo">
@@ -34,7 +25,7 @@
                 <img class="right-img" src="../img/right-img.svg" alt="img">
             </div>
         </div>
-        <div class="header-rows header-rows-3">
+        <div class="header-rows header-rows-4">
             <div class="header-columns-output">
                 <p class="header-columns-output-p" id="FIO-output">${name}</p>
             </div>
@@ -46,49 +37,30 @@
         </div>
     </div>
 </header>
-<section class="test-container">
-    <div class="test-question-container">
-
-        <div class="private-table table-styles">
-            <div class="private-table-n table-styles"><p>Дата и время прохождения теста</p></div>
-            <div class="private-table-title table-styles"><p>Номер пользователя</p></div>
-            <div class="private-table-estimation table-styles"><p>Номер теста</p></div>
-            <div class="private-table-action table-styles">Время прохождения</div>
-            <div class="private-table-action table-styles">Количество набранных баллов</div>
-            <div class="private-table-action table-styles">Количество попыток</div>
+<section class="result-container grid">
+    <div class="result-question-testname ffs">Название теста: {testname}</div>
+    <div class="result-question-container grid">
+        <div class="result-question-tittle ffs">Результат по вопросам:</div>
+        <div class="result-table grid">
+            <!--        <#list answusers as answuser>-->
+            <div class="result-table-content grid">
+                <div class="result-table-question ffs grid"><p> ${answuser.questionName} </p></div>
+                <!--        <#list answuser.answerName as ans>-->
+                <div class="result-table-answer ffs grid"><p>${ans}</p></div>
+                <!--        </#list>-->
+                <div class="result-table-correct grid"><p class="result-answer ffs">${answuser.correct}</p></div>
+            </div>
+            <!--        </#list>-->
         </div>
-
-        <div class="private-table-n content-styles"><p>${currenttime}</p></div>
-        <div class="private-table-title"><p>${iduser}</p></div>
-        <div class="private-table-estimation content-styles"><p>${idtest}</p></div>
-        <div class="private-table-time content-styles"><p>${timetest}</p></div>
-        <div class="private-table-time content-styles"><p>${timetest}</p></div>
-        <div class="private-table-time content-styles"><p>${balls}</p></div>
-        <div class="private-table-time content-styles"><p>${attempt}</p></div>
-
-
-
-        <div>Результат по вопросам:</div>
-        <#list answusers as answuser>
-
-            <div class="private-table-time content-styles"><p>${answuser.questionName}</p></div>
-            <#list answuser.answerName as ans>
-                <div class="private-table-time content-styles"><p>${ans}</p></div>
-
-            </#list>
-            <div class="private-table-time content-styles"><p>${answuser.correct}</p></div>
-        </#list>
-
-        <div class="test-action-block">
-            <form action="/start/${idtest}" method="get">
-                <input type="submit" value="Пересдать">
-            </form>
-
-            <form action="/lich_page" method="get">
-                <input type="submit" value="Домой">
-            </form>
-
-        </div>
+    </div>
+    <div class="result-question-balls">Общее количество баллов: ${balls}</div>
+    <div class="result-action-block grid">
+        <form action="/start/${idtest}" method="get">
+            <input type="submit" value="Пересдать">
+        </form>
+        <form action="/lich_page" method="get">
+            <input type="submit" value="Домой">
+        </form>
     </div>
 </section>
 <footer class="footer">
@@ -118,4 +90,16 @@
     </div>
 </footer>
 </body>
+<script>
+    var result = document.getElementsByClassName("result-answer");
+    for (i = 0; i < result.length; i++) {
+        if (result[i].innerHTML == "0") {
+            result[i].parentElement.classList.add("answer-nocorrect");
+            result[i].innerHTML = "Ошибка"
+        } else {
+            result[i].parentElement.classList.add("answer-correct");
+            result[i].innerHTML = "Верно"
+        }
+    }
+</script>
 </html>

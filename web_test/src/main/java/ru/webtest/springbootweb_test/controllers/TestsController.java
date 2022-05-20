@@ -301,5 +301,4 @@ public class TestsController {
         model.addAttribute("answusers", answUsr);
         return "result";
     }
-
 }
