@@ -20,10 +20,11 @@ public class AttemptService {
 
 
     @Autowired
-    public void setAttemptRepository( AttemptRepository attemptRepository) {
+    public void setAttemptRepository(AttemptRepository attemptRepository) {
 
-        this.attemptRepository=attemptRepository;
+        this.attemptRepository = attemptRepository;
     }
+
     @Autowired
     public void setTestsRepository(TestsRepository testsRepository) {
 
@@ -32,24 +33,67 @@ public class AttemptService {
 
 
     //для отображения на стр статистика (нужны не id. а имя и название теста)
-    public List<AttemptView> getAttemptAll(){
+    public List<AttemptView> getAttemptAll() {
 
-        List<Attempt> attempts=attemptRepository.findAll();
-        List<AttemptView> attemptViews=new ArrayList<>();
-        for (Attempt a:attempts) {
-           long iduser= a.getIduser();
-           User user=usersRepository.findById(iduser);
-            Test test=testsRepository.findByIdtest(a.getIdtest());
-            AttemptView attemptView=new AttemptView(a.getId(),user.getName(),test.getName(),a.getAttempt(),a.getCurrentDataTime(),a.getBalls(),a.getTimeTest());
+        List<Attempt> attempts = attemptRepository.findAll();
+        List<AttemptView> attemptViews = new ArrayList<>();
+        for (Attempt a : attempts) {
+            long iduser = a.getIduser();
+            User user = usersRepository.findById(iduser);
+            Test test = testsRepository.findByIdtest(a.getIdtest());
+            AttemptView attemptView = new AttemptView(a.getId(), user.getName(), test.getName(), a.getAttempt(), a.getCurrentDataTime(), a.getBalls(), a.getTimeTest());
             attemptViews.add(attemptView);
         }
         if (attemptViews.isEmpty()) {
-            AttemptView attemptView=new AttemptView(1l,"0","0",0,"0",0,"0");
+            AttemptView attemptView = new AttemptView(1l, "0", "0", 0, "0", 0, "0");
             attemptViews.addAll((Collection<? extends AttemptView>) attemptView);
         }
-        return  attemptViews;
+        return attemptViews;
+    }
+/*
+    // для отображения на стр /passedtest , вывод по названию теста
+    public List<Attempt> getAttemptByIduserAndIdtest(long iduser, long idtest) {
+        List<Attempt> attempts = Collections.singletonList(attemptRepository.findAttemptByIduserAndIdtest(iduser, idtest));
+        List<AttemptView> attemptViews = new ArrayList<>();
+        for (Attempt a : attempts) {
+//          long iduser = a.getIduser();
+            User user = usersRepository.findById(iduser);
+            Test test = testsRepository.findByIdtest(a.getIdtest());
+            AttemptView attemptView = new AttemptView(a.getId(), user.getName(), test.getName(), a.getAttempt(), a.getCurrentDataTime(), a.getBalls(), a.getTimeTest());
+            attemptViews.add(attemptView);
+        }
+        if (attemptViews.isEmpty()) {
+            AttemptView attemptView = new AttemptView(1l, "0", "0", 0, "0", 0, "0");
+            attemptViews.addAll((Collection<? extends AttemptView>) attemptView);
+        }
+        return attempts;
+    }
+*/
+    // для отображения на стр /passedtest , вывод по названию теста
+    public Attempt getAttemptByOneIduserAndIdtest(long iduser, long idtest) {
+
+        Attempt attempt = attemptRepository.findAttemptByIduserAndIdtest(iduser, idtest);
+        List<AttemptView> attemptViews = new ArrayList<>();
+        return attempt;
     }
 
+    // для отображения на стр /passedtest , вывод по названию теста
+    public List<AttemptView> getAttemptViewByOneIduserAndIdtest(List<Attempt> attempts) {
+
+        List<AttemptView> attemptViews = new ArrayList<>();
+        for (Attempt a : attempts) {
+            long iduser = a.getIduser();
+            User user = usersRepository.findById(iduser);
+            Test test = testsRepository.findByIdtest(a.getIdtest());
+            AttemptView attemptView = new AttemptView(a.getIdtest(), user.getName(), test.getName(), a.getAttempt(), a.getCurrentDataTime(), a.getBalls(), a.getTimeTest());
+            attemptViews.add(attemptView);
+        }
+        if (attemptViews.isEmpty()) {
+            AttemptView attemptView = new AttemptView(0l, "0", "0", 0, "0", 0, "0");
+            attemptViews.addAll((Collection<? extends AttemptView>) attemptView);
+        }
+        return attemptViews;
+    }
 
 }
 
