@@ -169,12 +169,45 @@ public class TestService {
     public List<PassedTests> getPassedTestsByUserId(long iduser) {
         return passedTestsRepository.findPassedTestsByIduser(iduser);
     }
+
     public Test getTestPresc(long idtest) {
         Test test = testsRepository.findByIdtest(idtest);
         return test;
     }
 
 
+    public void savePassedTests(PassedTests passedTests) {
+        passedTestsRepository.save(passedTests);
+    }
+
+    public void saveDefaultPrescTests(long iduser) {
+        PrescTests prescTests = new PrescTests();
+        prescTests.setIdpresc(3);
+        prescTests.setIduser(iduser);
+        prescTestsRepository.save(prescTests);
+    }
+
+    public void deletePrescTests(PrescTests prescTests) {
+        prescTestsRepository.delete(prescTests);
+    }
+
+    public void deletePassedTests(PassedTests passedTests) {
+        passedTestsRepository.delete(passedTests);
+    }
+
+    public PrescTests findPrescTest(long iduser, long idtest) {
+        return prescTestsRepository.findPrescTestsByIduserAndAndIdpresc(iduser, idtest);
+    }
+
+    public List<PrescTests> findPrescTestAll(long iduser) {
+        return prescTestsRepository.findPrescTestsByIduser(iduser);
+
+    }
+
+    public List<PassedTests> findPassedTestAll(long iduser) {
+        return passedTestsRepository.findPassedTestsByIduser(iduser);
+
+    }
 }
 
 

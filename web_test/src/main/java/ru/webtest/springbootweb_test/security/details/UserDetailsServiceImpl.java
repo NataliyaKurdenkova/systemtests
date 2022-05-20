@@ -111,6 +111,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return user.getName();
     }
 
+    //получение id зарегистрированного пользователя
+    public long getRegUserlogin(String login){
+        User user=usersRepository.findByLogin(login);
+        return user.getIduser();
+    }
+
+
 //изменение пароля
     public boolean savePasswordBD(String password,long iduser) {
         //проверка если такой пользователь в базе

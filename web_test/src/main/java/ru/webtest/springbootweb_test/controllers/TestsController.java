@@ -226,10 +226,20 @@ public class TestsController {
                 String msg = test.getName() + " СДАН! ";
                 model.addAttribute("Msg", msg);
                 System.out.println(msg);
+
+                PassedTests passedTests=new PassedTests();
+                passedTests.setIduser(iduser);
+                passedTests.setIdpassed(idtest);
+                testService.savePassedTests(passedTests);
+
+                PrescTests prescTests=testService.findPrescTest(iduser,idtest);
+                testService.deletePrescTests(prescTests);
+
+                ///////// отправка уведомления об успешной сдаче, пока на мою почту
                 String redactorLogin="nata.kurdenkova@yandex.ru";
                 NotifyService notifyService=new NotifyService();
                 try {
-                    notifyService.recoveryPassLinkCreateAndSend(redactorLogin, login, test.getName(), correctAnswers);
+                    notifyService.SendMsg(redactorLogin, login, test.getName(), correctAnswers);
                 } catch (MessagingException e) {
                     e.printStackTrace();
                 }
