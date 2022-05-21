@@ -49,20 +49,23 @@
 
     <div class="newtest-answers-container grid">
         <form>
-            <div class="newtest-answers-block grid scroll-container" >
+            <div class="newtest-answers-block grid scroll-container">
                 <#list tests as test>
-                    <ul class="treeCSS">
-                        <li><div style="cursor: pointer;" onclick="location.href='/newt/${test.idtest}'"> ${test.name}</div>
-                            <#list test.questions as question>
-                                <ul class="treeCSSq">
-                                    <li><div style="cursor: pointer;" onclick="location.href='/newq/${question.idque}'"> ${question.question}</div>                                        <#list question.answers as answer>
-                                            <ul class="treeCSSa">
-                                                <li><div style="cursor: pointer;" onclick="location.href='/newa/${answer.idanswer} '"> ${answer.name}
-                                            </ul>
-                                        </#list>
+                <ul class="treeCSS">
+                    <li>
+                        <div onclick="location.href='/newt/${test.idtest}'"> ${test.name}</div>
+                        <#list test.questions as question>
+                        <ul class="treeCSSq">
+                            <li>
+                                <div onclick="location.href='/newq/${question.idque}'"> ${question.question}</div> <#list question.answers as answer>
+                                <ul class="treeCSSa">
+                                    <li>
+                                        <div onclick="location.href='/newa/${answer.idanswer} '"> ${answer.name}
                                 </ul>
-                            </#list>
-                    </ul>
+                                </#list>
+                        </ul>
+                        </#list>
+                </ul>
                 </#list>
             </div>
         </form>
@@ -109,7 +112,6 @@
         </div>
     </div>
 </section>
-<!--
 <script>
     (function () {
         var ul = document.querySelectorAll('.treeCSS > li:not(:only-child) ul, .treeCSS ul ul');
@@ -124,14 +126,6 @@
             }
         }
     })();
-
-    function answerType() {
-        <!-- SQL запрос на изменение типа поля Input и перезагрузка страницы -->
-};
-
-function addAnswer() {
-<!-- SQL запрос на добавление строчки в таблицу и перезагрузка страницы -->
-};
-</script>-->
+</script>
 </body>
 </html>
