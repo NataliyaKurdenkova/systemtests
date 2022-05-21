@@ -29,10 +29,7 @@
                 <img class="right-img" src="../../../img/right-img.svg" alt="img">
             </div>
         </div>
-        <div class="header-rows header-rows-admin">
-
-
-
+        <div class="header-rows header-rows-4">
             <div class="header-columns-output">
                 <p class="header-columns-output-p" id="FIO-output"> ${name}</p>
             </div>
@@ -44,21 +41,18 @@
         </div>
     </div>
 </header>
-<section class="private-container">
-
-
-
-    <div class="private-table table-styles">
-        <div class="private-table-n table-styles"><p>№</p></div>
-        <div class="private-table-title table-styles"><p>Название теста</p></div>
-        <div class="private-table-action table-styles"></div>
+<section class="redactor-container">
+    <div class="redactor-table table-styles">
+        <div class="redactor-table-n table-styles"><p>№</p></div>
+        <div class="redactor-table-title table-styles"><p>Название теста</p></div>
+        <div class="redactor-table-action table-styles"></div>
     </div>
 
     <#list tests as test>
-        <div class="test-table private-table-content">
-            <div class="test-table-n content-styles"><p>${test.idtest}</p></div>
-            <div class="test-table-title "><p>${test.name}</p></div>
-            <div class="private-table-action">
+        <div class="redactor-table redactor-table-content">
+            <div class="redactor-table-n content-styles"><p>${test.idtest}</p></div>
+            <div class="redactor-table-title "><p>${test.name}</p></div>
+            <div class="redactor-table-action">
                 <form action="/prescribetest/${test.idtest}" method="get">
                     <!--   <input type="submit" value="Назначить">-->
                     <button type="submit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
