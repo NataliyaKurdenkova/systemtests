@@ -201,8 +201,11 @@ public class TestsController {
             long min = timeTest / 60000;
             //long chas = timeTest / 3600000;
             //String timetestf = chas + ":" + min + ":" + sek;
-            String timetestf =  min + ":" + sek;
-            System.out.println(timetestf);
+            //String timetestf =min + ":" + sek;
+            Date d=new Date(timeTest);
+            SimpleDateFormat simpleTimeF=new SimpleDateFormat("mm:ss");
+            String timetestf2 = simpleTimeF.format(d);
+            System.out.println(timetestf2);
 
             //id  пользователя
             long iduser = usersService.getCurrentUserId();
@@ -216,7 +219,7 @@ public class TestsController {
 
             kolvoAttempt++;
             attempt.setAttempt(kolvoAttempt);
-            attempt.setTimeTest(timetestf);
+            attempt.setTimeTest(timetestf2);
             SimpleDateFormat simpleDateF=new SimpleDateFormat("dd.MM.yy HH:mm:ss");
             Date current=new Date();
             System.out.println(simpleDateF.format(current));
@@ -255,7 +258,7 @@ public class TestsController {
             }
 
             model.addAttribute("balls", correctAnswers);
-            model.addAttribute("timetest", timetestf);
+            model.addAttribute("timetest", timetestf2);
 
             testService.saveResult(attempt);
             i = 0;
