@@ -213,6 +213,20 @@ public class TestService {
         return passedTestsRepository.findPassedTestsByIduser(iduser);
 
     }
+
+
+
+    public void addTest(Test test){
+        testsRepository.save(test);
+    }
+
+    public void addQuestion(Question question){
+        questionRepository.save(question);
+    }
+
+    public void addAnswer(Answer answer){
+        answerRepository.save(answer);
+    }
 }
 
 

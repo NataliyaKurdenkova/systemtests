@@ -41,23 +41,27 @@
     <div class="newtest-question-container grid">
 
         <div class="newtest-question-title grid"><p class="">Новый тест</p></div>
-        <div class="newtest-question grid">
-            <p class="">Название</p>
-            <input class="newtest-question-input" type="text" placeholder="Введите название теста">
-        </div>
+        <form id="add_newtest" action="/newtest" method="post">
+            <div class="newtest-question grid">
+                <p class="">Название</p>
+                <input class="newtest-question-input" name="addTest" type="text" placeholder="Введите название теста">
+            </div>
+        </form>
     </div>
 
     <div class="newtest-answers-container grid">
         <form>
-            <div class="newtest-answers-block grid scroll-container" >
+            <div class="newtest-answers-block grid scroll-container">
                 <#list tests as test>
                     <ul class="treeCSS">
-                        <li><div style="cursor: pointer;" onclick="location.href='/newt/${test.idtest}'"> ${test.name}</div>
+                        <li>
+                            <div style="cursor: pointer;" onclick="location.href='/newt/${test.idtest}'"> ${test.name}</div>
                             <#list test.questions as question>
                                 <ul class="treeCSSq">
-                                    <li><div style="cursor: pointer;" onclick="location.href='/newq/${question.idque}'"> ${question.question}</div>                                        <#list question.answers as answer>
+                                    <li> <div style="cursor: pointer;" onclick="location.href='/newq/${question.idque}'">${question.question}</div>
+                                        <#list question.answers as answer>
                                             <ul class="treeCSSa">
-                                                <li><div style="cursor: pointer;" > ${answer.name}
+                                                <li>${answer.name}
                                             </ul>
                                         </#list>
                                 </ul>
@@ -67,28 +71,36 @@
             </div>
         </form>
         <div class="newtest-answers-block grid scroll-container">
-            <form id="newtest_add_answer" action="" class="newtest-answers-form grid">
-                <div class="newtest-answer-title grid">
-                    <label for="answer">Содержание вопроса:</label>
-                    <textarea name="" id="answer"></textarea>
-                </div>
 
-                <div class="newtest-answer-type grid">
-                    <label for="val"><span>Тип вопроса:</span></label>
-                    <select id="val">
-                        <option value=radio>один вариант</option>
-                        <option value=checkbox>Несколько вариантов</option>
-                    </select>
-                </div>
 
-                <div class="newtest-answer-add grid">
-                    <input type="submit" value="Добавить ответ">
-                </div>
-            </form>
+            <div class="newtest-answers-block grid scroll-container">
+                <form id="newtest_add_question" action="/addquestion" class="newtest-answers-form grid" method="post">
+                    <div class="newtest-answer-title grid">
+                        <label for="answer">Содержание вопроса:</label>
+                        <textarea name="addquestion" id="answer"></textarea>
+                    </div>
+                    <div class="newtest-answer-type grid">
+                        <label for="val"><span>Тип вопроса:</span></label>
+                        <select id="val" name="type">
+                            <option value=radio>один вариант</option>
+                            <option value=checkbox>Несколько вариантов</option>
+                        </select>
+                    </div>
+                    <div class="newtest-answer-container grid" id="answers-container">
+                        <form id="newtest_add_answer" action="/addanswer" class="newtest-answers-form grid" method="post">
+                            <#list answers as answer>
+                            <div class="newtest-answer grid">
+                                <!--input type="radio" class="answer_type" name="newtest_answer"-->
+                                <textarea class="ffs" name="answers" id="${idtest}"></textarea>
+                            </div>
+                            </#list>
+                    </div>
+                    <div class="newtest-answer-add grid">
+                        <input type="submit" value="Добавить ответ">
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-
-
     </div>
     <div class="newtest-action-container grid">
         <div class="newtest-action-block grid">
@@ -97,6 +109,7 @@
             </form>
             <form>
                 <input form="newtest_add_question" type="submit" value="Добавить вопрос">
+                <!--input form="newtest_add_question" name="addquestion" type="submit" value="Добавить вопрос"-->
             </form>
         </div>
         <div class="newtest-action-block grid">
@@ -109,7 +122,7 @@
         </div>
     </div>
 </section>
-<!--
+<#--
 <script>
     (function () {
         var ul = document.querySelectorAll('.treeCSS > li:not(:only-child) ul, .treeCSS ul ul');
@@ -124,14 +137,6 @@
             }
         }
     })();
-
-    function answerType() {
-        <!-- SQL запрос на изменение типа поля Input и перезагрузка страницы -->
-};
-
-function addAnswer() {
-<!-- SQL запрос на добавление строчки в таблицу и перезагрузка страницы -->
-};
 </script>-->
 </body>
 </html>
