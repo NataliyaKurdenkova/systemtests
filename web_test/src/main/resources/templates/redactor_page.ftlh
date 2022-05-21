@@ -28,7 +28,7 @@
                 <img class="right-img" src="../../img/right-img.svg" alt="img">
             </div>
         </div>
-        <div class="header-rows header-rows-admin">
+        <div class="header-rows header-rows-admin header-redactor">
             <div class="header-columns-menu">
                 <form action="/redactor_page" method="get">
                     <input class="header-columns-menu-input active" type="submit" value="Пользователи">
@@ -52,28 +52,25 @@
         </div>
     </div>
 </header>
-<section class="private-container">
+<section class="redactor-container">
 
-    <div class="private-table table-styles">
-        <div class="private-table-n table-styles"><p>№</p></div>
-        <div class="private-table-title table-styles"><p>ФИО</p></div>
-        <div class="private-table-estimation table-styles"><p>Почта/Логин</p></div>
-        <div class="private-table-action table-styles"></div>
+    <div class="redactor-table table-styles">
+        <div class="redactor-table-n table-styles"><p>№</p></div>
+        <div class="redactor-table-title table-styles"><p>ФИО</p></div>
+        <div class="redactor-table-estimation table-styles"><p>Почта/Логин</p></div>
+        <div class="redactor-table-action table-styles"></div>
     </div>
 
     <#list users as user>
-        <div class="private-table private-table-content">
-            <div class="private-table-n content-styles"><p>${user.iduser}</p></div>
-            <div class="private-table-title "><p>${user.name}</p></div>
-            <div class="private-table-estimation content-styles"><p>${user.login}</p></div>
-            <div class="test-table-action">
-
+        <div class="redactor-table redactor-table-content">
+            <div class="redactor-table-n content-styles"><p>${user.iduser}</p></div>
+            <div class="redactor-table-title "><p>${user.name}</p></div>
+            <div class="redactor-table-estimation content-styles"><p>${user.login}</p></div>
+            <div class="redactor-table-action">
                 <form action="/prescribeuser/${user.iduser}" method="get">
                     <!--<input type="submit" value="Назначить тест">-->
                     <button type="submit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 </form>
-
-
             </div>
         </div>
     </#list>
