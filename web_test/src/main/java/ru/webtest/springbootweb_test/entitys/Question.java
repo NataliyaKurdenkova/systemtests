@@ -32,6 +32,12 @@ public class Question {
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinColumn(name = "parent")
     private Collection<Answer> answers;
+
+    public Question(Long idque, String question, long parent) {
+        this.idque = idque;
+        this.question = question;
+        this.parent = parent;
+    }
     //private List<Answer> answers;
 
 

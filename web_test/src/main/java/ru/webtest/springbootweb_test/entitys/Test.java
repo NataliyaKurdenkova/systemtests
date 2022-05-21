@@ -38,6 +38,14 @@ public class Test {
     private Collection<Question> questions;
 
 
-   }
+    public Test(Long idtest, String name, int passball, int totalque, int needque, int time) {
+        this.idtest = idtest;
+        this.name = name;
+        this.passball = passball;
+        this.totalque = totalque;
+        this.needque = needque;
+        this.time = time;
+    }
+}
 
 
