@@ -5,23 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.webtest.springbootweb_test.entitys.*;
 import ru.webtest.springbootweb_test.security.details.UserDetailsServiceImpl;
-import ru.webtest.springbootweb_test.service.NotifyService;
 import ru.webtest.springbootweb_test.service.TestService;
 
-import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
-
-@Validated
 @Controller
 public class TestsController {
 
@@ -96,7 +87,7 @@ public class TestsController {
 
         attempt = new Attempt();
 ///создали ответы пользователя
-        AnswerUser answerUser = new AnswerUser();
+        AnswerUser answerUser=new AnswerUser();
         answUsr = new ArrayList<>();
         Question[] questions = testService.getQuestionByParent_Test(idtest);
 
@@ -158,12 +149,10 @@ public class TestsController {
 
 
     //кнопка ответить
-
     @GetMapping("/answer/{idtest}")
-    public String answerQuestion(@PathVariable("idtest") int idtest,@RequestParam String[] id, Model model, HttpServletRequest request) {
-
+    public String answerQuestion(@PathVariable("idtest") int idtest, @RequestParam String[] id, Model model) {
         Test test = testService.getTest(idtest);
-        int time = test.getTime();
+
         AnswerUser answerUser = new AnswerUser();
         //login = usersService.getCurrentUsername();
         model.addAttribute("name", login);
@@ -176,7 +165,7 @@ public class TestsController {
             for (int j = 0; j <= id.length - 1; j++) {
                 System.out.println("полученный ответ " + id);
                 Answer answer = testService.getAnswerById(Long.valueOf(id[j]));
-                Question que = testService.getQuestionById(answer.getParent());
+                Question que=testService.getQuestionById(answer.getParent());
                 answerUser.setQuestionName(que.getQuestion());
                 answerUser.setAnswerName(answer.getName());
                 System.out.println("ответ: " + answer.getName());
@@ -187,7 +176,7 @@ public class TestsController {
                 } else System.out.println("Выбран не верный ответ");
                 System.out.println("Количество правильных ответов " + correctAnswers);
                 answerUser.setCorrect(answer.getCorrect());
-
+                //attempt.setAnswerUsers(Arrays.asList(answerUser));
                 answUsr.add(answerUser);
             }
 
@@ -199,31 +188,25 @@ public class TestsController {
             System.out.println("timetest " + timeTest);
             long sek = (timeTest % 60000) / 1000;
             long min = timeTest / 60000;
-            //long chas = timeTest / 3600000;
-            //String timetestf = chas + ":" + min + ":" + sek;
-            //String timetestf =min + ":" + sek;
-            Date d=new Date(timeTest);
-            SimpleDateFormat simpleTimeF=new SimpleDateFormat("mm:ss");
-            String timetestf2 = simpleTimeF.format(d);
-            System.out.println(timetestf2);
+            long chas = timeTest / 3600000;
+            String timetestf = chas + ":" + min + ":" + sek;
+            System.out.println(timetestf);
 
             //id  пользователя
             long iduser = usersService.getCurrentUserId();
             attempt.setIduser(iduser);
             int kolvoAttempt = testService.getAttemptUser(idtest, iduser);
             long idattempt;
-            if (kolvoAttempt != 0) {
-                idattempt = testService.getAttemptId(idtest, iduser);
+            if (kolvoAttempt!=0) {
+                idattempt= testService.getAttemptId(idtest, iduser);
                 attempt.setId(idattempt);
             }
 
             kolvoAttempt++;
             attempt.setAttempt(kolvoAttempt);
-            attempt.setTimeTest(timetestf2);
-            SimpleDateFormat simpleDateF=new SimpleDateFormat("dd.MM.yy HH:mm:ss");
-            Date current=new Date();
-            System.out.println(simpleDateF.format(current));
-            attempt.setCurrentDataTime(simpleDateF.format(current));
+            attempt.setTimeTest(timetestf);
+            Date current = new Date();
+            attempt.setCurrentDataTime(String.valueOf(current));
             attempt.setBalls(correctAnswers);
             attempt.setIdtest(idtest);
             //attempt.(answUsr);
@@ -234,23 +217,6 @@ public class TestsController {
                 String msg = test.getName() + " СДАН! ";
                 model.addAttribute("Msg", msg);
                 System.out.println(msg);
-
-                PassedTests passedTests=new PassedTests();
-                passedTests.setIduser(iduser);
-                passedTests.setIdpassed(idtest);
-                testService.savePassedTests(passedTests);
-
-                PrescTests prescTests=testService.findPrescTest(iduser,idtest);
-                testService.deletePrescTests(prescTests);
-
-                ///////// отправка уведомления об успешной сдаче, пока на мою почту
-                String redactorLogin="nata.kurdenkova@yandex.ru";
-                NotifyService notifyService=new NotifyService();
-                try {
-                    notifyService.SendMsg(redactorLogin, login, test.getName(), correctAnswers);
-                } catch (MessagingException e) {
-                    e.printStackTrace();
-                }
             } else {
                 String msg1 = test.getName() + " НЕ СДАН! ";
                 model.addAttribute("Msg", msg1);
@@ -258,7 +224,7 @@ public class TestsController {
             }
 
             model.addAttribute("balls", correctAnswers);
-            model.addAttribute("timetest", timetestf2);
+            model.addAttribute("timetest", timetestf);
 
             testService.saveResult(attempt);
             i = 0;
@@ -266,11 +232,11 @@ public class TestsController {
             return "test_end";
 
         } else {
-           // if(timeTest>time) return "test_start";
+
             for (int j = 0; j <= id.length - 1; j++) {
                 System.out.println("полученный ответ " + id);
                 Answer answer = testService.getAnswerById(Long.valueOf(id[j]));
-                Question que = testService.getQuestionById(answer.getParent());
+                Question que=testService.getQuestionById(answer.getParent());
                 answerUser.setQuestionName(que.getQuestion());
                 answerUser.setAnswerName(answer.getName());
 
@@ -307,7 +273,6 @@ public class TestsController {
         model.addAttribute("ball", ball);
         int time = test.getTime();
         model.addAttribute("time", time);
-        tiktak(time);
         return "test_start";
     }
 
@@ -324,36 +289,16 @@ public class TestsController {
     }
 
     //кнопка посмотреть результат
-    @GetMapping("/result/{idtest}")
-    public String result(Model model, @PathVariable("idtest") long idtest) {
+    @GetMapping("/result")
+    public String result(Model model) {
         model.addAttribute("name", login);
+        model.addAttribute("iduser", attempt.getIduser());
+        model.addAttribute("idtest", attempt.getIdtest());
+        model.addAttribute("timetest", attempt.getTimeTest());
         model.addAttribute("balls", attempt.getBalls());
-        Test test=testService.getTest(idtest);
-        model.addAttribute("testname", test.getName());
-
+        model.addAttribute("attempt", attempt.getAttempt());
+        model.addAttribute("currenttime", attempt.getCurrentDataTime());
         model.addAttribute("answusers", answUsr);
         return "result";
     }
-
-    public void tiktak(int time) {
-        final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-
-        final Runnable runnable = new Runnable() {
-            int countdownStarter = time;
-
-            public void run() {
-
-                System.out.println(countdownStarter);
-                countdownStarter--;
-
-                if (countdownStarter < 0) {
-                    System.out.println("Timer Over!");
-                    scheduler.shutdown();
-                }
-            }
-        };
-        scheduler.scheduleAtFixedRate(runnable, 0, 1, SECONDS);
-
-    }
-
 }

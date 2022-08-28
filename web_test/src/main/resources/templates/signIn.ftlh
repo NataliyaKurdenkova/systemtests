@@ -36,11 +36,21 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
     </style>
     <link rel="stylesheet" href="css/normalize.css">
-    <!--    <link rel="stylesheet" href="css/normalize.css">-->
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
     <link rel="stylesheet" href="css/main.min.css">
-    <!--    <link rel="stylesheet" href="css/main.min.css">-->
+    <script>
+        function show_hide_password(target){
+            var input = document.getElementById('input-password');
+            if (input.getAttribute('type') == 'password') {
+                target.classList.add('view');
+                input.setAttribute('type', 'text');
+            } else {
+                target.classList.remove('view');
+                input.setAttribute('type', 'password');
+            }
+            return false;
+        }
+    </script>
 </head>
 <body>
 
@@ -57,7 +67,8 @@
             </div>
             <div class="authorize-form-input grid">
                 <!--<div class="authorize-form-input grid" data-validate="Password is required">-->
-                <input class="input-password" type="password" name="password" placeholder="Введите ваш пароль">
+                <input id="input-password" class="input-password" type="password" name="password" placeholder="Введите ваш пароль">
+                <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
             </div>
             <input class="entrance-button" type="submit" value="Вход">
         </form>
